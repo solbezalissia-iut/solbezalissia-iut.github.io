@@ -4441,8 +4441,8 @@ h1{ margin:0 0 12px 8px; font-size:20px; }
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 800px; /* largeur maximale */
-    margin: 0 auto 2rem; /* centrée avec marge en bas */
+    max-width: 800px;
+    margin: 0 auto 2rem;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
@@ -4453,8 +4453,18 @@ h1{ margin:0 0 12px 8px; font-size:20px; }
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover; /* remplit le conteneur sans déformer */
-    transition: transform 0.5s ease; /* effet zoom au survol */
+    transition: transform 0.5s ease;
+}
+
+/* Masquer la barre de contrôle */
+.hero-video::-webkit-media-controls {
+    opacity: 0 !important;
+    transition: opacity 0.3s ease;
+}
+
+/* Afficher les contrôles au survol */
+.video-wrapper:hover .hero-video::-webkit-media-controls {
+    opacity: 1 !important;
 }
 
 /* Overlay semi-transparent */
@@ -4464,24 +4474,11 @@ h1{ margin:0 0 12px 8px; font-size:20px; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* légère teinte sombre */
-    pointer-events: none; /* ne bloque pas la vidéo */
+    pointer-events: none;
 }
 
 /* Zoom léger au survol */
 .video-wrapper:hover .hero-video {
     transform: scale(1.05);
 }
-
-/* Optionnel : texte en overlay (si tu veux ajouter un titre sur la vidéo) */
-/*
-.video-wrapper h2 {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    font-size: 2rem;
-    z-index: 2;
-}
-*/
 
