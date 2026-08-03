@@ -1,150 +1,409 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Les recettes d'Alissia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main.css">
-</head>
-<body>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Alissia Solbez</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
 
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <div class="monogram">A</div>
-      <div class="header-text">
-        <h1>Les recettes <em>d'Alissia</em></h1>
-        <p>Mon carnet de cuisine personnel · <span class="header-count" id="header-count"></span></p>
-      </div>
-    </div>
-  </div>
-</header>
+      <!-- ══ HEADER HÉRO ══ -->
+      <header id="header" class="hero-header1" style="background-image: url('images/monfond.jpg');">
+        <div class="hero-content1">
+          <div class="hero-avatar1">
+            <img src="images/ppalissia2.png" alt="Photo de profil" />
+          </div>
+<h1 class="hero-title1">Alissia Solbez</h1>
 
-<div class="filter-bar">
-  <div class="container">
-    <div class="filter-inner">
-      <span class="filter-label">Chercher</span>
-      <div class="search-wrap">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search-input" placeholder="Nom de la recette…">
-      </div>
-      <span class="filter-label">Filtrer par ingrédient</span>
-      <div class="ing-input-wrap">
-        <input type="text" id="ing-input" placeholder="Ex : fraises, thon…">
-        <div class="ing-suggestions" id="ing-suggestions"></div>
-      </div>
-      <div class="ingredient-filter-wrap" id="active-filters"></div>
-      <button class="filter-reset" id="reset-btn">Réinitialiser</button>
-    </div>
-  </div>
+<p class="hero-subtitle1"> 
+  Étudiante en BUT Techniques de Commercialisation<br>
+  <em>Marketing Digital · E-Business · Entrepreneuriat</em>
+</p>
+
+<div class="hero-cta-group">
+  <a href="cvalternance2026.pdf" class="cta-link1">
+    <i class="fa-solid fa-file-lines"></i> Mon CV
+  </a>
+  <a href="lettresolbez.pdf" class="cta-link1 cta-link1--outline">
+    <i class="fa-solid fa-envelope-open-text"></i> Lettre de motivation
+  </a>
 </div>
 
-<div class="container">
-  <div class="tabs" id="tabs">
-    <button class="tab-btn active" data-cat="all">Toutes <span class="tab-count" id="count-all">0</span></button>
-    <button class="tab-btn" data-cat="apero">Apéro <span class="tab-count" id="count-apero">0</span></button>
-    <button class="tab-btn" data-cat="entree">Entrée <span class="tab-count" id="count-entree">0</span></button>
-    <button class="tab-btn" data-cat="plat">Plat <span class="tab-count" id="count-plat">0</span></button>
-    <button class="tab-btn" data-cat="dessert">Dessert <span class="tab-count" id="count-dessert">0</span></button>
-    <button class="tab-btn" data-cat="boisson">Boisson <span class="tab-count" id="count-boisson">0</span></button>
-    <button class="tab-btn" data-cat="sauce">Sauce <span class="tab-count" id="count-sauce">0</span></button>
-    <button class="tab-btn" data-cat="base-culinaire">Base culinaire <span class="tab-count" id="count-base-culinaire">0</span></button>
+<div class="hero-recherche">
+  <span class="hero-recherche__label">Actuellement à la recherche d'une</span>
+  <span class="hero-recherche__poste">Alternance — Septembre 2027</span>
+  <div class="hero-recherche__domaines">
+    <span><i class="fa-solid fa-bullhorn"></i> Marketing digital</span>
+    <span><i class="fa-solid fa-comment-dots"></i> Communication</span>
+    <span><i class="fa-brands fa-instagram"></i> Entreprenariat </span>
   </div>
-
-  <div class="section visible" id="section-all">
-    <div class="results-info" id="info-all"></div>
-    <div class="grid" id="grid-all"></div>
-    <div class="no-section" id="empty-all">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-apero">
-    <div class="results-info" id="info-apero"></div>
-    <div class="grid" id="grid-apero"></div>
-    <div class="no-section" id="empty-apero">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-entree">
-    <div class="results-info" id="info-entree"></div>
-    <div class="grid" id="grid-entree"></div>
-    <div class="no-section" id="empty-entree">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-plat">
-    <div class="results-info" id="info-plat"></div>
-    <div class="grid" id="grid-plat"></div>
-    <div class="no-section" id="empty-plat">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-dessert">
-    <div class="results-info" id="info-dessert"></div>
-    <div class="grid" id="grid-dessert"></div>
-    <div class="no-section" id="empty-dessert">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-boisson">
-    <div class="results-info" id="info-boisson"></div>
-    <div class="grid" id="grid-boisson"></div>
-    <div class="no-section" id="empty-boisson">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-sauce">
-    <div class="results-info" id="info-sauce"></div>
-    <div class="grid" id="grid-sauce"></div>
-    <div class="no-section" id="empty-sauce">Aucune recette ne correspond à vos filtres.</div>
-  </div>
-  <div class="section" id="section-base-culinaire">
-    <div class="results-info" id="info-base-culinaire"></div>
-    <div class="grid" id="grid-base-culinaire"></div>
-    <div class="no-section" id="empty-base-culinaire">Aucune recette ne correspond à vos filtres.</div>
-  </div>
+<div class="hero-recherche__infos">
+  <span><i class="fa-solid fa-location-dot"></i> Montpellier & alentours </span>
+  <span><i class="fa-solid fa-graduation-cap"></i> Master marketing digital </span>
+  <span><i class="fa-solid fa-clock"></i> Durée : 2 ans </span>
+  <span><i class="fa-solid fa-rotate"></i> Rythme : 1 semaine entreprise / 1 semaine cours </span>
 </div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <!-- Photo zone -->
-      <div class="modal-photo-wrap" id="modal-photo-wrap">
-        <img id="modal-photo" src="" alt="" style="display:none;">
-        <div class="modal-photo-placeholder" id="modal-photo-placeholder">
-          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+</div>
         </div>
+      </header>
+
+      <!-- ══ NAVIGATION ══ -->
+      <nav id="nav">
+        <ul>
+          <li><a href="#Accueil" class="active">Accueil</a></li>
+          <li><a href="#Diplomes">Diplômes</a></li>
+          <li><a href="#Compétences">Compétences</a></li>
+          <li><a href="#PortFolio">PortFolio</a></li>
+          <li><a href="#Expériences">Expériences</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div id="main">
+
+        <!-- ══ ACCUEIL ══ -->
+        <section id="Accueil" class="main">
+          <div class="spotlight">
+            <div class="content">
+              <div class="video-wrapper">
+                <video autoplay muted loop playsinline controls class="hero-video">
+                  <source src="images/alissia.mp4" width="320" height="240" controls poster="images/vignette.jpg">
+                  <p>Cette vidéo ne peut être affichée sur votre navigateur.<br>
+                  Une version est disponible en téléchargement sous <a href="https://s77-ious.freeconvert.com/task/692828f55e7c2bf2e838c280/alissia.mp4">ce lien</a>.</p>
+                </video>
+                <div class="video-overlay"></div>
+              </div>
+              <header class="major">
+                <h2>Je me présente…</h2>
+              </header>
+              <p>Je m'appelle Alissia, j'ai 19 ans et je suis actuellement étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier. Je m'intéresse particulièrement au marketing digital, un domaine en constante évolution qui allie créativité et stratégie. À terme, j'aimerais évoluer dans le marketing numérique, notamment dans la communication en ligne, l'entreprenariat ou la stratégie de marque. Dans cette perspective, je suis actuellement à la recherche d'une alternance pour ma première année en Master, afin de développer mes compétences et de les mettre en pratique en entreprise.</p>
+
+              <ul class="actions">
+                <li><a href="page1.html" class="button">À savoir sur moi</a></li>
+              </ul>
+            </div>
+            <span class="image"><img src="images/ppalissia1.jpeg" alt="" /></span>
+          </div>
+        </section>
+
+<!-- ══ DIPLÔMES ══ -->
+<section id="Diplomes" class="main special">
+  <header class="major">
+    <h2>Mes Diplômes</h2>
+  </header>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-img">
+        <img src="images/lycée.jpg" alt="Baccalauréat" />
       </div>
-      <div class="modal-header-info">
-        <div class="modal-cat" id="modal-cat"></div>
-        <div class="modal-title" id="modal-title"></div>
-        <div class="modal-meta" id="modal-meta"></div>
-        <!-- Variant selector (only shown for recipes with several versions) -->
-        <div class="variant-tabs" id="variant-tabs"></div>
-        <!-- Serving adjuster -->
-        <div class="serving-adjuster" id="serving-adjuster">
-          <span class="serving-label">Adapter pour</span>
-          <button class="serving-btn" id="serving-minus" aria-label="Moins de personnes">−</button>
-          <span class="serving-count" id="serving-count">4</span>
-          <span class="serving-unit">pers.</span>
-          <button class="serving-btn" id="serving-plus" aria-label="Plus de personnes">+</button>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2024</span>
+        <h3>Baccalauréat</h3>
+        <p>Spécialités SES & mathématiques</p>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> Lycée Simone Veil, Gignac</p>
+        <span class="timeline-badge">Mention Bien</span>
+      </div>
+    </div>
+
+    <div class="timeline-item timeline-item--right">
+      <div class="timeline-img">
+        <img src="images/but.png" alt="BUT TC" />
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2024 – 2027</span>
+        <h3>BUT Techniques de Commercialisation</h3>
+        <p>Marketing Digital, E-business & Entrepreneuriat</p>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> IUT Montpellier</p>
+        <span class="timeline-badge timeline-badge--en-cours">En cours</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-img">
+        <img src="images/monmaster.png" alt="Master" />
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2027 – 2029</span>
+        <h3>Master Marketing Digital</h3>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> Lieu </p>
+        <span class="timeline-badge timeline-badge--futur"> Demandé </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+        <!-- ══ COMPÉTENCES ══ -->
+        <section id="Compétences" class="main special">
+          <header class="major">
+            <h2>Mes Compétences</h2>
+          </header>
+          <ul class="features">
+            <li>
+              <img class="feature-img" src="images/competence-marketing.jpg" alt="Marketing" />
+              <h3>Marketing</h3>
+              <p>Je maîtrise les bases du marketing stratégique et digital : analyse de marché, définition de cibles, élaboration de campagnes et suivi des performances. J'aime créer des stratégies efficaces et innovantes, adaptées aux besoins du client.</p>
+            </li>
+            <li>
+              <img class="feature-img" src="images/competence-communication.jpg" alt="Communication" />
+              <h3>Communication</h3>
+              <p>Je sais concevoir des messages clairs et impactants sur différents supports. Je m'adapte aux publics visés et maîtrise la communication digitale, notamment sur les réseaux sociaux.</p>
+            </li>
+            <li>
+              <img class="feature-img" src="images/competence-digital.jpg" alt="Création digitale" />
+              <h3>Création digitale</h3>
+              <p>Je crée des sites internet en HTML/CSS et sur des plateformes comme WordPress ou Wix. J'ai le sens du design visuel et de l'expérience utilisateur, ce qui me permet d'allier créativité et efficacité.</p>
+            </li>
+          </ul>
+          <footer class="major">
+            <ul class="actions special">
+              <li><a href="page2.html" class="button">En savoir plus</a></li>
+            </ul>
+          </footer>
+        </section>
+
+        <!-- ══ PORTFOLIO ══ -->
+        <section id="PortFolio" class="main special">
+          <header class="major">
+            <h2>Mon Portfolio</h2>
+          </header>
+
+          <header class="main-header">
+            <nav style="display:flex;justify-content:center;margin-bottom:0;">
+              <ul id="menu">
+                <li class="active" data-target="projets-scolaires">✏️&nbsp; Projets scolaires</li>
+                <li data-target="projets-professionnels">💼&nbsp; Projets professionnels</li>
+              </ul>
+            </nav>
+          </header>
+
+          <!-- Projets scolaires -->
+          <section id="projets-scolaires" class="portfolio-section visible">
+            <p>En BUT Techniques de Commercialisation, nous réalisons chaque semestre des projets de groupe appelés SAE. Ces projets nous offrent l'opportunité de mettre en pratique les connaissances théoriques acquises en cours, tout en développant nos compétences professionnelles, telles que le travail en équipe, la gestion de projet, la créativité et la capacité à analyser et résoudre des problématiques concrètes.</p>
+            <div class="portfolio-grid">
+              <div class="card">
+                <a href="portfolio/sprite.pdf">
+                  <img src="portfolio/sprite.png" alt="SAE marketing">
+                  <div class="overlay"><p>Dans le cadre de ce projet, notre objectif était de proposer quatre innovations pour une marque spécifique. Nous avons réalisé une étude de marché approfondie afin d'analyser les attentes des consommateurs et les tendances du secteur. Ce travail nous a permis de combiner démarche stratégique et créativité pour formuler des propositions innovantes et pertinentes.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="https://luxdoorcontact.wixsite.com/my-site-1">
+                  <img src="portfolio/luxdoor.png" alt="Projet LuxDoor">
+                  <div class="overlay"><p>Dans ce projet, nous devions créer une entreprise et développer son identité numérique : site internet, contenu réseaux sociaux et campagnes publicitaires ciblées. L'objectif était de combiner créativité et stratégie digitale pour promouvoir efficacement l'entreprise.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/transverse.pdf">
+                  <img src="portfolio/3.png" alt="SAE transverse">
+                  <div class="overlay"><p>Notre mission était de concevoir un packaging pour une bière créée par les étudiants en biologie de l'IUT de Montpellier, accompagné d'une étude de marché pour analyser la concurrence et les attentes des consommateurs.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/cook.pdf">
+                  <img src="portfolio/cook.png" alt="SAE robot">
+                  <div class="overlay"><p>Dans ce projet, nous devions concevoir un animal robot capable de répondre à un problème actuel de la société, en combinant innovation technologique et réflexion stratégique, sociale et éthique.</p></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Projets professionnels -->
+          <section id="projets-professionnels" class="portfolio-section">
+            <p>Au cours de mes stages, j'ai été amenée à réaliser différentes missions, notamment la création de visuels pour des supports de communication. Ces expériences m'ont permis de mettre en pratique mes compétences en design graphique et en communication, tout en répondant aux attentes d'un client ou d'une structure professionnelle.</p>
+            <div class="portfolio-grid">
+              <div class="card">
+                <a href="portfolio/calendrierpompier.png">
+                  <img src="portfolio/calendrierpompier.png" alt="Calendrier pompiers">
+                  <div class="overlay"><p>Création d'un visuel publicitaire pour l'espace publicitaire du calendrier des pompiers. Ce projet m'a permis de travailler la conception graphique et la communication visuelle sur un support spécifique.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/carte.pdf">
+                  <img src="portfolio/6.png" alt="Carte de visite">
+                  <div class="overlay"><p>Modernisation de la carte de visite d'un cabinet d'audioprothésistes : nouveau design plus actuel et professionnel, tout en respectant l'identité visuelle du cabinet.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="https://stanaudition.wixsite.com/stanaudition">
+                  <img src="portfolio/stanaudition.png" alt="Stan Audition">
+                  <div class="overlay"><p>Création d'une maquette de site internet, étape préalable à la mise en ligne prévue pour avril 2026 : architecture, design et expérience utilisateur pensés de A à Z.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/stage.pdf">
+                  <img src="portfolio/stage.png" alt="Réseaux sociaux immobilier">
+                  <div class="overlay"><p>Création de contenu pour les réseaux sociaux d'une agence immobilière et retouche de photos de biens pour les valoriser. Développement des compétences en communication digitale et marketing visuel.</p></div>
+                </a>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <div class="portfolio-buttc">
+          <a href="TON-LIEN" target="_blank" class="buttc-card">
+             <span class="buttc-icon">
+                <i class="fa-solid fa-folder-open"></i>
+             </span>
+
+              <span class="buttc-content">
+                <strong>Portfolio BUT TC</strong>
+                <small>Découvrir l'ensemble de mes projets universitaires</small>
+              </span>
+
+              <span class="buttc-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+          </a>
         </div>
-      </div>
-      <button class="modal-back" id="modal-back" aria-label="Retour à la liste">← Retour</button>
-      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
-    </div>
-    <div class="modal-body">
-      <div>
-        <div class="modal-section-title">Ingrédients</div>
-        <ul class="ing-list" id="modal-ings"></ul>
-      </div>
-      <div>
-        <div class="modal-section-title">Préparation</div>
-        <ol class="steps-list" id="modal-steps"></ol>
-      </div>
-    </div>
-  </div>
-</div>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>@Alissia </p>
-  </div>
-</footer>
+        <!-- ══ SÉPARATEUR VISUEL ══ -->
+        <div class="section-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C360,70 1080,70 1440,0 L1440,70 L0,70 Z" fill="#FFF0F3"/>
+          </svg>
+        </div>
 
-<script src="recettes-data.js"></script>
-<script src="app.js"></script>
-</body>
+        <!-- ══ EXPÉRIENCES ══ -->
+        <section id="Expériences" class="main special">
+          <header class="major">
+            <h2>Mes Expériences Professionnelles</h2>
+          </header>
+          <ul class="features">
+            <li>
+              <img class="feature-logo" src="images/exp-caisse.png" alt="Caisse" />
+              <h3>CDI 15h – Carrefour Trifontaine</h3>
+              <p>Accueil et conseil des clients, encaissement et mise en rayon. Gestion du flux en caisse et maintien d'un poste organisé.</p>
+              <p><strong>Poste :</strong> Hôtesse de caisse</p>
+              <p><strong>Lieu :</strong> Saint-Clément-de-Rivière</p>
+              <p><strong>Période :</strong> Août 2024 – Mai 2025</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/exp-immo.png" alt="Immobilier" />
+              <h3>Stage d'observation – LVI Immo</h3>
+              <p>Découverte du secteur immobilier : accompagnement des agents lors de visites et assistance à la préparation des dossiers clients.</p>
+              <p><strong>Poste :</strong> Stagiaire</p>
+              <p><strong>Lieu :</strong> Montpellier</p>
+              <p><strong>Période :</strong> Décembre 2024</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/exp-apple.png" alt="Apple" />
+              <h3>CDI 8h – Apple Store</h3>
+              <p>Accueil des clients, conseils personnalisés et démonstrations produits. Participation à la mise en valeur de l'espace de vente et à la satisfaction client.</p>
+              <p><strong>Poste :</strong> Spécialiste</p>
+              <p><strong>Lieu :</strong> Montpellier – Odysseum</p>
+              <p><strong>Période :</strong> Juin 2025 – Juin 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/exp-chatblanc.png" alt="Chat Blanc" />
+              <h3>Projet tutoré – Bastide du Chat Blanc</h3>
+              <p>Description</p>
+              <p><strong>Poste :</strong> Collaborateur </p>
+              <p><strong>Lieu :</strong> À distance </p>
+              <p><strong>Période :</strong> Septembre 2026 – Mai 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/exp-audition.png" alt="Audition" />
+              <h3>Stage 2 mois – Stan Audition</h3>
+              <p>Création de contenu digital, création du site internet et gestion de la communication visuelle du cabinet d'audioprothèse.</p>
+              <p><strong>Poste :</strong> Stagiaire</p>
+              <p><strong>Lieu :</strong> Gignac</p>
+              <p><strong>Période :</strong> Avril 2026 – Mai 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/exp-alternance.png" alt="Alternance" />
+              <h3>Alternance – CFA Ensup</h3>
+              <p>Alternance en marketing digital dans le cadre de la 3ème année de BUT Techniques de Commercialisation.</p>
+              <p><strong>Poste :</strong> Alternant</p>
+              <p><strong>Lieu :</strong> Montpellier</p>
+              <p><strong>Période :</strong> Juillet 2026 – Juillet 2027</p>
+            </li>
+          </ul>
+        </section>
+
+      </div><!-- /#main -->
+
+      <!-- ══ FOOTER ══ -->
+      <footer id="footer">
+        <section>
+          <h2>À propos du site</h2>
+          <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
+          <ul class="icons">
+           <li>
+  <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank">
+    <img src="images/linkedin-logo.png" alt="LinkedIn">
+    <span class="label">LinkedIn</span>
+  </a>
+</li>
+
+<li>
+  <a href="https://notion.so/alissia-portfolio" class="social-logo-link" target="_blank" rel="noopener">
+    <img src="images/notion-logo.png" alt="Notion">
+    <span class="label">Notion</span>
+  </a>
+</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mes coordonnées</h2>
+          <dl class="alt">
+            <dt><i class="fa-solid fa-cake-candles"></i> Naissance</dt>
+            <dd>18 août 2006</dd>
+            <dt><i class="fa-solid fa-location-dot"></i> Adresse</dt>
+            <dd><a href="https://www.google.com/maps/search/?api=1&query=21+rue+Michel+Henry+34090+Montpellier"> 21 rue Michel Henry, 34090 Montpellier </a></dd>
+            <dt><i class="fa-solid fa-phone"></i> Téléphone</dt>
+            <dd><a href="tel:+33768867862">07 68 86 78 62</a></dd>
+            <dt><i class="fa-solid fa-envelope"></i> Email</dt>
+            <dd><a href="mailto:Solbezrigaudalissia@gmail.com">Solbezrigaudalissia@gmail.com</a></dd>
+            <dt><i class="fa-solid fa-id-card"></i> Permis</dt>
+            <dd> Permis AM &amp; Permis B</dd>
+          </dl>
+        </section>
+
+        <p class="copyright">
+          &copy; 2026 Alissia Solbez
+        </p>
+      </footer>
+
+    </div><!-- /#wrapper -->
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+  const menuItems = document.querySelectorAll('#menu li');
+  const sections = document.querySelectorAll('.portfolio-section');
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+
+      // reset menu actif
+      menuItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // hide sections
+      sections.forEach(sec => sec.classList.remove('visible'));
+
+      // show target
+      const target = item.getAttribute('data-target');
+      document.getElementById(target).classList.add('visible');
+    });
+  });
+</script>
+  </body>
 </html>
