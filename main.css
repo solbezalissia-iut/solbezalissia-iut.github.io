@@ -1235,7 +1235,7 @@ ul.icons li a:hover {
   min-height: 45vh;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top center;
   background-attachment: fixed;
   background-color: var(--beige-clair);
 }
