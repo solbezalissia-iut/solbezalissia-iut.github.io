@@ -1078,20 +1078,6 @@ ul.features li:hover .feature-logo {
   color: rgba(255,255,255,0.75);
 }
 
-/* Badge "fait à la main" */
-#footer > section:first-child::after {
-  content: '🌸 Conçu avec soin';
-  display: inline-block;
-  margin-top: 1.2rem;
-  padding: 0.4rem 1rem;
-  background: rgba(212, 165, 165, 0.2);
-  border: 1px solid rgba(212, 165, 165, 0.35);
-  border-radius: 50px;
-  font-size: 0.8rem;
-  color: var(--rose-poudre);
-  letter-spacing: 0.06em;
-}
-
 /* Réseaux sociaux */
 ul.icons {
   display: flex;
@@ -1291,41 +1277,6 @@ ul.icons li a:hover {
   .portfolio-grid {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-
-/* ── Bouton Notion dans footer ── */
-.icon-notion-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 50px;
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
-  border: 1px solid rgba(255,255,255,0.18);
-  white-space: nowrap;
-}
-
-.icon-notion-link svg {
-  flex-shrink: 0;
-  transition: transform var(--transition);
-}
-
-.icon-notion-link:hover {
-  background: #2F2F2F;
-  color: var(--blanc);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.icon-notion-link:hover svg {
-  transform: rotate(-5deg) scale(1.1);
 }
 
 /* Expériences — alignement texte */
