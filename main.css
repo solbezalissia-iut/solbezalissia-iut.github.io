@@ -690,10 +690,10 @@ ul.features li:hover .feature-img {
 /* Logos expériences — sans cadre, PNG transparent, même taille */
 .feature-logo {
   display: block;
-  width: 88px;
-  height: 88px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  margin: 0 auto 0.5rem;
+  margin: 0 auto 0.7rem;
   border: none;
   box-shadow: none;
   background: transparent;
@@ -1233,9 +1233,11 @@ ul.icons li a:hover {
   align-items: center;
   justify-content: center;
   min-height: 45vh;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  background-color: var(--beige-clair);
 }
 
 .hero-header2::before {
