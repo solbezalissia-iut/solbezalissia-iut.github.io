@@ -613,87 +613,6 @@ section.main:nth-child(even) {
    SECTION DIPLÔMES
 ══════════════════════════════════════ */
 
-.diplomes-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  list-style: none;
-  padding: 0;
-  max-width: 1000px;
-  margin: 2rem auto 0;
-}
-
-.diplome-card {
-  background: var(--blanc);
-  border-radius: var(--radius-lg);
-  padding: 2.2rem 1.8rem;
-  text-align: center;
-  box-shadow: 0 6px 22px var(--ombre);
-  border: 1px solid var(--beige-sombre);
-  transition: transform var(--transition), box-shadow var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.diplome-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--rose-poudre), var(--rose-sombre));
-}
-
-.diplome-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px var(--ombre-forte);
-}
-
-.diplome-card i {
-  font-size: 2rem;
-  color: var(--rose-sombre);
-  margin-bottom: 1rem;
-}
-
-.diplome-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  border: 3px solid var(--beige-sombre);
-  box-shadow: 0 4px 16px var(--ombre);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-
-.diplome-card:hover .diplome-img {
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px var(--ombre-forte);
-  border-color: var(--rose-poudre);
-}
-
-.diplome-card h3 {
-  font-family: var(--font-titre);
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--brun-fonce);
-}
-
-.diplome-card p {
-  font-size: 0.92rem;
-  color: var(--brun);
-  margin: 0;
-}
-
-.diplome-card span {
-  display: block;
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  color: var(--rose-sombre);
-  font-weight: 600;
-}
-
 /* ══════════════════════════════════════
    SECTION COMPÉTENCES — FEATURES
 ══════════════════════════════════════ */
@@ -808,9 +727,6 @@ ul.features li:hover .feature-logo {
 /* ══════════════════════════════════════
    SECTION PORTFOLIO
 ══════════════════════════════════════ */
-.portfolio-title-section {
-  margin-bottom: 1.5rem;
-}
 
 /* ── Onglets ── */
 .main-header nav ul#menu {
