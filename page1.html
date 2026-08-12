@@ -4,7 +4,8 @@
     <title>Me découvrir</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   </head>
   <body class="is-preload">
@@ -22,73 +23,87 @@
 
       <!-- ══ MAIN ══ -->
       <div id="main">
-        <section id="content" class="main decouvrir-content">
 
-          <!-- Études -->
-          <div class="decouvrir-block">
-            <h2 class="title-icon-right">Mes études</h2>
-            <div class="etudes-layout">
-              <p class="etudes-p1">Je suis actuellement étudiante en deuxième année de BUT Techniques de Commercialisation à l'IUT de Montpellier, une formation qui me permet d'acquérir des compétences solides en marketing, en négociation commerciale, en communication et en gestion de projet. Au fil de mes études, j'ai l'opportunité de travailler sur des projets concrets et professionnalisants, ce qui me permet de renforcer mes connaissances théoriques tout en développant une réelle expérience de terrain.</p>
-              <div class="etudes-img-wrap">
-                <img src="images/iut.png" alt="IUT de Montpellier" class="etudes-img">
-              </div>
-            </div>
-            <p>Je suis passionnée par le marketing digital, un domaine qui allie créativité et stratégie. Plus particulièrement, je m'intéresse à la conception de packagings, à la création de supports visuels et à la production de contenus pour les réseaux sociaux. Mon objectif professionnel est de travailler dans le marketing numérique, notamment dans la communication en ligne, la gestion des réseaux sociaux ou la stratégie de marque.</p>
-          </div>
-
-          <!-- Vie professionnelle -->
-          <div class="decouvrir-block">
-            <h2 class="title-icon-right">Ma vie professionnelle</h2>
-            <p>En parallèle de mes études, je travaille en CDI chez Apple Odysseum, où j'occupe un poste de 8 heures chaque samedi. Cette expérience professionnelle m'offre l'opportunité de développer des compétences clés telles que la relation client, la communication et la gestion de situations variées. Elle me permet également de renforcer ma capacité d'adaptation, mon sens du service et ma réactivité au sein d'un environnement dynamique et exigeant.</p>
-          </div>
-
-          <!-- Loisirs -->
-          <div class="decouvrir-block">
-            <h2 class="title-icon-right">Mes loisirs</h2>
-            <p>En dehors de mes études et de mon travail, mes loisirs occupent une place importante dans mon quotidien et m'aident à garder un bon équilibre. La photographie est l'une de mes passions : même si je suis encore débutante, j'aime apprendre et progresser en capturant des moments, des ambiances et des détails qui racontent une histoire. Le badminton me permet de rester active, de me vider l'esprit et de me dépasser, tout en m'apportant discipline et persévérance. J'apprécie aussi des activités plus calmes et créatives, comme le soin des ongles, qui me permettent de me détendre tout en laissant parler mon sens créatif. Enfin, la musique m'accompagne chaque jour et les concerts sont pour moi une véritable source d'énergie et d'inspiration.</p>
-
-            <!-- Galerie défilante -->
-            <div class="wrap-card1">
-              <div class="gallery-card1" id="gallery-card1" tabindex="0">
-                <figure class="card1">
-                  <img src="images/bad.jpg" alt="Badminton">
-                  <div class="card1-overlay"><span class="card1-label">Badminton</span></div>
-                </figure>
-                <figure class="card1">
-                  <img src="images/ongle1.jpg" alt="Ongles">
-                  <div class="card1-overlay"><span class="card1-label">Ongles</span></div>
-                </figure>
-                <figure class="card1">
-                  <img src="images/gims.jpeg" alt="Photographie concert">
-                  <div class="card1-overlay"><span class="card1-label">Photographie concert</span></div>
-                </figure>
-                <figure class="card1">
-                  <img src="images/gims.jpeg" alt="Photographie sportive">
-                  <div class="card1-overlay"><span class="card1-label">Photographie sportive</span></div>
-                </figure>
-              </div>
-
-              <!-- Barre de navigation -->
-              <div class="gallery-nav-bar">
-                <button class="ctrl-btn" id="prev-card1" aria-label="Précédent">&#8592;</button>
-                <div class="gallery-dots" id="gallery-dots">
-                  <span class="gallery-dot active" data-index="0"></span>
-                  <span class="gallery-dot" data-index="1"></span>
-                  <span class="gallery-dot" data-index="2"></span>
+        <!-- Études -->
+        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-etudes.jpg');">
+          <div class="decouvrir-content">
+            <div class="decouvrir-block">
+              <h2 class="title-icon-right">Mes études</h2>
+              <div class="etudes-layout">
+                <p class="etudes-p1">Je suis actuellement étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier, une formation qui me permet d'acquérir des compétences solides en marketing, en négociation commerciale, en communication et en gestion de projet. Au fil de mes études, j'ai l'opportunité de travailler sur des projets concrets et professionnalisants, ce qui me permet de renforcer mes connaissances théoriques tout en développant une réelle expérience de terrain. Je suis également en attente de réponses pour intégrer un Master en marketing digital à la rentrée 2027.</p>
+                <div class="etudes-img-wrap">
+                  <img src="images/iut.png" alt="IUT de Montpellier" class="etudes-img">
                 </div>
-                <button class="ctrl-btn" id="next-card1" aria-label="Suivant">&#8594;</button>
+              </div>
+              <p>Je suis passionnée par le marketing digital, un domaine qui allie créativité et stratégie. Plus particulièrement, je m'intéresse à la conception de packagings, à la création de supports visuels et à la production de contenus pour les réseaux sociaux. Mon objectif professionnel est de travailler dans le marketing numérique, notamment dans la communication en ligne, la gestion des réseaux sociaux ou la stratégie de marque.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Vie professionnelle -->
+        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-pro.jpg');">
+          <div class="decouvrir-content">
+            <div class="decouvrir-block">
+              <h2 class="title-icon-right">Ma vie professionnelle</h2>
+              <p>En parallèle de mes études, je suis actuellement en alternance au CFA EnSup-LR en marketing digital et communication, où je conçois des supports de communication, j'anime les réseaux sociaux et je participe à des conférences et à l'événementiel. Avant cela, j'ai travaillé un an en CDI chez Apple Odysseum, une expérience qui m'a permis de développer des compétences clés telles que la relation client, la communication et la gestion de situations variées. Ces expériences me permettent de renforcer ma capacité d'adaptation, mon sens du service et ma réactivité au sein d'environnements dynamiques et exigeants.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Loisirs -->
+        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-loisirs.jpg');">
+          <div class="decouvrir-content">
+            <div class="decouvrir-block">
+              <h2 class="title-icon-right">Mes loisirs</h2>
+              <p>En dehors de mes études et de mon travail, mes loisirs occupent une place importante dans mon quotidien et m'aident à garder un bon équilibre. La photographie est l'une de mes passions : même si je suis encore débutante, j'aime apprendre et progresser en capturant des moments, des ambiances et des détails qui racontent une histoire, que ce soit en contexte sportif ou lors de concerts. Le badminton (option SUAPS) me permet de rester active, de me vider l'esprit et de me dépasser, tout en m'apportant discipline et persévérance. J'apprécie aussi des activités plus calmes et créatives, comme le nail art, qui me permet de me détendre tout en laissant parler mon sens créatif. Enfin, la musique m'accompagne chaque jour et les concerts sont pour moi une véritable source d'énergie et d'inspiration.</p>
+
+              <!-- Galerie défilante -->
+              <div class="wrap-card1">
+                <div class="gallery-card1" id="gallery-card1" tabindex="0">
+                  <figure class="card1">
+                    <img src="images/bad.jpg" alt="Badminton">
+                    <div class="card1-overlay"><span class="card1-label">Badminton</span></div>
+                  </figure>
+                  <figure class="card1">
+                    <img src="images/ongle1.jpg" alt="Ongles">
+                    <div class="card1-overlay"><span class="card1-label">Nail art</span></div>
+                  </figure>
+                  <figure class="card1">
+                    <img src="images/gims.jpeg" alt="Photographie concert">
+                    <div class="card1-overlay"><span class="card1-label">Photographie concert</span></div>
+                  </figure>
+                  <figure class="card1">
+                    <img src="images/gims.jpeg" alt="Photographie sportive">
+                    <div class="card1-overlay"><span class="card1-label">Photographie sportive</span></div>
+                  </figure>
+                </div>
+
+                <!-- Barre de navigation -->
+                <div class="gallery-nav-bar">
+                  <button class="ctrl-btn" id="prev-card1" aria-label="Précédent">&#8592;</button>
+                  <div class="gallery-dots" id="gallery-dots">
+                    <span class="gallery-dot active" data-index="0"></span>
+                    <span class="gallery-dot" data-index="1"></span>
+                    <span class="gallery-dot" data-index="2"></span>
+                  </div>
+                  <button class="ctrl-btn" id="next-card1" aria-label="Suivant">&#8594;</button>
+                </div>
               </div>
             </div>
           </div>
-
-          <!-- Intérêts académiques -->
-          <div class="decouvrir-block">
-            <h2 class="title-icon-right">Mes intérêts académiques</h2>
-            <p>Dans mon parcours en BUT Techniques de Commercialisation, certaines matières m'ont particulièrement marquée, car elles mêlent réflexion, analyse et créativité, un équilibre qui correspond parfaitement à ma manière de travailler. Les mathématiques et l'informatique sont des domaines dans lesquels je me sens à l'aise : ils m'aident à structurer ma réflexion, à analyser des données et à résoudre des problèmes de façon logique, des compétences essentielles en marketing digital.</p>
-            <p>À côté de cet aspect plus analytique, je prends beaucoup de plaisir dans les matières créatives comme l'audiovisuel, le marketing digital, l'innovation ou la création d'entreprise. Ces cours me permettent d'exprimer ma créativité, d'imaginer des concepts et de travailler sur des projets concrets. J'apprécie particulièrement les moments de brainstorming, de conception visuelle et de réflexion stratégique, où une idée prend progressivement forme pour devenir un projet abouti.</p>
-          </div>
-
         </section>
+
+        <!-- Intérêts académiques -->
+        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-academique.jpg');">
+          <div class="decouvrir-content">
+            <div class="decouvrir-block">
+              <h2 class="title-icon-right">Mes intérêts académiques</h2>
+              <p>Dans mon parcours en BUT Techniques de Commercialisation, certaines matières m'ont particulièrement marquée, car elles mêlent réflexion, analyse et créativité, un équilibre qui correspond parfaitement à ma manière de travailler. Les mathématiques et l'informatique sont des domaines dans lesquels je me sens à l'aise : ils m'aident à structurer ma réflexion, à analyser des données et à résoudre des problèmes de façon logique, des compétences essentielles en marketing digital.</p>
+              <p>À côté de cet aspect plus analytique, je prends beaucoup de plaisir dans les matières créatives comme l'audiovisuel, le marketing digital, l'innovation ou la création d'entreprise. Ces cours me permettent d'exprimer ma créativité, d'imaginer des concepts et de travailler sur des projets concrets. J'apprécie particulièrement les moments de brainstorming, de conception visuelle et de réflexion stratégique, où une idée prend progressivement forme pour devenir un projet abouti.</p>
+            </div>
+          </div>
+        </section>
+
       </div>
 
       <!-- ══ FOOTER ══ -->
@@ -123,7 +138,7 @@
             <dt><i class="fa-solid fa-envelope"></i> Email</dt>
             <dd><a href="mailto:Solbezrigaudalissia@gmail.com">Solbezrigaudalissia@gmail.com</a></dd>
             <dt><i class="fa-solid fa-id-card"></i> Permis</dt>
-            <dd> Permis AM &amp; Permis B</dd>
+            <dd> Permis B – Véhiculée</dd>
           </dl>
         </section>
         <p class="copyright">&copy; 2026 Alissia Solbez</p>
