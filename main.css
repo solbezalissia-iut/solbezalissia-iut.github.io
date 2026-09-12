@@ -559,7 +559,7 @@ section.main:nth-child(even) {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 265px;
+  width: 320px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--blanc);
@@ -602,19 +602,51 @@ section.main:nth-child(even) {
   filter: drop-shadow(0 22px 28px var(--ombre-forte));
 }
 
-/* Petites notes façon post-it, réutilisées ici pour lier le collage au hero */
-.intro-note--1 {
-  top: 4%;
-  left: -8%;
-  transform: rotate(-9deg);
+/* Petits badges à icônes flottants — loisirs & marketing digital */
+.intro-icon-badge {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--blanc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose-sombre);
+  font-size: 1.05rem;
+  border: 2px solid var(--rose-poudre);
+  box-shadow: 0 8px 20px var(--ombre-forte);
   z-index: 3;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.intro-note--2 {
-  bottom: 10%;
-  right: 2%;
-  transform: rotate(7deg);
-  z-index: 3;
+.intro-icon-badge:hover {
+  box-shadow: 0 12px 26px var(--ombre-forte);
+  transform: scale(1.15) rotate(0deg) !important;
+}
+
+.intro-icon-badge--photo {
+  top: 0%;
+  left: -8%;
+  transform: rotate(-8deg);
+}
+
+.intro-icon-badge--ongles {
+  top: -6%;
+  right: 20%;
+  transform: rotate(6deg);
+}
+
+.intro-icon-badge--badminton {
+  bottom: 18%;
+  right: -10%;
+  transform: rotate(-5deg);
+}
+
+.intro-icon-badge--marketing {
+  bottom: -6%;
+  left: 34%;
+  transform: rotate(5deg);
 }
 
 /* Bloc texte */
@@ -1063,6 +1095,33 @@ ul.features li:hover .feature-logo {
   flex-shrink: 0;
 }
 
+/* Petite photo à côté du titre "À propos du site" */
+.footer-intro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-intro h2 {
+  margin-bottom: 0;
+}
+
+.footer-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--rose-poudre);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.footer-photo:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+
 /* Texte intro */
 #footer > section:first-child > p {
   font-size: 1rem;
@@ -1237,7 +1296,7 @@ ul.icons li a:hover {
   }
 
   .intro-video-frame {
-    width: 200px;
+    width: 230px;
   }
 
   .intro-photo-cutout {
@@ -1245,14 +1304,16 @@ ul.icons li a:hover {
     right: -8px;
   }
 
-  .intro-note--1,
-  .intro-note--2 {
-    font-size: 0.68rem;
-    padding: 0.3rem 0.7rem;
+  .intro-icon-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
   }
 
-  .intro-note--1 { top: -4%; left: -10%; }
-  .intro-note--2 { bottom: -2%; right: 0; }
+  .intro-icon-badge--photo { top: -4%; left: -10%; }
+  .intro-icon-badge--ongles { top: -8%; right: 16%; }
+  .intro-icon-badge--badminton { bottom: 14%; right: -6%; }
+  .intro-icon-badge--marketing { bottom: -4%; left: 30%; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
