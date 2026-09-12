@@ -891,6 +891,16 @@ ul.features li:hover .feature-logo {
   font-weight: 600;
 }
 
+#Expériences ul.features li a {
+  color: var(--rose-sombre);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#Expériences ul.features li a:hover {
+  text-decoration: underline;
+}
+
 /* ══════════════════════════════════════
    SÉPARATION PORTFOLIO / EXPÉRIENCES
 ══════════════════════════════════════ */
@@ -1002,6 +1012,22 @@ ul.icons {
   padding: 0;
   margin-top: 1.4rem;
   flex-wrap: wrap;
+}
+
+/* ── Correction : forcer une taille cohérente pour les logos
+     de réseaux sociaux dans le footer (ex. LinkedIn), quel que
+     soit la taille réelle du fichier image source. Sans cette
+     règle, une image source volumineuse s'affichait à sa taille
+     native ("trop grosse") sur les pages où le fichier chargeait
+     correctement. ── */
+ul.icons li a img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
 }
 
 ul.icons li a {
