@@ -605,8 +605,10 @@ section.main:nth-child(even) {
 /* Petites images dispersées autour de la photo, esprit collage un peu désordonné */
 .intro-scatter-img {
   position: absolute;
-  width: 62px;
-  height: 62px;
+  width: 62px !important;
+  height: 62px !important;
+  max-width: 62px !important;
+  max-height: 62px !important;
   object-fit: contain;
   filter: drop-shadow(0 8px 16px var(--ombre-forte));
   z-index: 4;
@@ -620,40 +622,50 @@ section.main:nth-child(even) {
 .intro-scatter-img--badminton {
   top: 30px;
   left: 96px;
-  width: 68px;
-  height: 68px;
+  width: 68px !important;
+  height: 68px !important;
+  max-width: 68px !important;
+  max-height: 68px !important;
   transform: rotate(-14deg);
 }
 
 .intro-scatter-img--canon {
   top: -18px;
   right: 46px;
-  width: 58px;
-  height: 58px;
+  width: 58px !important;
+  height: 58px !important;
+  max-width: 58px !important;
+  max-height: 58px !important;
   transform: rotate(9deg);
 }
 
 .intro-scatter-img--nailart {
   top: 190px;
   right: -26px;
-  width: 54px;
-  height: 54px;
+  width: 54px !important;
+  height: 54px !important;
+  max-width: 54px !important;
+  max-height: 54px !important;
   transform: rotate(-7deg);
 }
 
 .intro-scatter-img--mark1 {
   bottom: 54px;
   left: 78px;
-  width: 66px;
-  height: 66px;
+  width: 66px !important;
+  height: 66px !important;
+  max-width: 66px !important;
+  max-height: 66px !important;
   transform: rotate(11deg);
 }
 
 .intro-scatter-img--mark2 {
   bottom: -16px;
   right: 70px;
-  width: 56px;
-  height: 56px;
+  width: 56px !important;
+  height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
   transform: rotate(-10deg);
 }
 
@@ -1116,10 +1128,10 @@ ul.features li:hover .feature-logo {
 }
 
 .footer-photo {
-  width: 64px !important;
-  height: 64px !important;
-  max-width: 64px !important;
-  max-height: 64px !important;
+  width: 84px !important;
+  height: 84px !important;
+  max-width: 84px !important;
+  max-height: 84px !important;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--rose-poudre);
