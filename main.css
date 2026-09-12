@@ -504,71 +504,137 @@ section.main:nth-child(even) {
 }
 
 /* ══════════════════════════════════════
-   SECTION ACCUEIL — SPOTLIGHT
+   SECTION ACCUEIL — COLLAGE VIDÉO / PHOTO DÉTOURÉE / TEXTE
 ══════════════════════════════════════ */
-.spotlight {
+.intro-collage {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  max-width: 1000px;
+  gap: 4.5rem;
+  max-width: 1080px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
 
-.spotlight .content {
-  flex: 1 1 340px;
+/* Zone visuelle : conteneur relatif qui accueille les éléments en superposition */
+.intro-collage__visual {
+  position: relative;
+  flex: 0 0 460px;
+  height: 520px;
 }
 
-.spotlight .image {
-  flex: 0 0 280px;
-}
-
-.spotlight .image img {
-  width: 280px;
+/* Blob organique en fond, animé tout en douceur */
+.intro-blob {
+  position: absolute;
+  top: 6%;
+  right: 2%;
+  width: 340px;
   height: 340px;
-  object-fit: cover;
+  background: linear-gradient(150deg, var(--rose-poudre), var(--beige-sombre));
+  border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
+  z-index: 0;
+  animation: blobMove 12s ease-in-out infinite;
+}
+
+@keyframes blobMove {
+  0%, 100% { border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%; }
+  50%      { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; }
+}
+
+/* Anneau pointillé décoratif, pour renforcer l'effet collage */
+.intro-collage__visual::after {
+  content: '';
+  position: absolute;
+  bottom: 4%;
+  right: 8%;
+  width: 90px;
+  height: 90px;
+  border: 2px dashed var(--rose-sombre);
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Cadre vidéo façon polaroid, légèrement incliné, posé en arrière-plan */
+.intro-video-frame {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 265px;
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 36px var(--ombre-forte);
+  overflow: hidden;
+  background: var(--blanc);
+  padding: 10px 10px 26px;
+  box-shadow: 0 18px 40px var(--ombre-forte);
+  transform: rotate(-6deg);
+  z-index: 1;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.intro-video-frame:hover {
+  transform: rotate(-3deg) translateY(-6px);
+  box-shadow: 0 24px 50px var(--ombre-forte);
+}
+
+.intro-video-frame .hero-video {
+  width: 100%;
+  display: block;
+  border-radius: calc(var(--radius-lg) - 6px);
+}
+
+/* Photo détourée (fond transparent), posée devant, sans cadre */
+.intro-photo-cutout {
+  position: absolute;
+  right: -14px;
+  top: 0;
+  width: 300px;
+  z-index: 2;
+  transform: rotate(3deg);
   transition: transform var(--transition);
 }
 
-.spotlight .image img:hover {
-  transform: scale(1.03) rotate(1deg);
+.intro-photo-cutout:hover {
+  transform: rotate(0deg) translateY(-8px);
 }
 
-.spotlight .content header.major h2 {
+.intro-photo-cutout img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 22px 28px var(--ombre-forte));
+}
+
+/* Petites notes façon post-it, réutilisées ici pour lier le collage au hero */
+.intro-note--1 {
+  top: 4%;
+  left: -8%;
+  transform: rotate(-9deg);
+  z-index: 3;
+}
+
+.intro-note--2 {
+  bottom: 10%;
+  right: 2%;
+  transform: rotate(7deg);
+  z-index: 3;
+}
+
+/* Bloc texte */
+.intro-collage__text {
+  flex: 1 1 360px;
+}
+
+.intro-collage__text header.major h2 {
   text-align: left;
 }
 
-.spotlight .content header.major h2::after {
+.intro-collage__text header.major h2::after {
   margin-left: 0;
 }
 
-.spotlight .content p {
+.intro-collage__text p {
   text-align: left;
   margin-left: 0;
   color: var(--brun);
   line-height: 1.85;
-}
-
-/* ── Vidéo ── */
-.video-wrapper {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 28px var(--ombre);
-  max-width: 420px;
-}
-
-.hero-video {
-  width: 100%;
-  display: block;
-  border-radius: var(--radius-lg);
-}
-
-.video-overlay {
-  display: none;
 }
 
 /* ── Boutons ── */
@@ -1150,35 +1216,51 @@ ul.icons li a:hover {
     padding: 4rem 1.5rem;
   }
 
-  .spotlight {
+  .intro-collage {
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
     text-align: center;
   }
 
-  .spotlight .content header.major h2 {
+  .intro-collage__visual {
+    flex: none;
+    width: 100%;
+    max-width: 340px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .intro-blob {
+    width: 250px;
+    height: 250px;
+    right: 6%;
+  }
+
+  .intro-video-frame {
+    width: 200px;
+  }
+
+  .intro-photo-cutout {
+    width: 230px;
+    right: -8px;
+  }
+
+  .intro-note--1,
+  .intro-note--2 {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .intro-note--1 { top: -4%; left: -10%; }
+  .intro-note--2 { bottom: -2%; right: 0; }
+
+  .intro-collage__text header.major h2,
+  .intro-collage__text p {
     text-align: center;
   }
 
-  .spotlight .content header.major h2::after {
-    margin-left: auto;
-  }
-
-  .spotlight .content p {
-    text-align: center;
-  }
-
-  .spotlight .image {
-    order: -1;
-  }
-
-  .spotlight .image img {
-    width: 220px;
-    height: 270px;
-  }
-
-  .video-wrapper {
-    max-width: 100%;
+  .intro-collage__text header.major h2::after {
+    margin: 0.7rem auto 0;
   }
 
   #footer {
