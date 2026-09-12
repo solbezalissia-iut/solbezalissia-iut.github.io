@@ -559,7 +559,7 @@ section.main:nth-child(even) {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 320px;
+  width: 390px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--blanc);
@@ -602,51 +602,59 @@ section.main:nth-child(even) {
   filter: drop-shadow(0 22px 28px var(--ombre-forte));
 }
 
-/* Petits badges à icônes flottants — loisirs & marketing digital */
-.intro-icon-badge {
+/* Petites images dispersées autour de la photo, esprit collage un peu désordonné */
+.intro-scatter-img {
   position: absolute;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--blanc);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--rose-sombre);
-  font-size: 1.05rem;
-  border: 2px solid var(--rose-poudre);
-  box-shadow: 0 8px 20px var(--ombre-forte);
-  z-index: 3;
-  transition: transform var(--transition), box-shadow var(--transition);
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px var(--ombre-forte));
+  z-index: 4;
+  transition: transform var(--transition);
 }
 
-.intro-icon-badge:hover {
-  box-shadow: 0 12px 26px var(--ombre-forte);
-  transform: scale(1.15) rotate(0deg) !important;
+.intro-scatter-img:hover {
+  transform: scale(1.12) rotate(0deg) !important;
 }
 
-.intro-icon-badge--photo {
-  top: 0%;
-  left: -8%;
-  transform: rotate(-8deg);
+.intro-scatter-img--badminton {
+  top: 30px;
+  left: 96px;
+  width: 68px;
+  height: 68px;
+  transform: rotate(-14deg);
 }
 
-.intro-icon-badge--ongles {
-  top: -6%;
-  right: 20%;
-  transform: rotate(6deg);
+.intro-scatter-img--canon {
+  top: -18px;
+  right: 46px;
+  width: 58px;
+  height: 58px;
+  transform: rotate(9deg);
 }
 
-.intro-icon-badge--badminton {
-  bottom: 18%;
-  right: -10%;
-  transform: rotate(-5deg);
+.intro-scatter-img--nailart {
+  top: 190px;
+  right: -26px;
+  width: 54px;
+  height: 54px;
+  transform: rotate(-7deg);
 }
 
-.intro-icon-badge--marketing {
-  bottom: -6%;
-  left: 34%;
-  transform: rotate(5deg);
+.intro-scatter-img--mark1 {
+  bottom: 54px;
+  left: 78px;
+  width: 66px;
+  height: 66px;
+  transform: rotate(11deg);
+}
+
+.intro-scatter-img--mark2 {
+  bottom: -16px;
+  right: 70px;
+  width: 56px;
+  height: 56px;
+  transform: rotate(-10deg);
 }
 
 /* Bloc texte */
@@ -1108,8 +1116,10 @@ ul.features li:hover .feature-logo {
 }
 
 .footer-photo {
-  width: 64px;
-  height: 64px;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--rose-poudre);
@@ -1296,7 +1306,7 @@ ul.icons li a:hover {
   }
 
   .intro-video-frame {
-    width: 230px;
+    width: 260px;
   }
 
   .intro-photo-cutout {
@@ -1304,16 +1314,16 @@ ul.icons li a:hover {
     right: -8px;
   }
 
-  .intro-icon-badge {
-    width: 36px;
-    height: 36px;
-    font-size: 0.85rem;
+  .intro-scatter-img {
+    width: 42px !important;
+    height: 42px !important;
   }
 
-  .intro-icon-badge--photo { top: -4%; left: -10%; }
-  .intro-icon-badge--ongles { top: -8%; right: 16%; }
-  .intro-icon-badge--badminton { bottom: 14%; right: -6%; }
-  .intro-icon-badge--marketing { bottom: -4%; left: 30%; }
+  .intro-scatter-img--badminton { top: 18px; left: 50px; }
+  .intro-scatter-img--canon { top: -10px; right: 20px; }
+  .intro-scatter-img--nailart { top: 130px; right: -14px; }
+  .intro-scatter-img--mark1 { bottom: 34px; left: 36px; }
+  .intro-scatter-img--mark2 { bottom: -10px; right: 34px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
