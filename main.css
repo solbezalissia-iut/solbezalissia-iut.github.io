@@ -574,8 +574,8 @@ section.main:nth-child(even) {
 .intro-collage {
   display: flex;
   align-items: center;
-  gap: 4.5rem;
-  max-width: 1080px;
+  gap: 6.5rem;
+  max-width: 1240px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -623,7 +623,7 @@ section.main:nth-child(even) {
 .intro-video-frame {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -14px;
   width: 390px;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1193,10 +1193,10 @@ ul.features li:hover .feature-logo {
 }
 
 .footer-photo {
-  width: 84px !important;
-  height: 84px !important;
-  max-width: 84px !important;
-  max-height: 84px !important;
+  width: 80px !important;
+  height: 106px !important;
+  max-width: 80px !important;
+  max-height: 106px !important;
   border-radius: 0;
   object-fit: cover;
   border: none;
@@ -2170,8 +2170,8 @@ ul.icons li a:hover {
 ══════════════════════════════════════ */
 .timeline {
   position: relative;
-  max-width: 780px;
-  margin: 3rem auto 0;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
   padding: 0 1rem;
 }
 
@@ -2200,9 +2200,9 @@ ul.icons li a:hover {
   align-items: center;
   justify-content: flex-end;
   gap: 0;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.8rem;
   position: relative;
-  padding-right: calc(50% + 2.5rem);
+  padding-right: calc(50% + 2rem);
 }
 
 /* Items droite : photo à droite, carte à gauche (inversé) */
@@ -2210,14 +2210,14 @@ ul.icons li a:hover {
   flex-direction: row-reverse;
   justify-content: flex-end;
   padding-right: 0;
-  padding-left: calc(50% + 2.5rem);
+  padding-left: calc(50% + 2rem);
 }
 
 /* ── Photo médaillon ── */
 .timeline-img {
   flex-shrink: 0;
-  width: 90px;
-  height: 90px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--blanc);
@@ -2250,12 +2250,12 @@ ul.icons li a:hover {
 .timeline-card {
   background: var(--blanc);
   border-radius: var(--radius-lg);
-  padding: 1.6rem 1.8rem;
+  padding: 1.1rem 1.3rem;
   box-shadow: 0 4px 20px var(--ombre);
   border: 1px solid var(--beige-sombre);
   position: relative;
   transition: transform var(--transition), box-shadow var(--transition);
-  max-width: 300px;
+  max-width: 250px;
   width: 100%;
 }
 
@@ -2294,26 +2294,26 @@ ul.icons li a:hover {
 
 .timeline-year {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rose-sombre);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .timeline-card h3 {
   font-family: var(--font-titre);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--brun-fonce);
-  margin-bottom: 0.4rem;
-  line-height: 1.35;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
 }
 
 .timeline-card p {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   color: var(--brun);
-  margin: 0 0 0.3rem;
+  margin: 0 0 0.2rem;
   text-align: left;
 }
 
@@ -2333,10 +2333,10 @@ ul.icons li a:hover {
 /* ── Badges ── */
 .timeline-badge {
   display: inline-block;
-  margin-top: 0.7rem;
-  padding: 0.25rem 0.9rem;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.75rem;
   border-radius: 50px;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
