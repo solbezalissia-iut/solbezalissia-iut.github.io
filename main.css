@@ -639,7 +639,7 @@ section.main:nth-child(even) {
   background: var(--blanc);
   padding: 10px 10px 26px;
   box-shadow: 0 18px 40px var(--ombre-forte);
-  transform: rotate(3deg);
+  transform: rotate(-3deg);
   position: relative;
   z-index: 3;
   margin-top: -14px;
@@ -647,7 +647,7 @@ section.main:nth-child(even) {
 }
 
 .intro-video-frame:hover {
-  transform: rotate(3deg) translateY(4px);
+  transform: rotate(-3deg) translateY(4px);
   box-shadow: 0 24px 50px var(--ombre-forte);
 }
 
@@ -662,12 +662,12 @@ section.main:nth-child(even) {
   width: 300px;
   position: relative;
   z-index: 1;
-  transform: rotate(-4deg);
+  transform: rotate(4deg);
   transition: transform var(--transition);
 }
 
 .intro-photo-cutout:hover {
-  transform: rotate(-4deg) translateY(-6px);
+  transform: rotate(4deg) translateY(-6px);
 }
 
 .intro-photo-cutout img {
@@ -694,8 +694,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--badminton {
-  top: 20px;
-  left: 30px;
+  top: -50px;
+  left: 40px;
   width: 68px !important;
   height: 68px !important;
   max-width: 68px !important;
@@ -704,8 +704,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--canon {
-  top: -10px;
-  left: 350px;
+  top: -40px;
+  left: 360px;
   width: 58px !important;
   height: 58px !important;
   max-width: 58px !important;
@@ -714,8 +714,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--nailart {
-  top: 210px;
-  left: 10px;
+  top: 120px;
+  left: 15px;
   width: 54px !important;
   height: 54px !important;
   max-width: 54px !important;
@@ -724,8 +724,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark1 {
-  top: 390px;
-  left: 360px;
+  top: 90px;
+  left: 385px;
   width: 66px !important;
   height: 66px !important;
   max-width: 66px !important;
@@ -734,8 +734,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark2 {
-  top: 440px;
-  left: 50px;
+  top: 250px;
+  left: 60px;
   width: 56px !important;
   height: 56px !important;
   max-width: 56px !important;
@@ -1192,7 +1192,7 @@ ul.features li:hover .feature-logo {
 /* Petite photo à côté du titre "À propos du site" */
 .footer-intro {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 1.2rem;
   margin-bottom: 0;
 }
@@ -1209,10 +1209,10 @@ ul.features li:hover .feature-logo {
 }
 
 .footer-photo {
-  width: 80px !important;
-  height: 106px !important;
-  max-width: 80px !important;
-  max-height: 106px !important;
+  width: 130px !important;
+  height: auto !important;
+  max-width: 130px !important;
+  align-self: stretch;
   border-radius: 10px;
   object-fit: cover;
   border: none;
@@ -1410,11 +1410,11 @@ ul.icons li a:hover {
     height: 42px !important;
   }
 
-  .intro-scatter-img--badminton { top: 10px; left: 15px; }
-  .intro-scatter-img--canon { top: -6px; left: 250px; }
-  .intro-scatter-img--nailart { top: 150px; left: 5px; }
-  .intro-scatter-img--mark1 { top: 300px; left: 260px; }
-  .intro-scatter-img--mark2 { top: 340px; left: 30px; }
+  .intro-scatter-img--badminton { top: -20px; left: 15px; }
+  .intro-scatter-img--canon { top: -15px; left: 250px; }
+  .intro-scatter-img--nailart { top: 90px; left: 5px; }
+  .intro-scatter-img--mark1 { top: 65px; left: 260px; }
+  .intro-scatter-img--mark2 { top: 170px; left: 30px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
