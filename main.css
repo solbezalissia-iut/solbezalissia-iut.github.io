@@ -611,7 +611,7 @@ section.main:nth-child(even) {
   content: '';
   position: absolute;
   top: 50%;
-  left: 385px;
+  left: 340px;
   width: 100px;
   height: 100px;
   transform: translateY(-50%);
@@ -1399,7 +1399,7 @@ ul.icons li a:hover {
   }
 
   .intro-collage__visual::after {
-    left: 265px;
+    left: 235px;
     width: 76px;
     height: 76px;
   }
