@@ -735,7 +735,7 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark2 {
-  top: 25px;
+  top: 5px;
   left: 155px;
   width: 56px !important;
   height: 56px !important;
@@ -1421,7 +1421,7 @@ ul.icons li a:hover {
   .intro-scatter-img--canon { top: -4px; left: 230px; }
   .intro-scatter-img--nailart { top: 62px; left: 45px; }
   .intro-scatter-img--mark1 { top: 42px; left: 245px; }
-  .intro-scatter-img--mark2 { top: 15px; left: 120px; }
+  .intro-scatter-img--mark2 { top: 2px; left: 120px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
