@@ -610,13 +610,14 @@ section.main:nth-child(even) {
 .intro-collage__visual::after {
   content: '';
   position: absolute;
-  bottom: 4%;
-  right: 8%;
-  width: 90px;
-  height: 90px;
+  top: 50%;
+  left: 385px;
+  width: 100px;
+  height: 100px;
+  transform: translateY(-50%);
   border: 2px dashed var(--rose-sombre);
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.6;
   z-index: 0;
 }
 
@@ -694,8 +695,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--badminton {
-  top: -50px;
-  left: 40px;
+  top: -25px;
+  left: 75px;
   width: 68px !important;
   height: 68px !important;
   max-width: 68px !important;
@@ -704,8 +705,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--canon {
-  top: -40px;
-  left: 360px;
+  top: -20px;
+  left: 335px;
   width: 58px !important;
   height: 58px !important;
   max-width: 58px !important;
@@ -714,8 +715,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--nailart {
-  top: 120px;
-  left: 15px;
+  top: 100px;
+  left: 45px;
   width: 54px !important;
   height: 54px !important;
   max-width: 54px !important;
@@ -724,8 +725,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark1 {
-  top: 90px;
-  left: 385px;
+  top: 80px;
+  left: 355px;
   width: 66px !important;
   height: 66px !important;
   max-width: 66px !important;
@@ -734,8 +735,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark2 {
-  top: 250px;
-  left: 60px;
+  top: 150px;
+  left: 90px;
   width: 56px !important;
   height: 56px !important;
   max-width: 56px !important;
@@ -1397,6 +1398,12 @@ ul.icons li a:hover {
     height: 250px;
   }
 
+  .intro-collage__visual::after {
+    left: 265px;
+    width: 76px;
+    height: 76px;
+  }
+
   .intro-video-frame {
     width: 260px;
   }
@@ -1410,11 +1417,11 @@ ul.icons li a:hover {
     height: 42px !important;
   }
 
-  .intro-scatter-img--badminton { top: -20px; left: 15px; }
-  .intro-scatter-img--canon { top: -15px; left: 250px; }
-  .intro-scatter-img--nailart { top: 90px; left: 5px; }
-  .intro-scatter-img--mark1 { top: 65px; left: 260px; }
-  .intro-scatter-img--mark2 { top: 170px; left: 30px; }
+  .intro-scatter-img--badminton { top: -12px; left: 55px; }
+  .intro-scatter-img--canon { top: -8px; left: 235px; }
+  .intro-scatter-img--nailart { top: 70px; left: 40px; }
+  .intro-scatter-img--mark1 { top: 55px; left: 245px; }
+  .intro-scatter-img--mark2 { top: 110px; left: 65px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
