@@ -590,8 +590,9 @@ section.main:nth-child(even) {
 /* Blob organique en fond, animé tout en douceur */
 .intro-blob {
   position: absolute;
-  top: 6%;
-  right: 2%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 340px;
   height: 340px;
   background: linear-gradient(150deg, var(--rose-poudre), var(--beige-sombre));
@@ -619,24 +620,33 @@ section.main:nth-child(even) {
   z-index: 0;
 }
 
-/* Cadre vidéo façon polaroid, légèrement incliné, posé en arrière-plan */
-.intro-video-frame {
+/* Pile photo + vidéo, centrée pile au milieu du blob rose, sans rotation */
+.intro-stack {
   position: absolute;
-  left: 0;
-  bottom: -14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cadre vidéo, posé directement sous la photo */
+.intro-video-frame {
   width: 390px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--blanc);
   padding: 10px 10px 26px;
   box-shadow: 0 18px 40px var(--ombre-forte);
-  transform: rotate(-6deg);
+  position: relative;
   z-index: 3;
+  margin-top: -14px;
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .intro-video-frame:hover {
-  transform: rotate(-3deg) translateY(-6px);
+  transform: translateY(4px);
   box-shadow: 0 24px 50px var(--ombre-forte);
 }
 
@@ -646,19 +656,16 @@ section.main:nth-child(even) {
   border-radius: calc(var(--radius-lg) - 6px);
 }
 
-/* Photo détourée (fond transparent), posée devant, sans cadre */
+/* Photo détourée (fond transparent), posée au-dessus, sans cadre */
 .intro-photo-cutout {
-  position: absolute;
-  right: -14px;
-  top: 0;
   width: 300px;
+  position: relative;
   z-index: 1;
-  transform: rotate(3deg);
   transition: transform var(--transition);
 }
 
 .intro-photo-cutout:hover {
-  transform: rotate(0deg) translateY(-8px);
+  transform: translateY(-6px);
 }
 
 .intro-photo-cutout img {
@@ -1183,13 +1190,20 @@ ul.features li:hover .feature-logo {
 /* Petite photo à côté du titre "À propos du site" */
 .footer-intro {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 0;
 }
 
-.footer-intro h2 {
-  margin-bottom: 0;
+.footer-intro__text h2 {
+  margin-bottom: 0.8rem;
+}
+
+.footer-intro__text p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
 }
 
 .footer-photo {
@@ -1197,7 +1211,7 @@ ul.features li:hover .feature-logo {
   height: 106px !important;
   max-width: 80px !important;
   max-height: 106px !important;
-  border-radius: 0;
+  border-radius: 10px;
   object-fit: cover;
   border: none;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
@@ -1379,7 +1393,6 @@ ul.icons li a:hover {
   .intro-blob {
     width: 250px;
     height: 250px;
-    right: 6%;
   }
 
   .intro-video-frame {
@@ -1388,7 +1401,6 @@ ul.icons li a:hover {
 
   .intro-photo-cutout {
     width: 230px;
-    right: -8px;
   }
 
   .intro-scatter-img {
@@ -1732,7 +1744,7 @@ ul.icons li a:hover {
 /* Carte photo */
 .card1 {
   scroll-snap-align: start;
-  flex: 0 0 300px;
+  flex: 0 0 360px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 6px 24px var(--ombre);
@@ -1750,7 +1762,7 @@ ul.icons li a:hover {
 
 .card1 img {
   width: 100%;
-  height: 220px;
+  height: 190px;
   object-fit: cover;
   display: block;
   transition: transform 0.45s ease, filter 0.45s ease;
@@ -1881,11 +1893,11 @@ ul.icons li a:hover {
   }
 
   .card1 {
-    flex: 0 0 240px;
+    flex: 0 0 280px;
   }
 
   .card1 img {
-    height: 185px;
+    height: 155px;
   }
 
   .title-icon-right {
@@ -1904,11 +1916,11 @@ ul.icons li a:hover {
   }
 
   .card1 {
-    flex: 0 0 200px;
+    flex: 0 0 240px;
   }
 
   .card1 img {
-    height: 155px;
+    height: 135px;
   }
 }
 
