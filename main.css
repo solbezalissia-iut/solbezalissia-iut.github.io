@@ -639,6 +639,7 @@ section.main:nth-child(even) {
   background: var(--blanc);
   padding: 10px 10px 26px;
   box-shadow: 0 18px 40px var(--ombre-forte);
+  transform: rotate(3deg);
   position: relative;
   z-index: 3;
   margin-top: -14px;
@@ -646,7 +647,7 @@ section.main:nth-child(even) {
 }
 
 .intro-video-frame:hover {
-  transform: translateY(4px);
+  transform: rotate(3deg) translateY(4px);
   box-shadow: 0 24px 50px var(--ombre-forte);
 }
 
@@ -661,11 +662,12 @@ section.main:nth-child(even) {
   width: 300px;
   position: relative;
   z-index: 1;
+  transform: rotate(-4deg);
   transition: transform var(--transition);
 }
 
 .intro-photo-cutout:hover {
-  transform: translateY(-6px);
+  transform: rotate(-4deg) translateY(-6px);
 }
 
 .intro-photo-cutout img {
@@ -692,8 +694,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--badminton {
-  top: -24px;
-  left: 190px;
+  top: 20px;
+  left: 30px;
   width: 68px !important;
   height: 68px !important;
   max-width: 68px !important;
@@ -702,8 +704,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--canon {
-  top: 22px;
-  left: 420px;
+  top: -10px;
+  left: 350px;
   width: 58px !important;
   height: 58px !important;
   max-width: 58px !important;
@@ -712,8 +714,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--nailart {
-  top: 140px;
-  left: 150px;
+  top: 210px;
+  left: 10px;
   width: 54px !important;
   height: 54px !important;
   max-width: 54px !important;
@@ -722,8 +724,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark1 {
-  top: 250px;
-  left: 462px;
+  top: 390px;
+  left: 360px;
   width: 66px !important;
   height: 66px !important;
   max-width: 66px !important;
@@ -732,8 +734,8 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--mark2 {
-  top: 340px;
-  left: 410px;
+  top: 440px;
+  left: 50px;
   width: 56px !important;
   height: 56px !important;
   max-width: 56px !important;
@@ -1408,11 +1410,11 @@ ul.icons li a:hover {
     height: 42px !important;
   }
 
-  .intro-scatter-img--badminton { top: -14px; left: 130px; }
-  .intro-scatter-img--canon { top: 10px; left: 290px; }
-  .intro-scatter-img--nailart { top: 90px; left: 100px; }
-  .intro-scatter-img--mark1 { top: 160px; left: 300px; }
-  .intro-scatter-img--mark2 { top: 220px; left: 270px; }
+  .intro-scatter-img--badminton { top: 10px; left: 15px; }
+  .intro-scatter-img--canon { top: -6px; left: 250px; }
+  .intro-scatter-img--nailart { top: 150px; left: 5px; }
+  .intro-scatter-img--mark1 { top: 300px; left: 260px; }
+  .intro-scatter-img--mark2 { top: 340px; left: 30px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
@@ -1744,7 +1746,7 @@ ul.icons li a:hover {
 /* Carte photo */
 .card1 {
   scroll-snap-align: start;
-  flex: 0 0 360px;
+  flex: 0 0 260px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 6px 24px var(--ombre);
@@ -1762,7 +1764,7 @@ ul.icons li a:hover {
 
 .card1 img {
   width: 100%;
-  height: 190px;
+  height: 340px;
   object-fit: cover;
   display: block;
   transition: transform 0.45s ease, filter 0.45s ease;
@@ -1893,11 +1895,11 @@ ul.icons li a:hover {
   }
 
   .card1 {
-    flex: 0 0 280px;
+    flex: 0 0 220px;
   }
 
   .card1 img {
-    height: 155px;
+    height: 290px;
   }
 
   .title-icon-right {
@@ -1916,11 +1918,11 @@ ul.icons li a:hover {
   }
 
   .card1 {
-    flex: 0 0 240px;
+    flex: 0 0 190px;
   }
 
   .card1 img {
-    height: 135px;
+    height: 250px;
   }
 }
 
