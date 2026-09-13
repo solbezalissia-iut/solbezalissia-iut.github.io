@@ -695,53 +695,53 @@ section.main:nth-child(even) {
 }
 
 .intro-scatter-img--badminton {
-  top: -25px;
-  left: 75px;
+  top: -15px;
+  left: 95px;
   width: 68px !important;
   height: 68px !important;
   max-width: 68px !important;
   max-height: 68px !important;
-  transform: rotate(-16deg);
+  transform: rotate(-18deg);
 }
 
 .intro-scatter-img--canon {
-  top: -20px;
-  left: 335px;
+  top: -8px;
+  left: 315px;
   width: 58px !important;
   height: 58px !important;
   max-width: 58px !important;
   max-height: 58px !important;
-  transform: rotate(11deg);
+  transform: rotate(9deg);
 }
 
 .intro-scatter-img--nailart {
-  top: 100px;
-  left: 45px;
+  top: 95px;
+  left: 55px;
   width: 54px !important;
   height: 54px !important;
   max-width: 54px !important;
   max-height: 54px !important;
-  transform: rotate(-9deg);
+  transform: rotate(-12deg);
 }
 
 .intro-scatter-img--mark1 {
-  top: 80px;
-  left: 355px;
+  top: 65px;
+  left: 335px;
   width: 66px !important;
   height: 66px !important;
   max-width: 66px !important;
   max-height: 66px !important;
-  transform: rotate(14deg);
+  transform: rotate(17deg);
 }
 
 .intro-scatter-img--mark2 {
-  top: 150px;
-  left: 90px;
+  top: 25px;
+  left: 155px;
   width: 56px !important;
   height: 56px !important;
   max-width: 56px !important;
   max-height: 56px !important;
-  transform: rotate(9deg);
+  transform: rotate(6deg);
 }
 
 /* Bloc texte */
@@ -1417,11 +1417,11 @@ ul.icons li a:hover {
     height: 42px !important;
   }
 
-  .intro-scatter-img--badminton { top: -12px; left: 55px; }
-  .intro-scatter-img--canon { top: -8px; left: 235px; }
-  .intro-scatter-img--nailart { top: 70px; left: 40px; }
-  .intro-scatter-img--mark1 { top: 55px; left: 245px; }
-  .intro-scatter-img--mark2 { top: 110px; left: 65px; }
+  .intro-scatter-img--badminton { top: -8px; left: 75px; }
+  .intro-scatter-img--canon { top: -4px; left: 230px; }
+  .intro-scatter-img--nailart { top: 62px; left: 45px; }
+  .intro-scatter-img--mark1 { top: 42px; left: 245px; }
+  .intro-scatter-img--mark2 { top: 15px; left: 120px; }
 
   .intro-collage__text header.major h2,
   .intro-collage__text p {
