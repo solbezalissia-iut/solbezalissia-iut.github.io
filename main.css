@@ -610,11 +610,10 @@ section.main:nth-child(even) {
 .intro-collage__visual::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 340px;
+  top: 420px;
+  left: 345px;
   width: 100px;
   height: 100px;
-  transform: translateY(-50%);
   border: 2px dashed var(--rose-sombre);
   border-radius: 50%;
   opacity: 0.6;
@@ -1399,7 +1398,8 @@ ul.icons li a:hover {
   }
 
   .intro-collage__visual::after {
-    left: 235px;
+    top: 300px;
+    left: 225px;
     width: 76px;
     height: 76px;
   }
