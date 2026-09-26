@@ -1,359 +1,528 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FreshBox</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
-<style>
-:root{
-  --bg:#EEF3F1; --surface:#FFFFFF; --surface-2:#E3EBE8; --ink:#16241F; --muted:#5A6B65; --line:#CFDBD6;
-  --accent:#1E6B50; --accent-ink:#FFFFFF; --accent-soft:#D6EAE1;
-  --ok:#2E9E5B; --warn:#E08A1E; --bad:#D2452F;
-  --ok-soft:#DDF1E4; --warn-soft:#FBEBD3; --bad-soft:#F8DDD8;
-  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
-  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#0F1715; --surface:#17221F; --surface-2:#1F2D29; --ink:#E6EFEB; --muted:#9AADA6; --line:#2C3D38;
-    --accent:#5CC49A; --accent-ink:#0B1A14; --accent-soft:#1D3A2F;
-    --ok:#4CC27B; --warn:#F0A445; --bad:#EE6A55;
-    --ok-soft:#173526; --warn-soft:#3A2A14; --bad-soft:#3D1D18;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0F1715; --surface:#17221F; --surface-2:#1F2D29; --ink:#E6EFEB; --muted:#9AADA6; --line:#2C3D38;
-  --accent:#5CC49A; --accent-ink:#0B1A14; --accent-soft:#1D3A2F;
-  --ok:#4CC27B; --warn:#F0A445; --bad:#EE6A55;
-  --ok-soft:#173526; --warn-soft:#3A2A14; --bad-soft:#3D1D18;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:20px 48px}
-.wrap{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-header{display:flex;align-items:center;gap:12px}
-.logo{width:44px;height:44px;border-radius:12px;background:var(--accent);display:grid;place-items:center;flex:none}
-.logo span{width:12px;height:12px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--accent-soft),0 0 12px var(--ok)}
-h1{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0;line-height:1.1}
-.sub{margin:0;color:var(--muted);font-size:14px}
-.boxtag{margin-left:auto;font-family:var(--display);font-weight:600;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;white-space:nowrap}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}
-h2{font-family:var(--display);font-weight:600;font-size:19px;margin:0;text-wrap:balance}
-label{font-weight:600;font-size:14px;display:block;margin-bottom:6px}
-.hint{font-weight:400;color:var(--muted);font-size:13px}
-input[type=text],input[type=date],input[type=email],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-height:46px}
-input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border-radius:12px;padding:4px;gap:4px}
-.seg button{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:9px;padding:9px 8px;background:transparent;color:var(--muted);cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.estimate{font-size:14px;background:var(--accent-soft);border-radius:10px;padding:10px 12px}
-.checks{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:500;cursor:pointer;background:var(--bg)}
-.chip input{accent-color:var(--accent);width:16px;height:16px;margin:0}
-.btn{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:12px;padding:14px 16px;background:var(--accent);color:var(--accent-ink);cursor:pointer;width:100%}
-.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);font-size:14px;padding:10px 14px;width:auto}
-.err{color:var(--bad);font-size:13px;margin:6px 0 0}
-.led{width:14px;height:14px;border-radius:50%;flex:none}
-.led.ok{background:var(--ok);box-shadow:0 0 10px var(--ok)}
-.led.warn{background:var(--warn);box-shadow:0 0 10px var(--warn)}
-.led.bad{background:var(--bad);box-shadow:0 0 10px var(--bad)}
-.confirm-head{display:flex;align-items:center;gap:12px}
-.confirm-head .led{width:22px;height:22px}
-.sched{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.sched li{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-.sched .when{font-weight:600;font-variant-numeric:tabular-nums}
-.sched .msg{color:var(--muted);font-size:14px;flex:1 1 180px}
-.sched a{font-size:13px;font-weight:700;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:999px;padding:5px 10px;white-space:nowrap}
-.list{display:flex;flex-direction:column;gap:10px}
-.item{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center;border-radius:12px;padding:12px;border:1px solid var(--line)}
-.item.ok{background:var(--ok-soft)} .item.warn{background:var(--warn-soft)} .item.bad{background:var(--bad-soft)}
-.item .name{font-weight:600}
-.item .meta{grid-column:2/4;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-.item .days{font-family:var(--display);font-weight:600;font-size:14px;white-space:nowrap}
-.item .acts{grid-column:1/-1;display:flex;gap:8px;margin-top:6px}
-.item .acts button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
-.tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
-.legend span{display:flex;align-items:center;gap:6px}
-.legend .led{width:10px;height:10px;box-shadow:none}
-.stats{font-size:14px;color:var(--muted)}
-.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-footer{font-size:12px;color:var(--muted);text-align:center}
-@media (prefers-reduced-motion:no-preference){ .led.pulse{animation:p 2.4s ease-in-out infinite} @keyframes p{50%{opacity:.45}} }
-</style>
-</head>
-<body>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Alissia Solbez</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
 
-<div class="wrap">
-  <header>
-    <div class="logo" aria-hidden="true"><span></span></div>
-    <div>
-      <h1>FreshBox</h1>
-      <p class="sub">Qu'est-ce qu'il y a dans cette boîte ?</p>
-    </div>
-    <div class="boxtag" id="boxTag">Boîte n°1</div>
+      <!-- ══ HEADER HÉRO ══ -->
+      <header id="header" class="hero-header1" style="background-image: url('images/monfond.jpg');">
+        <div class="hero-content1">
+          <div class="hero-layout">
+            <div class="hero-layout__intro">
+              <div class="hero-avatar-wrap">
+                <div class="hero-avatar1">
+                  <img src="images/ppalissia1.png" alt="Photo de profil" />
+                </div>
+                <span class="sticky-note sticky-note--1">Autonome</span>
+                <span class="sticky-note sticky-note--2">Créative</span>
+                <span class="sticky-note sticky-note--3">Organisée</span>
+              </div>
+
+              <h1 class="hero-name-block">
+                <span class="hero-name-line hero-name-line--dark">Alissia</span>
+                <span class="hero-name-line hero-name-line--accent">Solbez</span>
+              </h1>
+
+              <span class="hero-role-badge">Alternance — Marketing digital & Communication</span>
+
+              <p class="hero-subtitle1">
+                Étudiante en 3<sup>ème</sup> année de BUT Techniques de Commercialisation<br>
+                <em>Marketing Digital · E-Business · Entrepreneuriat</em>
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="cvalternance2027.pdf" class="cta-link1">
+                  <i class="fa-solid fa-file-lines"></i> Mon CV
+                </a>
+                <a href="lettresolbez.pdf" class="cta-link1 cta-link1--outline">
+                  <i class="fa-solid fa-envelope-open-text"></i> Lettre de motivation
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-layout__search">
+              <div class="hero-recherche">
+                <div class="hero-recherche__top">
+                  <span class="hero-recherche__label">Actuellement à la recherche d'une</span>
+                  <span class="hero-recherche__poste">Alternance — Septembre 2027</span>
+                </div>
+
+                <div class="hero-recherche__domaines">
+                  <span><i class="fa-solid fa-bullhorn"></i> Marketing digital</span>
+                  <span><i class="fa-solid fa-comment-dots"></i> Communication</span>
+                  <span><i class="fa-brands fa-instagram"></i> Entrepreneuriat</span>
+                </div>
+
+                <div class="hero-recherche__divider"></div>
+
+                <div class="hero-recherche__grid">
+                  <div class="hero-recherche__item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                      <span class="hero-recherche__item-label">Zone</span>
+                      <span class="hero-recherche__item-value">Montpellier & alentours</span>
+                    </div>
+                  </div>
+                  <div class="hero-recherche__item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                      <span class="hero-recherche__item-label">Formation</span>
+                      <span class="hero-recherche__item-value">Master marketing digital</span>
+                    </div>
+                  </div>
+                  <div class="hero-recherche__item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                      <span class="hero-recherche__item-label">Durée</span>
+                      <span class="hero-recherche__item-value">2 ans</span>
+                    </div>
+                  </div>
+                  <div class="hero-recherche__item">
+                    <i class="fa-solid fa-rotate"></i>
+                    <div>
+                      <span class="hero-recherche__item-label">Rythme</span>
+                      <span class="hero-recherche__item-value">Selon le Master visé</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ══ NAVIGATION ══ -->
+      <nav id="nav">
+        <ul>
+          <li><a href="#Accueil" class="active">Accueil</a></li>
+          <li><a href="#Diplomes">Diplômes</a></li>
+          <li><a href="#Compétences">Compétences</a></li>
+          <li><a href="#PortFolio">PortFolio</a></li>
+          <li><a href="#Expériences">Expériences</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div id="main">
+
+        <!-- ══ ACCUEIL ══ -->
+        <section id="Accueil" class="main">
+          <div class="intro-collage">
+            <div class="intro-collage__visual">
+              <div class="intro-blob" aria-hidden="true"></div>
+
+              <div class="intro-stack">
+                <div class="intro-photo-cutout">
+                  <img src="images/ppalissia2.png" alt="Alissia Solbez" />
+                </div>
+
+                <div class="intro-video-frame">
+                  <video autoplay muted loop playsinline controls class="hero-video">
+                    <source src="images/alissia.mp4" width="320" height="240" controls poster="images/vignette.jpg">
+                    <p>Cette vidéo ne peut être affichée sur votre navigateur.<br>
+                    Une version est disponible en téléchargement sous <a href="https://s77-ious.freeconvert.com/task/692828f55e7c2bf2e838c280/alissia.mp4">ce lien</a>.</p>
+                  </video>
+                </div>
+              </div>
+
+              <span class="intro-scatter-badge intro-scatter-badge--badminton">
+                <img src="images/badminton.png" alt="Badminton" width="40" height="40" />
+              </span>
+              <span class="intro-scatter-badge intro-scatter-badge--canon">
+                <img src="images/canon.png" alt="Photographie" width="34" height="34" />
+              </span>
+              <span class="intro-scatter-badge intro-scatter-badge--nailart">
+                <img src="images/nailart.png" alt="Nail art" width="32" height="32" />
+              </span>
+              <span class="intro-scatter-badge intro-scatter-badge--mark1">
+                <img src="images/mark1.png" alt="Marketing digital" width="38" height="38" />
+              </span>
+              <span class="intro-scatter-badge intro-scatter-badge--mark2">
+                <img src="images/mark2.png" alt="Marketing digital" width="32" height="32" />
+              </span>
+
+            </div>
+
+            <div class="intro-collage__text">
+              <header class="major">
+                <h2>Je me présente…</h2>
+              </header>
+              <p>Je m'appelle Alissia, j'ai 20 ans et je suis actuellement étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier. Je suis en alternance au CFA EnSup-LR, où j'interviens en marketing digital et communication : création de supports, gestion des réseaux sociaux et participation à des événements. Je m'intéresse particulièrement au marketing digital, un domaine en constante évolution qui allie créativité et stratégie. À terme, j'aimerais évoluer dans le marketing numérique, notamment dans la communication en ligne, l'entrepreneuriat ou la stratégie de marque. Dans cette perspective, je suis actuellement en attente de réponses pour mon Master et je recherche une alternance pour septembre 2027, afin de continuer à développer mes compétences et de les mettre en pratique en entreprise.</p>
+
+              <ul class="actions">
+                <li><a href="page1.html" class="button">À savoir sur moi</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+<!-- ══ DIPLÔMES ══ -->
+<section id="Diplomes" class="main special" style="padding-top: 3.5rem; padding-bottom: 3rem;">
+  <header class="major">
+    <h2>Mes Diplômes</h2>
   </header>
 
-  <form class="card" id="form" novalidate>
-    <h2>J'ajoute un aliment</h2>
+  <div class="timeline">
 
-    <div>
-      <label for="box">Numéro de la boîte <span class="hint">(indiqué sur l'autocollant)</span></label>
-      <select id="box"></select>
-    </div>
-
-    <div>
-      <label for="product">Nom du produit</label>
-      <input type="text" id="product" placeholder="Ex. : reste de curry de lentilles" autocomplete="off" required>
-      <p class="err" id="errProduct" hidden>Indique ce que contient la boîte.</p>
-    </div>
-
-    <div>
-      <label id="modeLabel">Date de péremption</label>
-      <div class="seg" role="group" aria-labelledby="modeLabel">
-        <button type="button" id="modeDate" aria-pressed="true">Je connais la date</button>
-        <button type="button" id="modeCat" aria-pressed="false">Pas de date</button>
+    <div class="timeline-item">
+      <div class="timeline-img">
+        <img src="images/lycee.jpg" alt="Baccalauréat" />
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2024</span>
+        <h3>Baccalauréat</h3>
+        <p>Spécialités SES & mathématiques</p>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> Lycée Simone Veil, Gignac</p>
+        <span class="timeline-badge">Mention Bien</span>
       </div>
     </div>
 
-    <div id="dateBlock">
-      <label for="date">Date limite (DLC)</label>
-      <input type="date" id="date">
-      <p class="err" id="errDate" hidden>Choisis une date.</p>
-    </div>
-
-    <div id="catBlock" hidden>
-      <label for="cat">Type d'aliment</label>
-      <select id="cat"></select>
-      <p class="estimate" id="estimate"></p>
-    </div>
-
-    <div>
-      <label for="contact">Ton e-mail <span class="hint">(pour recevoir les rappels)</span></label>
-      <input type="email" id="contact" placeholder="prenom@mail.fr" autocomplete="email" inputmode="email">
-      <p class="err" id="errContact" hidden>Indique une adresse e-mail valide.</p>
-    </div>
-
-    <div>
-      <label id="remLabel">Me prévenir</label>
-      <div class="checks" role="group" aria-labelledby="remLabel">
-        <label class="chip"><input type="checkbox" id="r2" checked> 2 jours avant</label>
-        <label class="chip"><input type="checkbox" id="r1"> la veille</label>
-        <label class="chip"><input type="checkbox" id="r0" checked> le jour J</label>
+    <div class="timeline-item timeline-item--right">
+      <div class="timeline-img">
+        <img src="images/but.png" alt="BUT TC" />
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2024 – 2027</span>
+        <h3>BUT Techniques de Commercialisation</h3>
+        <p>Marketing Digital, E-business & Entrepreneuriat</p>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> IUT Montpellier</p>
+        <span class="timeline-badge timeline-badge--en-cours">En cours</span>
       </div>
     </div>
 
-    <button class="btn" type="submit">Programmer mes rappels</button>
-  </form>
-
-  <section class="card" id="confirm" hidden aria-live="polite">
-    <div class="confirm-head">
-      <span class="led pulse" id="cLed"></span>
-      <div>
-        <h2 id="cTitle"></h2>
-        <p class="sub" id="cSub"></p>
+    <div class="timeline-item">
+      <div class="timeline-img">
+        <img src="images/monmaster.png" alt="Master" />
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <span class="timeline-year">2027 – 2029</span>
+        <h3>Master Marketing Digital</h3>
+        <p>Communication & Entrepreneuriat</p>
+        <p class="timeline-lieu"><i class="fa-solid fa-location-dot"></i> Montpellier</p>
+        <span class="timeline-badge timeline-badge--futur"> Demandé </span>
       </div>
     </div>
-    <ul class="sched" id="cSched"></ul>
-    <p class="stats" id="cNote">Ajoute chaque rappel à ton agenda pour recevoir la notification sur ton téléphone.</p>
-    <div class="row">
-      <button class="btn ghost" type="button" id="again">Ajouter un autre aliment</button>
-    </div>
-  </section>
 
-  <section class="card">
-    <div class="row">
-      <h2>Mon frigo</h2>
-      <span class="stats" id="stats"></span>
-    </div>
-    <div class="legend">
-      <span><i class="led ok"></i>À consommer plus tard</span>
-      <span><i class="led warn"></i>Bientôt (≤ 2 j)</span>
-      <span><i class="led bad"></i>Rapidement (aujourd'hui ou dépassé)</span>
-    </div>
-    <div class="list" id="list"></div>
-  </section>
+  </div>
+</section>
 
-  <footer>FreshBox · prototype MVP · les durées estimées sont indicatives, fie-toi aussi à l'odeur et à l'aspect.</footer>
-</div>
+        <!-- ══ COMPÉTENCES ══ -->
+        <section id="Compétences" class="main special">
+          <header class="major">
+            <h2>Mes Compétences</h2>
+          </header>
+          <ul class="features">
+            <li>
+              <img class="feature-img" src="images/marketing.png" alt="Marketing" />
+              <h3>Marketing</h3>
+              <p>Je maîtrise les bases du marketing stratégique et digital : analyse de marché, définition de cibles, élaboration de campagnes et suivi des performances. J'aime créer des stratégies efficaces et innovantes, adaptées aux besoins du client.</p>
+            </li>
+            <li>
+              <img class="feature-img" src="images/communication.png" alt="Communication" />
+              <h3>Communication</h3>
+              <p>Je sais concevoir des messages clairs et impactants sur différents supports. Je m'adapte aux publics visés et maîtrise la communication digitale, notamment sur les réseaux sociaux.</p>
+            </li>
+            <li>
+              <img class="feature-img" src="images/creationdigitale.png" alt="Création digitale" />
+              <h3>Création digitale</h3>
+              <p>Je crée des sites internet en HTML/CSS et sur des plateformes comme WordPress ou Wix. J'ai le sens du design visuel et de l'expérience utilisateur, ce qui me permet d'allier créativité et efficacité.</p>
+            </li>
+          </ul>
+          <footer class="major">
+            <ul class="actions special">
+              <li><a href="page2.html" class="button">En savoir plus</a></li>
+            </ul>
+          </footer>
+        </section>
 
-<script>
-(function(){
-  // ===== RÉGLAGE =====
-  // Colle ici l'adresse de l'application Web Google Apps Script (se termine par /exec)
-  // pour enregistrer chaque saisie dans Google Sheets et envoyer les rappels par e-mail.
-  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwlkT_Tn_tZs-ohcPsFUYOHEU2SKFApqdzlux4Tl9NAZACueFd39AkJl7iOzkyB1lpWmw/exec";
-  // ===================
-  // Durées moyennes de conservation au réfrigérateur (après ouverture ou cuisson), en jours
-  const CATS = [
-    ["restes","Restes cuisinés (plat maison)",3],
-    ["viande-crue","Viande ou poisson cru",2],
-    ["viande-cuite","Viande ou poisson cuit",3],
-    ["legumes-coupes","Légumes crus coupés",4],
-    ["fruits-coupes","Fruits coupés",3],
-    ["sauce","Sauce, soupe maison",4],
-    ["laitier","Lait, crème entamés",4],
-    ["yaourt","Yaourt, fromage frais",7],
-    ["fromage-dur","Fromage à pâte dure entamé",21],
-    ["oeufs-durs","Œufs durs",7],
-    ["jambon","Charcuterie entamée",4]
-  ];
-  const $ = id => document.getElementById(id);
-  const DAY = 86400000;
-  const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
-  const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-  const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
-  const fmt = d => d.toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
-  const daysLeft = s => Math.round((parse(s)-today())/DAY);
-  const level = n => n <= 0 ? "bad" : n <= 2 ? "warn" : "ok";
-  const LABEL = {ok:"🟢 à consommer plus tard", warn:"🟠 à consommer bientôt", bad:"🔴 à consommer rapidement"};
+        <!-- ══ PORTFOLIO ══ -->
+        <section id="PortFolio" class="main special">
+          <header class="major">
+            <h2>Mon Portfolio</h2>
+          </header>
 
-  // Stockage local (par téléphone)
-  const KEY = "freshbox-items-v1";
-  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch(e){ return null; } }
-  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
-  const t = today();
-  const ex = (box,name,off) => ({id:"ex"+box, box, name, date: iso(new Date(t.getTime()+off*DAY)), example:true});
-  let state = load() || { items:[ex(3,"Reste de gratin",0), ex(2,"Carottes râpées",2), ex(5,"Comté entamé",12)], eaten:0, thrown:0 };
+          <header class="main-header">
+            <nav style="display:flex;justify-content:center;margin-bottom:0;">
+              <ul id="menu">
+                <li class="active" data-target="projets-academiques">🎓&nbsp; Projets académiques</li>
+                <li data-target="projets-professionnels">💼&nbsp; Projets professionnels</li>
+                <li data-target="projets-perso">🎨&nbsp; Projets personnels</li>
+              </ul>
+            </nav>
+          </header>
 
-  // Numéro de boîte depuis le QR code : lien …#boite3
-  const m = (location.hash||"").match(/boite(\d{1,2})/i);
-  const boxSel = $("box");
-  for (let i=1;i<=12;i++){ const o=document.createElement("option"); o.value=i; o.textContent="Boîte n°"+i; boxSel.appendChild(o); }
-  if (m) boxSel.value = m[1];
-  const syncTag = () => $("boxTag").textContent = "Boîte n°"+boxSel.value;
-  boxSel.addEventListener("change", syncTag); syncTag();
+          <!-- Projets académiques -->
+          <section id="projets-academiques" class="portfolio-section visible">
+            <p>En BUT Techniques de Commercialisation, nous réalisons chaque semestre des projets de groupe appelés SAE. Ces projets nous offrent l'opportunité de mettre en pratique les connaissances théoriques acquises en cours, tout en développant nos compétences professionnelles, telles que le travail en équipe, la gestion de projet, la créativité et la capacité à analyser et résoudre des problématiques concrètes.</p>
+            <div class="portfolio-grid">
+              <div class="card">
+                <a href="portfolio/mission12.sae.marketing.pdf">
+                  <img src="portfolio/mission12.sae.marketing.png" alt="SAE marketing Sprite">
+                  <div class="overlay"><p>Diagnostic de marché et étude qualitative ayant abouti au lancement du concept Green Sprite, boisson matcha sans caféine.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sae.transverse.pdf">
+                  <img src="portfolio/sae.transverse.png" alt="SAE transverse Edenos">
+                  <div class="overlay"><p>Stratégie de lancement complète pour Edenos, bière artisanale pensée pour les accords bière-fromage — projet lauréat du concours IUT.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sea.comcoms12.pdf">
+                  <img src="portfolio/sea.comcoms12.png" alt="Communication commerciale TGSA">
+                  <div class="overlay"><p>Plaquette commerciale, affiche et plan de communication complet pour TGSA, société de sécurité privée.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/comcoms4.pdf">
+                  <img src="portfolio/comcoms4.png" alt="Campagne Digital Afterlife">
+                  <div class="overlay"><p>Conception, tournage et montage de 3 spots publicitaires pour une marque fictive de gestion de la vie numérique après la mort.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/comdigitale.pdf">
+                  <img src="portfolio/comdigitale.png" alt="Communication digitale LuxDoor">
+                  <div class="overlay"><p>Stratégie de communication digitale complète (site, réseaux sociaux, Ads, influence) pour une agence immobilière de luxe fictive.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/creativiteetinnovation.pdf">
+                  <img src="portfolio/creativiteetinnovation.png" alt="Créativité et innovation PoulpoCook">
+                  <div class="overlay"><p>Conception d'un robot domestique culinaire inspiré du poulpe, de l'idéation à l'analyse de marché et au prototype.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/projettutore.pdf">
+                  <img src="portfolio/projettutore.png" alt="Projet tutoré Bastide du Chat Blanc">
+                  <div class="overlay"><p>Stratégie digitale et développement d'un site de réservation pour un hébergement haut de gamme, avec une première réservation obtenue.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sae.analyseactivitedigitale.pdf">
+                  <img src="portfolio/sae.analyseactivitedigitale.png" alt="Analyse activité digitale Pierre et Vacances">
+                  <div class="overlay"><p>Analyse comparative de la stratégie marketing et digitale de Pierre & Vacances face à son concurrent Odalys.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sae.creationentreprise.pdf">
+                  <img src="portfolio/sae.creationentreprise.png" alt="Création d'entreprise e-Rosa">
+                  <div class="overlay"><p>Concept, étude de marché et modèle économique d'e-Rosa, service de location de rosalies électriques à Carnon.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sae.creationsiteweb.pdf">
+                  <img src="portfolio/sae.creationsiteweb.png" alt="Création de site web Oscaro">
+                  <div class="overlay"><p>Audit UX et prototype d'optimisation du site e-commerce Oscaro, construit à partir de personas utilisateurs.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/sae.pilotage.pdf">
+                  <img src="portfolio/sae.pilotage.png" alt="Pilotage commercial Win-Firme">
+                  <div class="overlay"><p>Pilotage sur 3 exercices d'une entreprise simulée : redressement financier, stratégie produit et décisions RH.</p></div>
+                </a>
+              </div>
+            </div>
+          </section>
 
-  const catSel = $("cat");
-  CATS.forEach(([k,l,d]) => { const o=document.createElement("option"); o.value=k; o.textContent=l+" · ~"+d+" j"; catSel.appendChild(o); });
-  const estDate = () => { const c = CATS.find(x=>x[0]===catSel.value); return new Date(t.getTime()+c[2]*DAY); };
-  const showEst = () => { $("estimate").textContent = "Date estimée : " + fmt(estDate()) + ". C'est une estimation moyenne de conservation au frigo."; };
-  catSel.addEventListener("change", showEst); showEst();
+          <!-- Projets professionnels -->
+          <section id="projets-professionnels" class="portfolio-section">
+            <p>Au cours de mes stages, j'ai été amenée à réaliser différentes missions, notamment la création de visuels pour des supports de communication. Ces expériences m'ont permis de mettre en pratique mes compétences en design graphique et en communication, tout en répondant aux attentes d'un client ou d'une structure professionnelle.</p>
+            <div class="portfolio-grid">
+              <div class="card">
+                <a href="portfolio/stages2.pdf">
+                  <img src="portfolio/stages2.png" alt="Stage LVI Immo">
+                  <div class="overlay"><p>Stage d'observation en agence immobilière : accompagnement client, gestion d'annonces et communication digitale.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/stages4.pdf">
+                  <img src="portfolio/stages4.png" alt="Stage Stan Audition">
+                  <div class="overlay"><p>Refonte complète de la visibilité digitale d'un centre auditif : diagnostic, site internet et supports de communication.</p></div>
+                </a>
+              </div>
+            </div>
+          </section>
 
-  $("date").min = iso(t);
-  $("date").value = iso(new Date(t.getTime()+3*DAY));
+          <!-- Projets personnels -->
+          <section id="projets-perso" class="portfolio-section">
+            <p>En dehors de mes études, j'aime créer pour le plaisir : photographie, développement web... Ces projets personnels me permettent d'explorer librement ma créativité et de continuer à progresser en dehors du cadre scolaire ou professionnel.</p>
+            <div class="portfolio-grid">
+              <div class="card">
+                <a href="portfolio/photos.pdf">
+                  <img src="portfolio/photos.png" alt="Photographie a.s_shoots_">
+                  <div class="overlay"><p>Photographe autodidacte : sport, portrait, concert et paysage, entre bénévolat et projets personnels.</p></div>
+                </a>
+              </div>
+              <div class="card">
+                <a href="portfolio/siterecette.pdf">
+                  <img src="portfolio/siterecette.png" alt="Site de recettes personnel">
+                  <div class="overlay"><p>Site de recettes personnel développé et hébergé sur GitHub Pages, pour centraliser et retrouver mes recettes facilement.</p></div>
+                </a>
+              </div>
+            </div>
+          </section>
+        </section>
 
-  let mode = "date";
-  function setMode(v){
-    mode = v;
-    $("modeDate").setAttribute("aria-pressed", v==="date");
-    $("modeCat").setAttribute("aria-pressed", v==="cat");
-    $("dateBlock").hidden = v!=="date";
-    $("catBlock").hidden = v!=="cat";
-  }
-  $("modeDate").onclick = () => setMode("date");
-  $("modeCat").onclick = () => setMode("cat");
+        <!-- ══ SÉPARATEUR VISUEL ══ -->
+        <div class="section-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C360,70 1080,70 1440,0 L1440,70 L0,70 Z" fill="#FFF0F3"/>
+          </svg>
+        </div>
 
-  function calLink(title, day, details){
-    const d = iso(day).replace(/-/g,"");
-    const q = new URLSearchParams({action:"TEMPLATE", text:title, dates:d+"T180000/"+d+"T181500", ctz:"Europe/Paris", details});
-    return "https://calendar.google.com/calendar/render?"+q.toString();
-  }
+        <!-- ══ EXPÉRIENCES ══ -->
+        <section id="Expériences" class="main special">
+          <header class="major">
+            <h2>Mes Expériences Professionnelles</h2>
+          </header>
+          <ul class="features">
+            <li>
+              <img class="feature-logo" src="images/cfa.png" alt="Alternance" />
+              <h3>Alternance – CFA EnSup-LR</h3>
+              <p>Alternance en communication et développement : création de supports de communication, gestion des réseaux sociaux, participation à des conférences et à l'événementiel.</p>
+              <p><strong>Poste :</strong> Alternante</p>
+              <p><strong>Lieu :</strong> Montpellier – centre de formation</p>
+              <p><strong>Période :</strong> Juillet 2026 – Août 2027</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/stanaudition.png" alt="Audition" />
+              <h3>Stage 2 mois – Stan Audition</h3>
+              <p>Création de contenu digital, création du site internet et gestion de la communication visuelle du cabinet d'audioprothèse.</p>
+              <p><strong>Poste :</strong> Stagiaire</p>
+              <p><strong>Lieu :</strong> Gignac</p>
+              <p><strong>Période :</strong> Avril 2026 – Mai 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/chatblanc.jpg" alt="Bastide du Chat Blanc" />
+              <h3>Projet tutoré – Bastide du Chat Blanc</h3>
+              <p>Développement et optimisation d'un site de réservation (Lodgify) pour une bastide de luxe en Provence : étude de marché, référencement SEO et prospection de nouveaux canaux de distribution.</p>
+              <p><strong>Poste :</strong> Étudiante – Projet tutoré</p>
+              <p><strong>Lieu :</strong> À distance</p>
+              <p><strong>Période :</strong> Octobre 2025 – Mars 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/apple.png" alt="Apple" />
+              <h3>CDI 8h – Apple Store</h3>
+              <p>Accueil des clients, conseils personnalisés et démonstrations produits. Participation à la mise en valeur de l'espace de vente et à la satisfaction client.</p>
+              <p><strong>Poste :</strong> Spécialiste</p>
+              <p><strong>Lieu :</strong> Montpellier – Odysseum</p>
+              <p><strong>Période :</strong> Juin 2025 – Juin 2026</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/lviimmo.png" alt="Immobilier" />
+              <h3>Stage d'observation – LVI Immo</h3>
+              <p>Découverte du secteur immobilier : observation des techniques de vente et de négociation lors de visites, et assistance à la préparation des dossiers clients.</p>
+              <p><strong>Poste :</strong> Stagiaire</p>
+              <p><strong>Lieu :</strong> Montpellier</p>
+              <p><strong>Période :</strong> Décembre 2024 (2 semaines)</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/carrefour.png" alt="Caisse" />
+              <h3>CDI 15h – Carrefour Trifontaine</h3>
+              <p>Accueil et conseil des clients, encaissement et mise en rayon. Gestion du flux en caisse et maintien d'un poste organisé.</p>
+              <p><strong>Poste :</strong> Hôtesse de caisse</p>
+              <p><strong>Lieu :</strong> Saint-Clément-de-Rivière</p>
+              <p><strong>Période :</strong> Août 2024 – Mai 2025</p>
+            </li>
+            <li>
+              <img class="feature-logo" src="images/dumasgassac.png" alt="Vendanges" />
+              <h3>Contrat saisonnier – Mas de Daumas Gassac</h3>
+              <p>Participation aux vendanges au sein d'un domaine viticole : travail d'équipe, rigueur et endurance sur un rythme saisonnier soutenu.</p>
+              <p><strong>Poste :</strong> Vendangeuse</p>
+              <p><strong>Lieu :</strong> Aniane – domaine viticole</p>
+              <p><strong>Période :</strong> Septembre 2023 (1 mois)</p>
+            </li>
+          </ul>
+        </section>
 
-  const validContact = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      </div><!-- /#main -->
 
-  $("form").addEventListener("submit", e => {
-    e.preventDefault();
-    const name = $("product").value.trim();
-    const contact = $("contact").value.trim();
-    let ok = true;
-    $("errProduct").hidden = !!name; if(!name) ok=false;
-    const dStr = mode==="date" ? $("date").value : iso(estDate());
-    $("errDate").hidden = !!dStr; if(!dStr) ok=false;
-    const cOk = validContact(contact);
-    $("errContact").hidden = cOk; if(!cOk) ok=false;
-    if(!ok) return;
+      <!-- ══ FOOTER ══ -->
+      <footer id="footer">
+        <section>
+          <div class="footer-intro">
+            <img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" />
+            <div class="footer-intro__text">
+              <h2>À propos du site</h2>
+              <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
+              <ul class="icons">
+                <li>
+                  <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn" width="20" height="20">
+                    <span class="label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/a.s_shoots_/" class="social-logo-link" target="_blank">
+                    <img src="images/instagram.png" alt="Instagram" width="20" height="20">
+                    <span class="label">Instagram</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-    const box = boxSel.value;
-    state.items = state.items.filter(i => !i.example && String(i.box)!==box);
-    state.items.push({id:Date.now().toString(36), box:Number(box), name, date:dStr, estimated: mode==="cat", contact});
-    save();
-    if (WEBHOOK_URL) {
-      fetch(WEBHOOK_URL, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"},
-        body: JSON.stringify({boite:Number(box), produit:name, date_peremption:dStr, date_estimee: mode==="cat",
-          contact, rappel_j2:$("r2").checked, rappel_j1:$("r1").checked, rappel_j0:$("r0").checked, saisi_le:new Date().toISOString()})
-      }).catch(()=>{});
-    }
+        <section>
+          <h2>Mes coordonnées</h2>
+          <dl class="alt">
+            <dt><i class="fa-solid fa-cake-candles"></i> Naissance</dt>
+            <dd>18 août 2006</dd>
+            <dt><i class="fa-solid fa-location-dot"></i> Adresse</dt>
+            <dd><a href="https://www.google.com/maps/search/?api=1&query=21+rue+Michel+Henry+34090+Montpellier"> 21 rue Michel Henry, 34090 Montpellier </a></dd>
+            <dt><i class="fa-solid fa-phone"></i> Téléphone</dt>
+            <dd><a href="tel:+33768867862">07 68 86 78 62</a></dd>
+            <dt><i class="fa-solid fa-envelope"></i> Email</dt>
+            <dd><a href="mailto:Solbezrigaudalissia@gmail.com">Solbezrigaudalissia@gmail.com</a></dd>
+            <dt><i class="fa-solid fa-id-card"></i> Permis</dt>
+            <dd> Permis B – Véhiculée</dd>
+          </dl>
+        </section>
 
-    const exp = parse(dStr), n = daysLeft(dStr), lv = level(n);
-    $("cLed").className = "led pulse "+lv;
-    $("cTitle").textContent = name + " · Boîte n°"+box;
-    $("cSub").textContent = (mode==="cat" ? "Date estimée : " : "À consommer avant le ") + fmt(exp) + " · " + LABEL[lv];
-    const ul = $("cSched"); ul.innerHTML = "";
-    const rem = [["r2",2,"🟠","à consommer bientôt"],["r1",1,"🟠","à consommer demain"],["r0",0,"🔴","à consommer aujourd'hui"]];
-    let count = 0;
-    rem.forEach(([id,off,ic,txt]) => {
-      if(!$(id).checked) return;
-      const day = new Date(exp.getTime()-off*DAY);
-      if(day < t) return;
-      count++;
-      const title = ic+" FreshBox : "+name+" (boîte n°"+box+") "+txt;
-      const li = document.createElement("li");
-      const w = document.createElement("span"); w.className="when"; w.textContent = fmt(day)+", 18 h";
-      const msg = document.createElement("span"); msg.className="msg"; msg.textContent = ic+" "+name+" "+txt;
-      const a = document.createElement("a"); a.href = calLink(title, day, "Rappel FreshBox. Pense à manger "+name+" (boîte n°"+box+")."); a.target="_blank"; a.rel="noopener"; a.textContent="+ Agenda";
-      li.append(w,msg,a); ul.appendChild(li);
+        <p class="copyright">
+          &copy; 2026 Alissia Solbez
+        </p>
+      </footer>
+
+    </div><!-- /#wrapper -->
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+  const menuItems = document.querySelectorAll('#menu li');
+  const sections = document.querySelectorAll('.portfolio-section');
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+
+      // reset menu actif
+      menuItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // hide sections
+      sections.forEach(sec => sec.classList.remove('visible'));
+
+      // show target
+      const target = item.getAttribute('data-target');
+      document.getElementById(target).classList.add('visible');
     });
-    if(!count){ const li=document.createElement("li"); li.innerHTML='<span class="msg">La date est trop proche pour programmer un rappel : mange-le vite.</span>'; ul.appendChild(li); }
-
-    $("cNote").textContent = WEBHOOK_URL
-      ? "Un e-mail de confirmation arrive dans ta boîte mail (pense à regarder les spams). Les rappels te seront envoyés par e-mail vers 9 h. Tu peux aussi les ajouter à ton agenda."
-      : "Ajoute chaque rappel à ton agenda pour recevoir la notification sur ton téléphone.";
-    $("form").hidden = true; $("confirm").hidden = false;
-    render();
-    $("confirm").scrollIntoView({behavior:"smooth",block:"start"});
   });
-
-  $("again").onclick = () => {
-    $("product").value = ""; $("confirm").hidden = true; $("form").hidden = false; $("product").focus();
-  };
-
-  function render(){
-    const list = $("list"); list.innerHTML = "";
-    const items = [...state.items].sort((a,b)=>a.date.localeCompare(b.date));
-    if(!items.length){ list.innerHTML = '<p class="stats">Aucune boîte suivie pour l\'instant.</p>'; }
-    items.forEach(it => {
-      const n = daysLeft(it.date), lv = level(n);
-      const el = document.createElement("div"); el.className = "item "+lv;
-      const led = document.createElement("span"); led.className = "led "+lv+(lv==="bad"?" pulse":"");
-      const nm = document.createElement("div"); nm.className="name"; nm.textContent = it.name;
-      if(it.example){ const tg=document.createElement("span"); tg.className="tag"; tg.textContent="exemple"; nm.appendChild(tg); }
-      const dy = document.createElement("div"); dy.className="days";
-      dy.textContent = n<0 ? "dépassé" : n===0 ? "aujourd'hui" : n===1 ? "demain" : "J-"+n;
-      const meta = document.createElement("div"); meta.className="meta";
-      meta.textContent = "Boîte n°"+it.box+" · "+(it.estimated?"estimé au ":"DLC ")+fmt(parse(it.date));
-      el.append(led,nm,dy,meta);
-      if(!it.example){
-        const acts = document.createElement("div"); acts.className="acts";
-        const b1=document.createElement("button"); b1.type="button"; b1.textContent="✓ Mangé";
-        const b2=document.createElement("button"); b2.type="button"; b2.textContent="Jeté";
-        b1.onclick=()=>done(it.id,"eaten"); b2.onclick=()=>done(it.id,"thrown");
-        acts.append(b1,b2); el.appendChild(acts);
-      }
-      list.appendChild(el);
-    });
-    const tot = state.eaten + state.thrown;
-    $("stats").textContent = tot ? state.eaten+" mangé"+(state.eaten>1?"s":"")+" · "+state.thrown+" jeté"+(state.thrown>1?"s":"") : "";
-  }
-  function done(id,k){
-    const it = state.items.find(i=>i.id===id);
-    state.items = state.items.filter(i=>i.id!==id); state[k]++; save(); render();
-    if (WEBHOOK_URL && it) {
-      fetch(WEBHOOK_URL, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"},
-        body: JSON.stringify({evenement: k==="eaten"?"mange":"jete", boite:it.box, produit:it.name, contact:it.contact||"", saisi_le:new Date().toISOString()})
-      }).catch(()=>{});
-    }
-  }
-
-  render();
-})();
 </script>
-</body>
+  </body>
 </html>
