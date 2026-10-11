@@ -1110,29 +1110,39 @@
   box-shadow: inset 0 -0.55em 0 rgba(212, 165, 165, 0.35);
 }
 
-/* icônes : en fleur — l'outil principal au centre, les autres en pétales autour,
-   régulièrement espacés (ils ne se touchent pas) */
+/* icônes : en fleur (ou demi-fleur s'il y a peu d'outils), toutes de la même taille,
+   régulièrement espacées autour d'un petit cœur rose — elles ne se touchent pas.
+   Les positions (--px, --py en px) sont calculées dans le HTML. */
 #outils .watch-bubble-group {
-  --d: 76px;          /* diamètre d'un pétale */
-  --dc: 92px;         /* diamètre du cœur */
-  --R: 100px;         /* rayon de la fleur (doit rester = à la valeur du HTML) */
+  --d: 76;            /* diamètre d'une bulle (px) */
   --k: 1;             /* échelle (réduite sur mobile) */
   position: relative;
   display: block;
   max-width: none;
-  width: calc((2 * var(--R) + var(--d)) * var(--k));
-  height: calc((2 * var(--R) + var(--d)) * var(--k));
+  width: calc(var(--w) * var(--k) * 1px);
+  height: calc(var(--h) * var(--k) * 1px);
   margin: 0.6rem auto 0;
+}
+/* cœur de la fleur (décoratif) */
+#outils .watch-bubble-group::before {
+  content: '';
+  position: absolute;
+  left: calc((var(--cx) * var(--k) - 14) * 1px);
+  top:  calc((var(--cy) * var(--k) - 14) * 1px);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, var(--rose-pale), var(--rose-poudre));
+  box-shadow: 0 0 0 6px rgba(212, 165, 165, 0.25);
 }
 #outils .watch-bubble,
 #outils .watch-bubble.size-lg,
 #outils .watch-bubble.size-md,
 #outils .watch-bubble.size-sm {
   position: absolute;
-  left: calc(50% + var(--px) * var(--k) - var(--d) * var(--k) / 2);
-  top:  calc(50% + var(--py) * var(--k) - var(--d) * var(--k) / 2);
-  width: calc(var(--d) * var(--k));
-  height: calc(var(--d) * var(--k));
+  left: calc((var(--px) - var(--d) / 2) * var(--k) * 1px);
+  top:  calc((var(--py) - var(--d) / 2) * var(--k) * 1px);
+  width: calc(var(--d) * var(--k) * 1px);
+  height: calc(var(--d) * var(--k) * 1px);
   margin: 0 !important;
   padding: 8px;
   display: flex;
@@ -1147,15 +1157,6 @@
   transform: rotate(var(--r, 0deg));
   transition: transform var(--transition), box-shadow var(--transition);
   overflow: hidden;
-}
-/* le cœur de la fleur : plus grand, avec un anneau rose */
-#outils .watch-bubble.is-center {
-  left: calc(50% - var(--dc) * var(--k) / 2);
-  top:  calc(50% - var(--dc) * var(--k) / 2);
-  width: calc(var(--dc) * var(--k));
-  height: calc(var(--dc) * var(--k));
-  box-shadow: 0 0 0 4px var(--rose-pale), 0 0 0 6px var(--rose-poudre), 0 10px 22px var(--ombre-forte);
-  z-index: 2;
 }
 #outils .watch-bubble:hover {
   transform: rotate(0deg) scale(1.12);
