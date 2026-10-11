@@ -1067,18 +1067,20 @@
   padding: 2.2rem 1rem 1rem 1.4rem;
   border: none;
 }
-/* placement en quinconce */
-#outils .watch-cluster:nth-child(1) { grid-column: 1 / 6; }
-#outils .watch-cluster:nth-child(2) { grid-column: 7 / 13; margin-top: 4.5rem; }
-#outils .watch-cluster:nth-child(3) { grid-column: 2 / 8; margin-top: -1.5rem; }
-#outils .watch-cluster:nth-child(4) { grid-column: 8 / 13; margin-top: 3rem; }
-#outils .watch-cluster:nth-child(5) { grid-column: 3 / 11; margin-top: -0.5rem; align-items: center; }
+/* placement libre, un peu désorganisé : hauteurs, décalages et inclinaisons variés */
+#outils .watch-cluster { align-items: center; text-align: center; }
+#outils .watch-cluster:nth-child(1) { grid-column: 1 / 5;  margin-top: 0;      transform: rotate(-4deg); }
+#outils .watch-cluster:nth-child(2) { grid-column: 5 / 9;  margin-top: 6rem;   transform: rotate(3deg); }
+#outils .watch-cluster:nth-child(3) { grid-column: 9 / 13; margin-top: 1.5rem; transform: rotate(-2deg) translateX(1rem); }
+#outils .watch-cluster:nth-child(4) { grid-column: 2 / 6;  margin-top: -2rem;  transform: rotate(5deg) translateX(-1.5rem); }
+#outils .watch-cluster:nth-child(5) { grid-column: 7 / 12; margin-top: -4rem;  transform: rotate(-3deg) translateX(2rem); }
 
-/* grand numéro en filigrane + titre */
+/* grand numéro en filigrane, centré derrière le titre */
 #outils .watch-cluster::before {
   content: '0' counter(outil);
   position: absolute;
-  top: -0.6rem; left: 0;
+  top: -0.4rem; left: 50%;
+  transform: translateX(-50%);
   font-family: var(--font-titre);
   font-weight: 700;
   font-size: 5.5rem;
@@ -1087,7 +1089,6 @@
   opacity: 0.6;
   z-index: 0;
 }
-#outils .watch-cluster:nth-child(5)::before { left: 50%; transform: translateX(-140%); }
 #outils .watch-cluster > * { position: relative; z-index: 1; }
 #outils .watch-cluster-label {
   font-family: var(--font-titre);
@@ -1106,9 +1107,7 @@
 
 /* icônes : bulles rondes en nid d'abeille, façon Apple Watch
    (plus grosses au centre, plus petites sur les bords) */
-#outils .watch-cluster { align-items: stretch; }
-#outils .watch-cluster-label { align-self: flex-start; }
-#outils .watch-cluster:nth-child(5) .watch-cluster-label { align-self: center; }
+#outils .watch-cluster-label { align-self: center; }
 #outils .watch-bubble-group {
   --d: 84px;          /* diamètre d'une bulle */
   --hx: 45px;         /* demi-pas horizontal */
@@ -1221,11 +1220,10 @@
   .spread__gallery .card1 img { height: 250px; }
   .comp-intro p { padding: 2.4rem 1.5rem 2rem; font-size: 1.02rem; }
   #outils .watch-grid { grid-template-columns: 1fr; gap: 1rem; }
-  #outils .watch-cluster:nth-child(n) { grid-column: 1; margin-top: 0; align-items: flex-start; }
-  #outils .watch-cluster:nth-child(5)::before { left: 0; transform: none; }
-  #outils .watch-cluster:nth-child(5) .watch-bubble-group { justify-content: flex-start; }
+  #outils .watch-cluster:nth-child(n) { grid-column: 1; margin-top: 0.5rem; }
+  #outils .watch-cluster:nth-child(odd)  { transform: rotate(-3deg) translateX(-0.6rem); }
+  #outils .watch-cluster:nth-child(even) { transform: rotate(3deg) translateX(0.6rem); }
   #outils .watch-bubble-group { --d: 76px; --hx: 41px; --vy: 70px; }
-  #outils .watch-cluster:nth-child(5) .watch-cluster-label { align-self: flex-start; }
 
   #competences .skills-category:nth-child(2) { transform: none; }
 }
