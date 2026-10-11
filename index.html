@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
   <head>
     <title>Alissia Solbez</title>
     <meta charset="utf-8" />
@@ -26,22 +26,19 @@
                 <span class="sticky-note sticky-note--2">Créative</span>
                 <span class="sticky-note sticky-note--3">Organisée</span>
               </div>
-              <figure class="cover__polaroid">
-                <img src="images/bandeau/vignette.jpg" alt="Bonjour, je m'appelle Alissia" />
-              </figure>
             </div>
 
             <!-- Titre façon couverture -->
             <div class="hero-layout__intro cover__text">
               <span class="cover__word" aria-hidden="true">Portfolio</span>
-              <span class="cover__sub" aria-hidden="true">Marketing · Communication</span>
+              <span class="cover__sub" aria-hidden="true">Marketing · Communication · Entrepreneuriat</span>
 
               <h1 class="hero-name-block">
                 <span class="hero-name-line hero-name-line--dark">Alissia</span>
                 <span class="hero-name-line hero-name-line--accent">Solbez</span>
               </h1>
 
-              <span class="hero-role-badge">Alternance — Marketing digital & Communication</span>
+              <span class="hero-role-badge">Alternance — Marketing digital, Communication & Entrepreneuriat</span>
 
               <p class="hero-subtitle1">
                 Étudiante en 3<sup>ème</sup> année de BUT Techniques de Commercialisation<br>
@@ -70,7 +67,7 @@
               <div class="hero-recherche__domaines">
                 <span><i class="fa-solid fa-bullhorn"></i> Marketing digital</span>
                 <span><i class="fa-solid fa-comment-dots"></i> Communication</span>
-                <span><i class="fa-brands fa-instagram"></i> Entrepreneuriat</span>
+                <span><i class="fa-solid fa-lightbulb"></i> Entrepreneuriat</span>
               </div>
 
               <div class="hero-recherche__divider"></div>
@@ -127,21 +124,36 @@
         <!-- ══ ACCUEIL ══ -->
         <section id="Accueil" class="main">
           <div class="intro-collage">
-            <div class="intro-collage__visual">
+            <div class="intro-collage__visual camera-scene">
               <div class="intro-blob" aria-hidden="true"></div>
 
-              <div class="intro-stack">
-                <div class="intro-photo-cutout">
-                  <img src="images/ppalissia2.png" alt="Alissia Solbez" />
+              <!-- Appareil photo : l'écran diffuse ma vidéo de présentation -->
+              <div class="camera">
+                <div class="camera__top" aria-hidden="true">
+                  <span class="camera__dial"></span>
+                  <span class="camera__shutter"></span>
                 </div>
+                <div class="camera__body">
+                  <div class="camera__screen intro-video-frame">
+                    <video autoplay muted loop playsinline controls class="hero-video" poster="images/bandeau/vignette.jpg">
+                      <source src="images/alissia.mp4" type="video/mp4">
+                      <p>Cette vidéo ne peut être affichée sur votre navigateur.<br>
+                      Une version est disponible en téléchargement sous <a href="https://s77-ious.freeconvert.com/task/692828f55e7c2bf2e838c280/alissia.mp4">ce lien</a>.</p>
+                    </video>
+                    <span class="camera__rec" aria-hidden="true">● REC</span>
+                  </div>
+                  <div class="camera__controls" aria-hidden="true">
+                    <span class="camera__btn"></span>
+                    <span class="camera__btn"></span>
+                    <span class="camera__dpad"><span></span></span>
+                    <span class="camera__btn camera__btn--wide"></span>
+                  </div>
+                </div>
+              </div>
 
-                <div class="intro-video-frame">
-                  <video autoplay muted loop playsinline controls class="hero-video">
-                    <source src="images/alissia.mp4" width="320" height="240" controls poster="images/vignette.jpg">
-                    <p>Cette vidéo ne peut être affichée sur votre navigateur.<br>
-                    Une version est disponible en téléchargement sous <a href="https://s77-ious.freeconvert.com/task/692828f55e7c2bf2e838c280/alissia.mp4">ce lien</a>.</p>
-                  </video>
-                </div>
+              <!-- Photo détourée posée devant l'appareil -->
+              <div class="intro-photo-cutout">
+                <img src="images/ppalissia2.png" alt="Alissia Solbez" />
               </div>
 
               <span class="intro-scatter-badge intro-scatter-badge--badminton">
@@ -159,7 +171,6 @@
               <span class="intro-scatter-badge intro-scatter-badge--mark2">
                 <img src="images/mark2.png" alt="Marketing digital" width="32" height="32" />
               </span>
-
             </div>
 
             <div class="intro-collage__text">
@@ -184,12 +195,13 @@
   </header>
 
   <div class="timeline">
+    <svg class="timeline-path" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,70 C170,10 330,10 500,60 C670,110 830,110 1000,40" /></svg>
 
     <div class="timeline-item">
       <div class="timeline-img">
         <img src="images/lycee.jpg" alt="Baccalauréat" />
       </div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot"><i class="fa-solid fa-school"></i></div>
       <div class="timeline-card">
         <span class="timeline-year">2024</span>
         <h3>Baccalauréat</h3>
@@ -203,7 +215,7 @@
       <div class="timeline-img">
         <img src="images/but.png" alt="BUT TC" />
       </div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot"><i class="fa-solid fa-book-open"></i></div>
       <div class="timeline-card">
         <span class="timeline-year">2024 – 2027</span>
         <h3>BUT Techniques de Commercialisation</h3>
@@ -217,7 +229,7 @@
       <div class="timeline-img">
         <img src="images/monmaster.png" alt="Master" />
       </div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
       <div class="timeline-card">
         <span class="timeline-year">2027 – 2029</span>
         <h3>Master Marketing Digital</h3>
@@ -237,27 +249,40 @@
           <header class="major">
             <h2>Mes Compétences</h2>
           </header>
-            <ul class="actions">
-              <li><a href="page2.html" class="button">En savoir plus</a></li>
-            </ul>
           </div>
           <ul class="features">
             <li>
+              <span class="skill-num" aria-hidden="true">01</span>
               <img class="feature-img" src="images/marketing.png" alt="Marketing" />
               <h3>Marketing</h3>
               <p>Je maîtrise les bases du marketing stratégique et digital : analyse de marché, définition de cibles, élaboration de campagnes et suivi des performances. J'aime créer des stratégies efficaces et innovantes, adaptées aux besoins du client.</p>
             </li>
             <li>
+              <span class="skill-num" aria-hidden="true">02</span>
               <img class="feature-img" src="images/communication.png" alt="Communication" />
               <h3>Communication</h3>
               <p>Je sais concevoir des messages clairs et impactants sur différents supports. Je m'adapte aux publics visés et maîtrise la communication digitale, notamment sur les réseaux sociaux.</p>
             </li>
             <li>
+              <span class="skill-num" aria-hidden="true">03</span>
               <img class="feature-img" src="images/creationdigitale.png" alt="Création digitale" />
               <h3>Création digitale</h3>
               <p>Je crée des sites internet en HTML/CSS et sur des plateformes comme WordPress ou Wix. J'ai le sens du design visuel et de l'expérience utilisateur, ce qui me permet d'allier créativité et efficacité.</p>
             </li>
           </ul>
+          <div class="skills-phone">
+            <div class="phone" aria-hidden="true">
+              <div class="phone__notch"></div>
+              <div class="phone__head">
+                <img src="images/bandeau/ppalissia1.jpg" alt="">
+                <div><b>Mes créations</b><span>Marketing · Communication · Web</span></div>
+              </div>
+              <div class="phone__grid"><img src="images/bandeau/mission12.sae.marketing.jpg" alt=""><img src="images/bandeau/sae.transverse.jpg" alt=""><img src="images/bandeau/comcoms4.jpg" alt=""><img src="images/bandeau/photos.jpg" alt=""><img src="images/bandeau/creativiteetinnovation.jpg" alt=""><img src="images/bandeau/sae.creationentreprise.jpg" alt=""><img src="images/bandeau/siterecette.jpg" alt=""><img src="images/bandeau/projettutore.jpg" alt=""><img src="images/bandeau/sae.analyseactivitedigitale.jpg" alt=""></div>
+            </div>
+            <ul class="actions">
+              <li><a href="page2.html" class="button">En savoir plus</a></li>
+            </ul>
+          </div>
           </div>
         </section>
 
@@ -401,8 +426,8 @@
 
         <!-- ══ EXPÉRIENCES ══ -->
         <section id="Expériences" class="main special">
-          <div class="photo-band photo-band--reverse" aria-hidden="true">
-            <div class="photo-band__strip"><img src="images/bandeau/gims.jpg" alt=""><img src="images/bandeau/bad.jpg" alt=""><img src="images/bandeau/marjulia.jpg" alt=""><img src="images/bandeau/kayak.jpg" alt=""><img src="images/bandeau/ongle1.jpg" alt=""><img src="images/bandeau/jordi.jpg" alt=""><img src="images/bandeau/ppalissia3.jpg" alt=""><img src="images/bandeau/vignette.jpg" alt=""><img src="images/bandeau/gims.jpg" alt=""><img src="images/bandeau/bad.jpg" alt=""><img src="images/bandeau/marjulia.jpg" alt=""><img src="images/bandeau/kayak.jpg" alt=""><img src="images/bandeau/ongle1.jpg" alt=""><img src="images/bandeau/jordi.jpg" alt=""><img src="images/bandeau/ppalissia3.jpg" alt=""><img src="images/bandeau/vignette.jpg" alt=""></div>
+          <div class="photo-band logo-band" aria-hidden="true">
+            <div class="photo-band__strip"><span class="logo-tile"><img src="images/cfa.png" alt=""></span><span class="logo-tile"><img src="images/stanaudition.png" alt=""></span><span class="logo-tile"><img src="images/chatblanc.jpg" alt=""></span><span class="logo-tile"><img src="images/apple.png" alt=""></span><span class="logo-tile"><img src="images/lviimmo.png" alt=""></span><span class="logo-tile"><img src="images/carrefour.png" alt=""></span><span class="logo-tile"><img src="images/dumasgassac.png" alt=""></span><span class="logo-tile"><img src="images/cfa.png" alt=""></span><span class="logo-tile"><img src="images/stanaudition.png" alt=""></span><span class="logo-tile"><img src="images/chatblanc.jpg" alt=""></span><span class="logo-tile"><img src="images/apple.png" alt=""></span><span class="logo-tile"><img src="images/lviimmo.png" alt=""></span><span class="logo-tile"><img src="images/carrefour.png" alt=""></span><span class="logo-tile"><img src="images/dumasgassac.png" alt=""></span><span class="logo-tile"><img src="images/cfa.png" alt=""></span><span class="logo-tile"><img src="images/stanaudition.png" alt=""></span><span class="logo-tile"><img src="images/chatblanc.jpg" alt=""></span><span class="logo-tile"><img src="images/apple.png" alt=""></span><span class="logo-tile"><img src="images/lviimmo.png" alt=""></span><span class="logo-tile"><img src="images/carrefour.png" alt=""></span><span class="logo-tile"><img src="images/dumasgassac.png" alt=""></span><span class="logo-tile"><img src="images/cfa.png" alt=""></span><span class="logo-tile"><img src="images/stanaudition.png" alt=""></span><span class="logo-tile"><img src="images/chatblanc.jpg" alt=""></span><span class="logo-tile"><img src="images/apple.png" alt=""></span><span class="logo-tile"><img src="images/lviimmo.png" alt=""></span><span class="logo-tile"><img src="images/carrefour.png" alt=""></span><span class="logo-tile"><img src="images/dumasgassac.png" alt=""></span></div>
           </div>
           <header class="major band-title">
             <h2>Mes Expériences Professionnelles</h2>
@@ -477,7 +502,7 @@
             <div class="footer-polaroid"><img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" /></div>
             <div class="footer-intro__text">
               <h2>À propos du site</h2>
-              <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
+              <p>J'ai conçu et codé ce site moi-même en HTML et CSS. À partir d'un simple template, je l'ai entièrement personnalisé pour en faire la vitrine de mon parcours : une façon concrète de mettre en pratique les compétences en marketing digital et en création web acquises pendant mon BUT Techniques de Commercialisation.</p>
               <ul class="icons">
                 <li>
                   <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank">

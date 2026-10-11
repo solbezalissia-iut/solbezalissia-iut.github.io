@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
   <head>
     <title>Me découvrir</title>
     <meta charset="utf-8" />
@@ -26,15 +26,18 @@
       <div id="main">
 
         <!-- Études -->
-        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-etudes.jpg');">
-          <div class="decouvrir-content">
-            <div class="decouvrir-block">
+        <section class="main decouvrir-section section-img-bg spread" style="background-image:url('images/fond-etudes.jpg');">
+          <div class="decouvrir-content spread__inner">
+            <div class="spread__side">
+              <span class="spread__num" aria-hidden="true">01</span>
               <h2 class="title-icon-right">Mes études</h2>
+              <div class="etudes-img-wrap spread__polaroid">
+                <img src="images/iut.png" alt="IUT de Montpellier" class="etudes-img">
+              </div>
+            </div>
+            <div class="decouvrir-block spread__paper">
               <div class="etudes-layout">
                 <p class="etudes-p1">Je suis actuellement étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier, une formation qui me permet d'acquérir des compétences solides en marketing, en négociation commerciale, en communication et en gestion de projet. Au fil de mes études, j'ai l'opportunité de travailler sur des projets concrets et professionnalisants, ce qui me permet de renforcer mes connaissances théoriques tout en développant une réelle expérience de terrain. Je suis également en attente de réponses pour intégrer un Master en marketing digital à la rentrée 2027.</p>
-                <div class="etudes-img-wrap">
-                  <img src="images/iut.png" alt="IUT de Montpellier" class="etudes-img">
-                </div>
               </div>
               <p>Je suis passionnée par le marketing digital, un domaine qui allie créativité et stratégie. Plus particulièrement, je m'intéresse à la conception de packagings, à la création de supports visuels et à la production de contenus pour les réseaux sociaux. Mon objectif professionnel est de travailler dans le marketing numérique, notamment dans la communication en ligne, la gestion des réseaux sociaux ou la stratégie de marque.</p>
             </div>
@@ -42,24 +45,41 @@
         </section>
 
         <!-- Vie professionnelle -->
-        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-pro.jpg');">
-          <div class="decouvrir-content">
-            <div class="decouvrir-block">
+        <section class="main decouvrir-section section-img-bg spread spread--reverse" style="background-image:url('images/fond-pro.jpg');">
+          <div class="decouvrir-content spread__inner">
+            <div class="spread__side">
+              <span class="spread__num" aria-hidden="true">02</span>
               <h2 class="title-icon-right">Ma vie professionnelle</h2>
+              <div class="spread__stickers" aria-hidden="true">
+                <img src="images/bandeau/ppalissia3.jpg" alt="" class="spread__photo">
+                <span class="spread__sticker spread__sticker--1"><img src="images/cfa.png" alt=""></span>
+                <span class="spread__sticker spread__sticker--2"><img src="images/apple.png" alt=""></span>
+              </div>
+            </div>
+            <div class="decouvrir-block spread__paper">
               <p>En parallèle de mes études, je suis actuellement en alternance au CFA EnSup-LR en marketing digital et communication : je conçois des supports de communication, j'anime les réseaux sociaux et je participe à des conférences ainsi qu'à l'événementiel. Avant cela, j'ai travaillé un an en CDI chez Apple Odysseum, une expérience formatrice qui m'a permis de développer des compétences clés comme la relation client, la communication et la gestion de situations variées. Ces expériences, complémentaires, renforcent au quotidien ma capacité d'adaptation, mon sens du service et ma réactivité au sein d'environnements dynamiques et exigeants. Elles nourrissent aussi un projet qui me tient à cœur : à terme, j'aimerais créer ma propre entreprise, et chaque mission menée aujourd'hui est une occasion d'apprendre les rouages du métier en vue de ce projet entrepreneurial.</p>
             </div>
           </div>
         </section>
 
         <!-- Loisirs -->
-        <section class="main decouvrir-section section-img-bg" style="background-image:url('images/fond-loisirs.jpg');">
-          <div class="decouvrir-content">
-            <div class="decouvrir-block">
+        <section class="main decouvrir-section section-img-bg spread spread--loisirs" style="background-image:url('images/fond-loisirs.jpg');">
+          <div class="decouvrir-content spread__inner">
+            <div class="spread__side">
+              <span class="spread__num" aria-hidden="true">03</span>
               <h2 class="title-icon-right">Mes loisirs</h2>
+              <div class="spread__icons" aria-hidden="true">
+                <span><img src="images/canon.png" alt=""></span>
+                <span><img src="images/badminton.png" alt=""></span>
+                <span><img src="images/nailart.png" alt=""></span>
+              </div>
+            </div>
+            <div class="decouvrir-block spread__paper">
               <p>En dehors de mes études et de mon travail, mes loisirs occupent une place importante dans mon quotidien et m'aident à garder un bon équilibre. La photographie est l'une de mes passions : même si je suis encore débutante, j'aime apprendre et progresser en capturant des moments, des ambiances et des détails qui racontent une histoire, que ce soit en contexte sportif ou lors de concerts. Le badminton (option SUAPS) me permet de rester active, de me vider l'esprit et de me dépasser, tout en m'apportant discipline et persévérance. J'apprécie aussi des activités plus calmes et créatives, comme le nail art, qui me permet de me détendre tout en laissant parler mon sens créatif. Enfin, la musique m'accompagne chaque jour et les concerts sont pour moi une véritable source d'énergie et d'inspiration.</p>
+            </div>
 
-              <!-- Galerie défilante -->
-              <div class="wrap-card1">
+            <!-- Galerie défilante -->
+            <div class="wrap-card1 spread__gallery">
                 <div class="gallery-card1" id="gallery-card1" tabindex="0">
                   <figure class="card1">
                     <img src="images/bad.jpg" alt="Badminton">
@@ -95,7 +115,6 @@
                   </div>
                   <button class="ctrl-btn" id="next-card1" aria-label="Suivant">&#8594;</button>
                 </div>
-              </div>
             </div>
           </div>
         </section>
@@ -110,7 +129,7 @@
             <div class="footer-polaroid"><img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" /></div>
             <div class="footer-intro__text">
               <h2>À propos du site</h2>
-              <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
+              <p>J'ai conçu et codé ce site moi-même en HTML et CSS. À partir d'un simple template, je l'ai entièrement personnalisé pour en faire la vitrine de mon parcours : une façon concrète de mettre en pratique les compétences en marketing digital et en création web acquises pendant mon BUT Techniques de Commercialisation.</p>
               <ul class="icons">
                 <li>
                   <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank">
