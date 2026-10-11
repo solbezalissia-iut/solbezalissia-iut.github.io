@@ -1017,6 +1017,7 @@
   border-radius: 0;
 }
 #outils .watch-bubble-group { max-width: 290px; }
+#outils .watch-bubble img[alt="MailerLite"] { width: 82%; height: 40%; }
 
 /* Niveaux : cartes foncées numérotées */
 #competences .skills-container { counter-reset: niveau; gap: 2rem; }
