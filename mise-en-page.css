@@ -1069,11 +1069,11 @@
 }
 /* placement libre, un peu désorganisé : hauteurs, décalages et inclinaisons variés */
 #outils .watch-cluster { align-items: center; text-align: center; }
-#outils .watch-cluster:nth-child(1) { grid-column: 1 / 5;  margin-top: 0;      transform: rotate(-4deg); }
-#outils .watch-cluster:nth-child(2) { grid-column: 5 / 9;  margin-top: 6rem;   transform: rotate(3deg); }
-#outils .watch-cluster:nth-child(3) { grid-column: 9 / 13; margin-top: 1.5rem; transform: rotate(-2deg) translateX(1rem); }
-#outils .watch-cluster:nth-child(4) { grid-column: 2 / 6;  margin-top: -2rem;  transform: rotate(5deg) translateX(-1.5rem); }
-#outils .watch-cluster:nth-child(5) { grid-column: 7 / 12; margin-top: -4rem;  transform: rotate(-3deg) translateX(2rem); }
+#outils .watch-cluster:nth-child(1) { grid-column: 1 / 5;  margin-top: 0; }
+#outils .watch-cluster:nth-child(2) { grid-column: 5 / 9;  margin-top: 6rem; }
+#outils .watch-cluster:nth-child(3) { grid-column: 9 / 13; margin-top: 1.5rem; transform: translateX(1rem); }
+#outils .watch-cluster:nth-child(4) { grid-column: 2 / 6;  margin-top: -2rem;  transform: translateX(-1.5rem); }
+#outils .watch-cluster:nth-child(5) { grid-column: 7 / 12; margin-top: -4rem;  transform: translateX(2rem); }
 
 /* grand numéro en filigrane, centré derrière le titre */
 #outils .watch-cluster::before {
@@ -1110,13 +1110,13 @@
 #outils .watch-cluster-label { align-self: center; }
 #outils .watch-bubble-group {
   --d: 84px;          /* diamètre d'une bulle */
-  --hx: 45px;         /* demi-pas horizontal */
-  --vy: 77px;         /* pas vertical (rangées imbriquées) */
+  --hx: 52px;         /* demi-pas horizontal (plus d'air entre les bulles) */
+  --vy: 86px;         /* pas vertical */
   position: relative;
   display: block;
   max-width: none;
   width: 100%;
-  height: calc((var(--rows) - 1) * var(--vy) + var(--d) + 10px);
+  height: calc((var(--rows) - 1) * var(--vy) + var(--d) + 40px);
   margin-top: 0.4rem;
 }
 #outils .watch-bubble,
@@ -1124,8 +1124,9 @@
 #outils .watch-bubble.size-md,
 #outils .watch-bubble.size-sm {
   position: absolute;
-  left: calc(50% + var(--x) * var(--hx) - var(--d) / 2);
-  top: calc(var(--y) * var(--vy));
+  /* position en nid d'abeille + petit décalage propre à chaque bulle (désordre) */
+  left: calc(50% + var(--x) * var(--hx) - var(--d) / 2 + var(--jx, 0px));
+  top: calc(var(--y) * var(--vy) + 14px + var(--jy, 0px));
   width: var(--d);
   height: var(--d);
   margin: 0 !important;
@@ -1139,12 +1140,12 @@
   border: none;
   background: var(--blanc);
   box-shadow: 0 6px 16px var(--ombre-forte);
-  transform: scale(var(--s, 1));
+  transform: rotate(var(--r, 0deg)) scale(var(--s, 1));
   transition: transform var(--transition), box-shadow var(--transition);
   overflow: hidden;
 }
 #outils .watch-bubble:hover {
-  transform: scale(calc(var(--s, 1) * 1.15));
+  transform: rotate(0deg) scale(calc(var(--s, 1) * 1.15));
   box-shadow: 0 10px 24px var(--ombre-forte);
   z-index: 3;
 }
@@ -1221,9 +1222,8 @@
   .comp-intro p { padding: 2.4rem 1.5rem 2rem; font-size: 1.02rem; }
   #outils .watch-grid { grid-template-columns: 1fr; gap: 1rem; }
   #outils .watch-cluster:nth-child(n) { grid-column: 1; margin-top: 0.5rem; }
-  #outils .watch-cluster:nth-child(odd)  { transform: rotate(-3deg) translateX(-0.6rem); }
-  #outils .watch-cluster:nth-child(even) { transform: rotate(3deg) translateX(0.6rem); }
-  #outils .watch-bubble-group { --d: 76px; --hx: 41px; --vy: 70px; }
+  #outils .watch-cluster:nth-child(n) { transform: none; }
+  #outils .watch-bubble-group { --d: 74px; --hx: 45px; --vy: 76px; }
 
   #competences .skills-category:nth-child(2) { transform: none; }
 }
