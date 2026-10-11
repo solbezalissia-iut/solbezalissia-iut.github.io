@@ -1104,58 +1104,76 @@
   box-shadow: inset 0 -0.55em 0 rgba(212, 165, 165, 0.35);
 }
 
-/* icônes : stickers légèrement penchés, en désordre contrôlé */
+/* icônes : bulles rondes en nid d'abeille, façon Apple Watch
+   (plus grosses au centre, plus petites sur les bords) */
+#outils .watch-cluster { align-items: stretch; }
+#outils .watch-cluster-label { align-self: flex-start; }
+#outils .watch-cluster:nth-child(5) .watch-cluster-label { align-self: center; }
 #outils .watch-bubble-group {
+  --d: 84px;          /* diamètre d'une bulle */
+  --hx: 45px;         /* demi-pas horizontal */
+  --vy: 77px;         /* pas vertical (rangées imbriquées) */
+  position: relative;
+  display: block;
   max-width: none;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1.1rem 1.2rem;
+  width: 100%;
+  height: calc((var(--rows) - 1) * var(--vy) + var(--d) + 10px);
+  margin-top: 0.4rem;
 }
-#outils .watch-cluster:nth-child(5) .watch-bubble-group { justify-content: center; }
 #outils .watch-bubble,
 #outils .watch-bubble.size-lg,
 #outils .watch-bubble.size-md,
 #outils .watch-bubble.size-sm {
-  width: 76px;
-  height: auto;
+  position: absolute;
+  left: calc(50% + var(--x) * var(--hx) - var(--d) / 2);
+  top: calc(var(--y) * var(--vy));
+  width: var(--d);
+  height: var(--d);
   margin: 0 !important;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blanc);
+  box-shadow: 0 6px 16px var(--ombre-forte);
+  transform: scale(var(--s, 1));
+  transition: transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+}
+#outils .watch-bubble:hover {
+  transform: scale(calc(var(--s, 1) * 1.15));
+  box-shadow: 0 10px 24px var(--ombre-forte);
+  z-index: 3;
+}
+#outils .watch-bubble img,
+#outils .watch-bubble img[alt="Canva"] {
+  width: 46%;
+  height: 46%;
   padding: 0;
   border: none;
+  outline: none;
   border-radius: 0;
   background: none;
   box-shadow: none;
-  overflow: visible;
-  gap: 0.45rem;
+  object-fit: contain;
+  transform: none;
 }
-#outils .watch-bubble img,
-#outils .watch-bubble img[alt="Canva"],
-#outils .watch-bubble img[alt="MailerLite"] {
-  width: 66px;
-  height: 66px;
-  padding: 13px;
-  border-radius: 20px;
-  background: var(--blanc);
-  border: 3px solid var(--blanc);
-  outline: 1px solid var(--beige-sombre);
-  box-shadow: 0 8px 18px var(--ombre-forte);
-  transition: transform var(--transition);
-}
-#outils .watch-bubble img[alt="Canva"] { padding: 4px; }
-#outils .watch-bubble img[alt="MailerLite"] { padding: 7px; object-fit: contain; }
-/* inclinaisons et décalages variés */
-#outils .watch-bubble:nth-child(4n+1) { transform: rotate(-7deg); }
-#outils .watch-bubble:nth-child(4n+2) { transform: rotate(5deg) translateY(12px); }
-#outils .watch-bubble:nth-child(4n+3) { transform: rotate(-3deg) translateY(-6px); }
-#outils .watch-bubble:nth-child(4n+4) { transform: rotate(8deg) translateY(8px); }
-/* le plus utilisé de chaque catégorie en plus grand */
-#outils .watch-bubble.size-lg { width: 92px; }
-#outils .watch-bubble.size-lg img { width: 84px; height: 84px; border-radius: 24px; }
-#outils .watch-bubble:hover { box-shadow: none; z-index: 2; }
-#outils .watch-bubble:hover img { transform: scale(1.12); }
+#outils .watch-bubble img[alt="Canva"] { width: 62%; height: 62%; }
+#outils .watch-bubble img[alt="MailerLite"] { width: 74%; height: 30%; padding: 0; border: none; outline: none; background: none; box-shadow: none; }
+#outils .watch-bubble:hover img { transform: none; }
 #outils .watch-bubble span,
 #outils .watch-bubble.size-lg span,
 #outils .watch-bubble.size-md span,
-#outils .watch-bubble.size-sm span { font-size: 0.7rem; font-weight: 600; }
+#outils .watch-bubble.size-sm span {
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 1.1;
+  max-width: 90%;
+}
 
 /* Niveaux : cartes foncées numérotées */
 #competences .skills-container { counter-reset: niveau; gap: 2rem; }
@@ -1206,10 +1224,9 @@
   #outils .watch-cluster:nth-child(n) { grid-column: 1; margin-top: 0; align-items: flex-start; }
   #outils .watch-cluster:nth-child(5)::before { left: 0; transform: none; }
   #outils .watch-cluster:nth-child(5) .watch-bubble-group { justify-content: flex-start; }
-  #outils .watch-bubble, #outils .watch-bubble.size-md, #outils .watch-bubble.size-sm { width: 64px; }
-  #outils .watch-bubble img, #outils .watch-bubble img[alt="Canva"], #outils .watch-bubble img[alt="MailerLite"] { width: 56px; height: 56px; border-radius: 16px; }
-  #outils .watch-bubble.size-lg { width: 76px; }
-  #outils .watch-bubble.size-lg img { width: 70px; height: 70px; }
+  #outils .watch-bubble-group { --d: 76px; --hx: 41px; --vy: 70px; }
+  #outils .watch-cluster:nth-child(5) .watch-cluster-label { align-self: flex-start; }
+
   #competences .skills-category:nth-child(2) { transform: none; }
 }
 
