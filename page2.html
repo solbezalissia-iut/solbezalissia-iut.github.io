@@ -1,42 +1,56 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
   <head>
     <title>Mes compétences</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio d'Alissia Solbez — étudiante en BUT Techniques de Commercialisation, à la recherche d'une alternance en marketing digital & communication." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Mrs+Saint+Delafield&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="style.css" />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
-  <body class="is-preload">
-    <div id="wrapper">
+  <body>
 
-      <!-- ══ HERO ══ -->
-      <header id="header" class="hero-header2" style="background-image: url('images/bannierecompetences.png');">
-        <div class="hero-content2">
-          <h1 class="hero-title2">Mes Compétences</h1>
-          <div class="hero2-back-wrap">
-            <a href="index.html" class="hero2-back-btn">← Retour</a>
-          </div>
+    <!-- ══ HERO ══ -->
+    <header class="page-hero" id="header">
+      <div class="wrap">
+        <div class="cover__topbar">
+          <span>Alissia Solbez</span>
+          <span>Marketing digital · Communication</span>
+          <a href="index.html" class="btn btn--ghost hero2-back-btn">← Retour</a>
         </div>
-      </header>
+        <div class="page-hero__title-wrap reveal">
+          <span class="kicker">Portfolio — Savoir-faire</span>
+          <h1 class="display page-hero__title">Mes Compétences</h1>
+          <span class="script" aria-hidden="true">outils &amp; talents</span>
+        </div>
+        <div class="page-hero__banner reveal" style="background-image: url('images/bannierecompetences.png');" role="img" aria-label="Bannière Mes compétences"></div>
+      </div>
+    </header>
 
-      <!-- ══ MAIN ══ -->
-      <div id="main">
+    <!-- ══ MAIN ══ -->
+    <main>
 
-        <!-- Intro -->
-        <section class="main comp-intro">
+      <!-- Intro -->
+      <section class="section comp-intro">
+        <div class="wrap reveal">
           <p>En tant qu'étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier, actuellement en alternance au CFA EnSup-LR, j'ai acquis de solides compétences dans les domaines du marketing, de la communication et de la création digitale. Mon parcours m'a permis de développer une approche à la fois stratégique, créative et opérationnelle des projets commerciaux et marketing.</p>
-        </section>
+        </div>
+      </section>
 
-        <!-- ══ OUTILS — grille style Apple Watch ══ -->
-        <section id="outils" class="comp-section section-img-bg" style="background-image:url('images/fond-outils.jpg');">
-          <div class="comp-section-inner">
-            <h2 class="comp-section-title">Outils maîtrisés</h2>
+      <!-- ══ OUTILS ══ -->
+      <section id="outils" class="section section--alt" style="padding-top: clamp(3.5rem, 8vw, 6rem);">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <h2 class="section-title">Outils maîtrisés</h2>
+          </header>
             <div class="watch-grid">
 
               <!-- Catégorie : Création -->
-              <div class="watch-cluster">
+              <div class="watch-cluster reveal">
                 <span class="watch-cluster-label">Création</span>
                 <div class="watch-bubble-group">
                   <div class="watch-bubble size-lg">
@@ -63,7 +77,7 @@
               </div>
 
               <!-- Catégorie : Web & Dev -->
-              <div class="watch-cluster">
+              <div class="watch-cluster reveal">
                 <span class="watch-cluster-label">Web & Dev</span>
                 <div class="watch-bubble-group">
                   <div class="watch-bubble size-md">
@@ -94,7 +108,7 @@
               </div>
 
               <!-- Catégorie : Réseaux sociaux -->
-              <div class="watch-cluster">
+              <div class="watch-cluster reveal">
                 <span class="watch-cluster-label">Réseaux sociaux</span>
                 <div class="watch-bubble-group">
                   <div class="watch-bubble size-lg">
@@ -125,7 +139,7 @@
               </div>
 
               <!-- Catégorie : IA -->
-              <div class="watch-cluster">
+              <div class="watch-cluster reveal">
                 <span class="watch-cluster-label">Intelligence artificielle</span>
                 <div class="watch-bubble-group">
                   <div class="watch-bubble size-md">
@@ -148,7 +162,7 @@
               </div>
 
               <!-- Catégorie : Bureautique -->
-              <div class="watch-cluster">
+              <div class="watch-cluster reveal">
                 <span class="watch-cluster-label">Bureautique</span>
                 <div class="watch-bubble-group">
                   <div class="watch-bubble size-md">
@@ -179,16 +193,18 @@
               </div>
 
             </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- ══ COMPÉTENCES — barres de progression ══ -->
-        <section id="competences" class="comp-section comp-section-alt section-img-bg" style="background-image:url('images/fond-competences.jpg');">
-          <div class="comp-section-inner">
-            <h2 class="comp-section-title">Niveaux de compétences</h2>
+      <!-- ══ NIVEAUX DE COMPÉTENCES ══ -->
+      <section id="competences" class="section">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <h2 class="section-title">Niveaux de compétences</h2>
+          </header>
             <div class="skills-container">
 
-              <div class="skills-category">
+              <div class="skills-category reveal">
                 <h3>Marketing & Communication</h3>
                 <div class="skill">
                   <div class="skill-header"><span>Stratégie de contenu & réseaux sociaux</span><span class="skill-pct">95%</span></div>
@@ -208,7 +224,7 @@
                 </div>
               </div>
 
-              <div class="skills-category">
+              <div class="skills-category reveal">
                 <h3>Relation client & Commerce</h3>
                 <div class="skill">
                   <div class="skill-header"><span>Vente & conseil client</span><span class="skill-pct">95%</span></div>
@@ -224,7 +240,7 @@
                 </div>
               </div>
 
-              <div class="skills-category">
+              <div class="skills-category reveal">
                 <h3>Digital & Analyse</h3>
                 <div class="skill">
                   <div class="skill-header"><span>Publicité en ligne (Google Ads, Meta Ads)</span><span class="skill-pct">75%</span></div>
@@ -245,62 +261,64 @@
               </div>
 
             </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-      </div><!-- /#main -->
+    </main>
 
-      <!-- ══ FOOTER ══ -->
-      <footer id="footer">
-        <section>
-          <div class="footer-intro">
-            <img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" />
-            <div class="footer-intro__text">
-              <h2>À propos du site</h2>
-              <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
-              <ul class="icons">
-                <li>
-                  <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" width="20" height="20">
-                    <span class="label">LinkedIn</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/a.s_shoots_/" class="social-logo-link" target="_blank">
-                    <img src="images/instagram.png" alt="Instagram" width="20" height="20">
-                    <span class="label">Instagram</span>
-                  </a>
-                </li>
-              </ul>
+    <!-- ══ FOOTER / CONTACT ══ -->
+    <footer id="footer" class="footer">
+      <div class="wrap">
+        <p class="display footer__title reveal">Contact <span class="script" aria-hidden="true">à bientôt</span></p>
+
+        <div class="footer__grid">
+          <section class="reveal">
+            <div class="footer-intro">
+              <div class="footer-photo-wrap polaroid tape">
+                <img src="images/bandeau/ppalissia3.jpg" alt="Alissia Solbez" class="footer-photo" width="130" />
+              </div>
+              <div class="footer-intro__text">
+                <h2>À propos du site</h2>
+                <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
+                <ul class="icons">
+                  <li>
+                    <a href="https://www.linkedin.com/in/alissia-solbez-2a5771382/" class="social-logo-link" target="_blank" rel="noopener">
+                      <img src="images/linkedin.png" alt="LinkedIn" width="20" height="20">
+                      <span class="label">LinkedIn</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/a.s_shoots_/" class="social-logo-link" target="_blank" rel="noopener">
+                      <img src="images/instagram.png" alt="Instagram" width="20" height="20">
+                      <span class="label">Instagram</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-        <section>
-          <h2>Mes coordonnées</h2>
-          <dl class="alt">
-            <dt><i class="fa-solid fa-cake-candles"></i> Naissance</dt>
-            <dd>18 août 2006</dd>
-            <dt><i class="fa-solid fa-location-dot"></i> Adresse</dt>
-            <dd><a href="https://www.google.com/maps/search/?api=1&query=21+rue+Michel+Henry+34090+Montpellier">21 rue Michel Henry, 34090 Montpellier</a></dd>
-            <dt><i class="fa-solid fa-phone"></i> Téléphone</dt>
-            <dd><a href="tel:+33768867862">07 68 86 78 62</a></dd>
-            <dt><i class="fa-solid fa-envelope"></i> Email</dt>
-            <dd><a href="mailto:Solbezrigaudalissia@gmail.com">Solbezrigaudalissia@gmail.com</a></dd>
-            <dt><i class="fa-solid fa-id-card"></i> Permis</dt>
-            <dd> Permis B – Véhiculée</dd>
-          </dl>
-        </section>
+          </section>
+
+          <section class="reveal">
+            <h2>Mes coordonnées</h2>
+            <dl class="alt">
+              <dt><i class="fa-solid fa-cake-candles"></i> Naissance</dt>
+              <dd>18 août 2006</dd>
+              <dt><i class="fa-solid fa-location-dot"></i> Adresse</dt>
+              <dd><a href="https://www.google.com/maps/search/?api=1&query=21+rue+Michel+Henry+34090+Montpellier">21 rue Michel Henry, 34090 Montpellier</a></dd>
+              <dt><i class="fa-solid fa-phone"></i> Téléphone</dt>
+              <dd><a href="tel:+33768867862">07 68 86 78 62</a></dd>
+              <dt><i class="fa-solid fa-envelope"></i> Email</dt>
+              <dd><a href="mailto:Solbezrigaudalissia@gmail.com">Solbezrigaudalissia@gmail.com</a></dd>
+              <dt><i class="fa-solid fa-id-card"></i> Permis</dt>
+              <dd>Permis B – Véhiculée</dd>
+            </dl>
+          </section>
+        </div>
+
         <p class="copyright">&copy; 2026 Alissia Solbez</p>
-      </footer>
+      </div>
+    </footer>
 
-    </div>
-
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="site.js"></script>
   </body>
 </html>
