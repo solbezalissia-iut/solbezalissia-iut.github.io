@@ -486,7 +486,7 @@
   position: relative;
   z-index: 1;
   width: 290px;
-  aspect-ratio: 9 / 19.5;
+  aspect-ratio: 9 / 16.5;
   padding: 11px;
   border-radius: 54px;
   background: linear-gradient(145deg, #e9d9d2, #b9a29a 45%, #d8c6bf);
@@ -560,6 +560,8 @@
   grid-template-columns: repeat(3, 1fr);
   align-content: start;
   gap: 2px;
+  overflow: hidden;
+  min-height: 0;
 }
 .phone__grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
 .phone__tabs {
@@ -628,76 +630,110 @@
 }
 .band-title h2::after { display: none; }
 
-/* Bandeau des expériences : uniquement les logos qui défilent */
-.logo-band { background: transparent; height: 300px; }
-.logo-band::after { display: none; }
-.logo-band .photo-band__strip { align-items: center; animation-duration: 50s; animation-direction: reverse; }
+/* Bandeau des expériences : même présentation que « Mon Portfolio »,
+   mais ce sont les logos des entreprises qui défilent */
+.logo-band .photo-band__strip { animation-direction: reverse; }
 .logo-band .photo-band__strip img {
-  width: auto;
-  height: 64px;
-  max-width: 170px;
+  width: 260px;
+  height: 100%;
   object-fit: contain;
-  margin: 0 46px;
-  mix-blend-mode: multiply;
+  padding: 70px 45px;
+  background: var(--blanc);
+  border-right: 1px solid var(--beige-sombre);
 }
-.logo-band .photo-band__strip img:nth-child(odd)  { transform: translateY(-82px); }
-.logo-band .photo-band__strip img:nth-child(even) { transform: translateY(82px); }
-#Expériences .band-title { margin-top: -192px; margin-bottom: 8rem; }
-#Expériences .band-title h2 { background: var(--brun-fonce); border-color: var(--rose-poudre); }
+.logo-band .photo-band__strip img:nth-child(even) { background: var(--rose-pale); }
 
 /* Le bandeau photo remplace la vague de séparation */
 .section-divider { display: none; }
 
-/* Expériences : 4 par ligne, en colonnes ouvertes reliées par un trait */
-#Expériences.main { padding-left: 1.5rem; padding-right: 1.5rem; }
-#Expériences .photo-band { margin: 0 -1.5rem; }
+/* ══════════════════════════════════════
+   EXPÉRIENCES — frise verticale en zigzag
+══════════════════════════════════════ */
 #Expériences ul.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3.5rem 0;
-  max-width: 1400px;
+  position: relative;
+  display: block;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1rem 0;
 }
-#Expériences ul.features li {
-  flex: 0 1 25%;
-  min-width: 0;
-  padding: 0 1.4rem;
+/* ligne centrale */
+#Expériences ul.features::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  border-left: 2px dashed var(--rose-poudre);
+  transform: translateX(-1px);
+}
+
+#Expériences ul.features li.xp {
+  display: grid;
+  grid-template-columns: 1fr 132px 1fr;
+  grid-template-areas: "date logo body";
+  align-items: center;
+  gap: 0 2.2rem;
+  padding: 0;
+  margin: 0 0 2.6rem;
   background: transparent;
   border: none;
   border-radius: 0;
   box-shadow: none;
   overflow: visible;
   transform: none;
-  text-align: center;
+  text-align: left;
 }
-#Expériences ul.features li:hover { transform: none; box-shadow: none; }
-#Expériences ul.features li::before {
-  top: 60px;
-  left: 0; right: 0;
-  height: 0;
-  background: none;
-  border-top: 2px dashed var(--rose-poudre);
-  z-index: 0;
-}
+#Expériences ul.features li.xp:last-child { margin-bottom: 0; }
+#Expériences ul.features li.xp:nth-child(even) { grid-template-areas: "body logo date"; }
+#Expériences ul.features li.xp::before { display: none; }
+#Expériences ul.features li.xp:hover { transform: none; box-shadow: none; }
+
+/* logo dans un cercle posé sur la ligne (cercle dessiné en fond : le logo n'est jamais rogné) */
 #Expériences .feature-logo {
+  grid-area: logo;
   position: relative;
   z-index: 1;
   width: 132px;
   height: 132px;
   padding: 30px;
-  margin: 0 auto 1.3rem;
+  margin: 0;
   border-radius: 0;
-  /* cercle blanc + anneau rose dessinés en fond (le logo n'est jamais rogné) */
   background: radial-gradient(circle closest-side,
     #fff calc(100% - 8px), transparent calc(100% - 7px),
     transparent calc(100% - 3px), var(--rose-poudre) calc(100% - 2px), var(--rose-poudre) 100%, transparent calc(100% + 1px));
   filter: drop-shadow(0 10px 14px rgba(180, 110, 110, 0.25));
   box-shadow: none;
 }
-#Expériences ul.features li:hover .feature-logo { transform: translateY(-5px) scale(1.04); }
-#Expériences ul.features li h3 { text-align: center; font-size: 1.12rem; margin-bottom: 0.7rem; }
-#Expériences ul.features li p { text-align: center; font-size: 0.88rem; }
-#Expériences ul.features li p:first-of-type { margin-bottom: 0.9rem; }
+#Expériences ul.features li.xp:hover .feature-logo { transform: scale(1.06); }
+
+/* la période en grand, de l'autre côté de la ligne */
+.xp-date {
+  grid-area: date;
+  font-family: var(--font-titre);
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--rose-sombre);
+  text-align: right;
+}
+#Expériences ul.features li.xp:nth-child(even) .xp-date { text-align: left; }
+
+/* le texte : une note légère avec un liseré rose, pas un gros bloc */
+.xp-body {
+  grid-area: body;
+  position: relative;
+  padding: 1.3rem 1.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  border-left: 3px solid var(--rose-poudre);
+  box-shadow: 0 6px 18px var(--ombre);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+#Expériences ul.features li.xp:nth-child(even) .xp-body { border-left: none; border-right: 3px solid var(--rose-poudre); }
+#Expériences ul.features li.xp:hover .xp-body { transform: translateY(-3px); box-shadow: 0 12px 26px var(--ombre-forte); }
+#Expériences ul.features li.xp h3 { text-align: left; font-size: 1.15rem; margin: 0 0 0.5rem; }
+#Expériences ul.features li.xp p { text-align: left; font-size: 0.88rem; margin-bottom: 0.2rem; }
+#Expériences ul.features li.xp .xp-body p:first-of-type { margin-bottom: 0.7rem; }
 
 /* ══════════════════════════════════════
    FOOTER — grand titre CONTACT
@@ -1034,7 +1070,6 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1100px) {
-  #Expériences ul.features li { flex-basis: 50%; }
   #Accueil .intro-collage { gap: 2.5rem; }
   .camera-scene.intro-collage__visual { height: 400px; }
 }
@@ -1074,20 +1109,27 @@
 }
 
 @media (max-width: 768px) {
+  .logo-band .photo-band__strip img { width: 190px; padding: 55px 32px; }
+  #Expériences ul.features::before { left: 36px; }
+  #Expériences ul.features li.xp,
+  #Expériences ul.features li.xp:nth-child(even) {
+    grid-template-columns: 72px 1fr;
+    grid-template-areas: "logo date" "logo body";
+    gap: 0.5rem 1rem;
+    align-items: start;
+  }
+  #Expériences .feature-logo { width: 72px; height: 72px; padding: 16px; }
+  .xp-date,
+  #Expériences ul.features li.xp:nth-child(even) .xp-date { text-align: left; font-size: 1.05rem; padding-top: 0.4rem; }
+  #Expériences ul.features li.xp:nth-child(even) .xp-body { border-right: none; border-left: 3px solid var(--rose-poudre); }
   .photo-band { margin: 0 -1.5rem; height: 220px; }
   .photo-band__strip img { width: 190px; }
-  .logo-band { height: 240px; }
-  .logo-band .photo-band__strip img { height: 46px; margin: 0 28px; }
-  .logo-band .photo-band__strip img:nth-child(odd)  { transform: translateY(-70px); }
-  .logo-band .photo-band__strip img:nth-child(even) { transform: translateY(70px); }
-  #Expériences .band-title { margin-top: -160px; margin-bottom: 6rem; }
   .band-title { margin: -145px auto 7.5rem; }
   #Expériences.main { padding-left: 1rem; padding-right: 1rem; }
   #Expériences .photo-band { margin: 0 -1rem; }
 }
 
 @media (max-width: 600px) {
-  #Expériences ul.features li { flex-basis: 100%; }
 
   .camera-scene.intro-collage__visual { height: 290px; }
   .camera__body { grid-template-columns: 1fr 50px; gap: 10px; padding: 12px; border-radius: 16px; }
