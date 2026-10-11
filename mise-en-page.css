@@ -1110,8 +1110,8 @@
   box-shadow: inset 0 -0.55em 0 rgba(212, 165, 165, 0.35);
 }
 
-/* icônes : en fleur (ou demi-fleur s'il y a peu d'outils), toutes de la même taille,
-   régulièrement espacées autour d'un petit cœur rose — elles ne se touchent pas.
+/* icônes : en fleur (ou demi-fleur s'il y a peu d'outils), toutes de la même taille :
+   une bulle au centre, les autres régulièrement espacées autour — elles ne se touchent pas.
    Les positions (--px, --py en px) sont calculées dans le HTML. */
 #outils .watch-bubble-group {
   --d: 76;            /* diamètre d'une bulle (px) */
@@ -1122,17 +1122,6 @@
   width: calc(var(--w) * var(--k) * 1px);
   height: calc(var(--h) * var(--k) * 1px);
   margin: 0.6rem auto 0;
-}
-/* cœur de la fleur (décoratif) */
-#outils .watch-bubble-group::before {
-  content: '';
-  position: absolute;
-  left: calc((var(--cx) * var(--k) - 14) * 1px);
-  top:  calc((var(--cy) * var(--k) - 14) * 1px);
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, var(--rose-pale), var(--rose-poudre));
-  box-shadow: 0 0 0 6px rgba(212, 165, 165, 0.25);
 }
 #outils .watch-bubble,
 #outils .watch-bubble.size-lg,
