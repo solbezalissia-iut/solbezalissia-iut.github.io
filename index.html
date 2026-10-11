@@ -129,11 +129,18 @@
 
               <!-- Appareil photo : l'écran diffuse ma vidéo de présentation -->
               <div class="camera">
-                <div class="camera__top" aria-hidden="true">
-                  <span class="camera__dial"></span>
-                  <span class="camera__shutter"></span>
+                <!-- dessus de l'appareil : viseur, griffe flash, molettes -->
+                <div class="camera__hump" aria-hidden="true">
+                  <span class="camera__shoe"></span>
+                  <span class="camera__eyecup"><span class="camera__eyepiece"></span></span>
                 </div>
+                <span class="camera__dial camera__dial--mode" aria-hidden="true"></span>
+                <span class="camera__dial camera__dial--main" aria-hidden="true"></span>
+                <span class="camera__lug camera__lug--l" aria-hidden="true"></span>
+                <span class="camera__lug camera__lug--r" aria-hidden="true"></span>
+
                 <div class="camera__body">
+                  <span class="camera__grip" aria-hidden="true"></span>
                   <div class="camera__screen intro-video-frame">
                     <video autoplay muted loop playsinline controls class="hero-video" poster="images/bandeau/vignette.jpg">
                       <source src="images/alissia.mp4" type="video/mp4">
@@ -142,12 +149,18 @@
                     </video>
                     <span class="camera__rec" aria-hidden="true">● REC</span>
                   </div>
-                  <div class="camera__controls" aria-hidden="true">
-                    <span class="camera__btn"></span>
-                    <span class="camera__btn"></span>
-                    <span class="camera__dpad"><span></span></span>
-                    <span class="camera__btn camera__btn--wide"></span>
+                  <div class="camera__keys" aria-hidden="true">
+                    <span class="camera__key camera__key--menu">MENU</span>
+                    <span class="camera__key camera__key--info">INFO</span>
                   </div>
+                  <div class="camera__controls" aria-hidden="true">
+                    <span class="camera__key camera__key--af">AF-ON</span>
+                    <span class="camera__key camera__key--q">Q</span>
+                    <span class="camera__ring"><span class="camera__set">SET</span></span>
+                    <span class="camera__key camera__key--play">▶</span>
+                    <span class="camera__key camera__key--del"><i class="fa-regular fa-trash-can"></i></span>
+                  </div>
+                  <span class="camera__led" aria-hidden="true"></span>
                 </div>
               </div>
 

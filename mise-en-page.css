@@ -131,62 +131,122 @@
 .camera-scene::after { display: none; }
 .camera-scene .intro-blob { width: 420px; height: 420px; top: 50%; left: 50%; opacity: .5; }
 
-/* L'appareil */
+/* L'appareil : dos d'un hybride Canon noir (type EOS R50) */
 .camera {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(580px, 100%);
+  width: min(600px, 100%);
+  aspect-ratio: 600 / 410;
+  container-type: inline-size;
   transform: translate(-50%, -50%) rotate(-4deg);
   z-index: 2;
-  filter: drop-shadow(0 26px 30px rgba(61, 37, 37, 0.35));
+  filter: drop-shadow(0 28px 30px rgba(30, 20, 20, 0.38));
   transition: transform var(--transition);
 }
-.camera:hover { transform: translate(-50%, -52%) rotate(-2deg); }
+.camera:hover { transform: translate(-50%, -51%) rotate(-2deg); }
 
-.camera__top { position: relative; height: 24px; }
+/* bosse du viseur */
+.camera__hump {
+  position: absolute;
+  left: 25%; top: 0;
+  width: 30%; height: 21%;
+  background: linear-gradient(180deg, #3a3a3d, #1d1d1f 70%);
+  clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+  border-radius: 2cqw 2cqw 0 0;
+}
+.camera__shoe {
+  position: absolute;
+  left: 28%; top: 0;
+  width: 44%; height: 14%;
+  background: linear-gradient(180deg, #d9d9dc, #8d8d92);
+  border-radius: 0 0 0.6cqw 0.6cqw;
+}
+.camera__eyecup {
+  position: absolute;
+  left: 22%; top: 30%;
+  width: 56%; height: 62%;
+  border-radius: 2cqw;
+  background: linear-gradient(180deg, #2a2a2c, #111);
+  box-shadow: inset 0 0 0 0.4cqw #3b3b3e;
+  display: grid; place-items: center;
+}
+.camera__eyepiece {
+  width: 46%; height: 52%;
+  border-radius: 1.2cqw;
+  background: radial-gradient(circle at 35% 30%, #4a5a6a, #0b0d12 70%);
+}
+
+/* molettes crantées sur le dessus */
 .camera__dial {
   position: absolute;
-  left: 40px; bottom: -4px;
-  width: 84px; height: 24px;
-  border-radius: 8px 8px 0 0;
-  background: repeating-linear-gradient(90deg, #6f4b4b 0 3px, #4a2f2f 3px 6px);
-}
-.camera__shutter {
-  position: absolute;
-  right: 60px; bottom: -2px;
-  width: 64px; height: 16px;
-  border-radius: 8px 8px 0 0;
-  background: linear-gradient(180deg, var(--rose-poudre), var(--rose-sombre));
-}
-
-.camera__body {
-  display: grid;
-  grid-template-columns: 1fr 78px;
-  gap: 18px;
-  align-items: center;
-  padding: 20px 18px 20px 20px;
-  border-radius: 24px;
+  border-radius: 1cqw 1cqw 0 0;
   background:
-    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.14), transparent 45%),
-    linear-gradient(145deg, #5c3d3d, #3d2525 70%);
-  border: 2px solid #2e1b1b;
+    linear-gradient(180deg, rgba(255,255,255,0.16), transparent 60%),
+    repeating-linear-gradient(90deg, #3c3c40 0 0.55cqw, #161618 0.55cqw 1.1cqw);
+}
+.camera__dial--mode { left: 72%; top: 6%; width: 17%; height: 10%; }
+.camera__dial--main { left: 60%; top: 9.5%; width: 9%; height: 6.5%; }
+
+/* attaches de la courroie */
+.camera__lug {
+  position: absolute;
+  top: 22%;
+  width: 2.4%; height: 9%;
+  border-radius: 1cqw;
+  background: linear-gradient(90deg, #8d8d92, #e0e0e3, #8d8d92);
+}
+.camera__lug--l { left: -1.4%; }
+.camera__lug--r { right: -1.4%; }
+
+/* boîtier */
+.camera__body {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 85%;
+  border-radius: 4.5cqw;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.10), transparent 55%),
+    radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1.2px) 0 0 / 4px 4px,
+    linear-gradient(170deg, #2e2e31 0%, #1b1b1d 60%, #141415 100%);
+  box-shadow:
+    inset 0 0.4cqw 0 rgba(255,255,255,0.08),
+    inset 0 -0.6cqw 1.2cqw rgba(0,0,0,0.6);
+}
+/* zone caoutchouc pour le pouce */
+.camera__grip {
+  position: absolute;
+  right: 0; top: 0;
+  width: 25%; height: 100%;
+  border-radius: 0 4.5cqw 4.5cqw 0;
+  background:
+    radial-gradient(circle, #2b2b2e 0.9px, transparent 1.3px) 0 0 / 5px 5px,
+    linear-gradient(90deg, #19191b, #121213);
+  box-shadow: inset 0.5cqw 0 0.8cqw rgba(0,0,0,0.5);
 }
 
-/* Écran au format 16:9, comme la vidéo : elle s'affiche en entier */
+/* écran 3:2 (comme sur un vrai Canon) : la vidéo s'affiche en entier */
 .camera__screen.intro-video-frame {
-  position: relative;
-  width: auto;
+  position: absolute;
+  left: 5%; top: 9%;
+  width: 62%;
+  aspect-ratio: 3 / 2;
   margin: 0;
   padding: 0;
   transform: none;
-  border-radius: 10px;
-  background: #120b0b;
-  border: 4px solid #1d1111;
+  border-radius: 1.4cqw;
+  background: #000;
+  border: 1.1cqw solid #0b0b0c;
+  box-shadow: 0 0 0 0.3cqw #3a3a3d, inset 0 0 1cqw rgba(0,0,0,0.8);
   overflow: hidden;
-  aspect-ratio: 16 / 9;
 }
-.camera__screen.intro-video-frame:hover { transform: none; box-shadow: none; }
+.camera__screen.intro-video-frame::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(125deg, rgba(255,255,255,0.10), transparent 35%);
+  pointer-events: none;
+}
+.camera__screen.intro-video-frame:hover { transform: none; }
 .camera__screen .hero-video {
   width: 100%;
   height: 100%;
@@ -196,40 +256,66 @@
 }
 .camera__rec {
   position: absolute;
-  top: 8px; left: 10px;
-  font-size: 0.62rem;
+  top: 6%; left: 3%;
+  font-size: 1.8cqw;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #ff6b6b;
+  color: #ff5a5a;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   pointer-events: none;
+  z-index: 1;
 }
 
-.camera__controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-.camera__btn {
-  width: 22px; height: 22px;
+/* boutons */
+.camera__key {
+  position: absolute;
+  display: grid; place-items: center;
   border-radius: 50%;
-  background: linear-gradient(145deg, #7a5252, #3d2525);
-  border: 1px solid #2e1b1b;
+  background: radial-gradient(circle at 40% 30%, #3d3d41, #18181a 70%);
+  box-shadow: 0 0.3cqw 0.5cqw rgba(0,0,0,0.6), inset 0 0.2cqw 0 rgba(255,255,255,0.08);
+  color: #d9d9dc;
+  font-family: var(--font-corps);
+  font-weight: 700;
+  font-size: 1.5cqw;
+  letter-spacing: 0.04em;
+  line-height: 1;
 }
-.camera__btn--wide { width: 46px; height: 14px; border-radius: 8px; }
-.camera__dpad {
-  width: 62px; height: 62px;
+.camera__keys { position: absolute; left: 5%; bottom: 6%; width: 62%; height: 9%; }
+.camera__keys .camera__key { position: static; display: inline-grid; width: 9cqw; height: 4.2cqw; border-radius: 2cqw; margin-right: 1.4cqw; font-size: 1.3cqw; }
+
+.camera__controls { position: absolute; left: 70%; top: 0; width: 30%; height: 100%; }
+.camera__key--af   { left: 30%; top: 8%;  width: 9cqw; height: 9cqw; font-size: 1.4cqw; background: radial-gradient(circle at 40% 30%, #4a4a4f, #1c1c1e 70%); }
+.camera__key--q    { left: 8%;  top: 34%; width: 5.4cqw; height: 5.4cqw; }
+.camera__key--play { left: 8%;  top: 80%; width: 5cqw; height: 5cqw; font-size: 1.6cqw; }
+.camera__key--del  { left: 42%; top: 82%; width: 5cqw; height: 5cqw; font-size: 1.6cqw; }
+.camera__ring {
+  position: absolute;
+  left: 26%; top: 44%;
+  width: 15cqw; height: 15cqw;
   border-radius: 50%;
-  background: linear-gradient(145deg, #7a5252, #3d2525);
-  border: 2px solid #2e1b1b;
+  background:
+    repeating-conic-gradient(#2c2c2f 0 3deg, #18181a 3deg 6deg);
+  box-shadow: 0 0.4cqw 0.8cqw rgba(0,0,0,0.6), inset 0 0 0 0.3cqw #0e0e0f;
   display: grid; place-items: center;
 }
-.camera__dpad span {
-  width: 24px; height: 24px;
+.camera__set {
+  width: 7.2cqw; height: 7.2cqw;
   border-radius: 50%;
-  background: var(--rose-poudre);
-  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 40% 30%, #46464a, #1a1a1c 70%);
+  color: #d9d9dc;
+  font-family: var(--font-corps);
+  font-weight: 700;
+  font-size: 1.5cqw;
+  box-shadow: 0 0.2cqw 0.4cqw rgba(0,0,0,0.7);
+}
+.camera__led {
+  position: absolute;
+  right: 6%; bottom: 6%;
+  width: 1.2cqw; height: 1.2cqw;
+  border-radius: 50%;
+  background: #47d16c;
+  box-shadow: 0 0 1cqw #47d16c;
 }
 
 /* Petits logos éparpillés autour de l'appareil */
@@ -263,13 +349,12 @@
   margin-top: 1.6rem;
   box-shadow: 0 14px 36px var(--ombre-forte);
   transform: rotate(0.8deg);
-  border-top: 5px double var(--brun-fonce);
 }
 .intro-paper::after { content: ''; display: block; clear: both; }
 .intro-paper .intro-photo-cutout {
   float: right;
-  width: 190px;
-  margin: -90px -46px 0.4rem 1rem;
+  width: 260px;
+  margin: -150px -90px 0.2rem 0.8rem;
   transform: rotate(4deg);
 }
 .intro-paper .intro-photo-cutout:hover { transform: rotate(4deg) translateY(-6px); }
@@ -647,93 +732,75 @@
 .section-divider { display: none; }
 
 /* ══════════════════════════════════════
-   EXPÉRIENCES — frise verticale en zigzag
+   EXPÉRIENCES — 2 colonnes compactes (logo + texte)
 ══════════════════════════════════════ */
 #Expériences ul.features {
-  position: relative;
-  display: block;
-  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3.5rem;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 0;
 }
-/* ligne centrale */
-#Expériences ul.features::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  border-left: 2px dashed var(--rose-poudre);
-  transform: translateX(-1px);
-}
-
 #Expériences ul.features li.xp {
   display: grid;
-  grid-template-columns: 1fr 132px 1fr;
-  grid-template-areas: "date logo body";
-  align-items: center;
-  gap: 0 2.2rem;
-  padding: 0;
-  margin: 0 0 2.6rem;
+  grid-template-columns: 96px 1fr;
+  grid-template-areas: "logo date" "logo body";
+  align-items: start;
+  gap: 0.15rem 1.4rem;
+  padding: 1.8rem 0.2rem;
+  margin: 0;
   background: transparent;
   border: none;
+  border-bottom: 1px dashed var(--rose-poudre);
   border-radius: 0;
   box-shadow: none;
   overflow: visible;
   transform: none;
   text-align: left;
 }
-#Expériences ul.features li.xp:last-child { margin-bottom: 0; }
-#Expériences ul.features li.xp:nth-child(even) { grid-template-areas: "body logo date"; }
 #Expériences ul.features li.xp::before { display: none; }
 #Expériences ul.features li.xp:hover { transform: none; box-shadow: none; }
 
-/* logo dans un cercle posé sur la ligne (cercle dessiné en fond : le logo n'est jamais rogné) */
+/* logo dans un cercle (dessiné en fond : le logo n'est jamais rogné) */
 #Expériences .feature-logo {
   grid-area: logo;
-  position: relative;
-  z-index: 1;
-  width: 132px;
-  height: 132px;
-  padding: 30px;
+  width: 96px;
+  height: 96px;
+  padding: 22px;
   margin: 0;
   border-radius: 0;
   background: radial-gradient(circle closest-side,
-    #fff calc(100% - 8px), transparent calc(100% - 7px),
+    #fff calc(100% - 7px), transparent calc(100% - 6px),
     transparent calc(100% - 3px), var(--rose-poudre) calc(100% - 2px), var(--rose-poudre) 100%, transparent calc(100% + 1px));
-  filter: drop-shadow(0 10px 14px rgba(180, 110, 110, 0.25));
+  filter: drop-shadow(0 8px 12px rgba(180, 110, 110, 0.22));
   box-shadow: none;
+  transition: transform var(--transition);
 }
-#Expériences ul.features li.xp:hover .feature-logo { transform: scale(1.06); }
+#Expériences ul.features li.xp:hover .feature-logo { transform: rotate(-6deg) scale(1.06); }
 
-/* la période en grand, de l'autre côté de la ligne */
 .xp-date {
   grid-area: date;
   font-family: var(--font-titre);
-  font-size: 1.35rem;
-  font-weight: 700;
   font-style: italic;
-  line-height: 1.25;
+  font-weight: 600;
+  font-size: 0.95rem;
   color: var(--rose-sombre);
-  text-align: right;
 }
-#Expériences ul.features li.xp:nth-child(even) .xp-date { text-align: left; }
-
-/* le texte : une note légère avec un liseré rose, pas un gros bloc */
-.xp-body {
-  grid-area: body;
-  position: relative;
-  padding: 1.3rem 1.5rem 1.2rem;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 14px;
-  border-left: 3px solid var(--rose-poudre);
-  box-shadow: 0 6px 18px var(--ombre);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-#Expériences ul.features li.xp:nth-child(even) .xp-body { border-left: none; border-right: 3px solid var(--rose-poudre); }
-#Expériences ul.features li.xp:hover .xp-body { transform: translateY(-3px); box-shadow: 0 12px 26px var(--ombre-forte); }
-#Expériences ul.features li.xp h3 { text-align: left; font-size: 1.15rem; margin: 0 0 0.5rem; }
-#Expériences ul.features li.xp p { text-align: left; font-size: 0.88rem; margin-bottom: 0.2rem; }
+.xp-body { grid-area: body; }
+#Expériences ul.features li.xp h3 { text-align: left; font-size: 1.2rem; margin: 0 0 0.45rem; }
+#Expériences ul.features li.xp .xp-body p { text-align: left; font-size: 0.88rem; margin: 0; }
 #Expériences ul.features li.xp .xp-body p:first-of-type { margin-bottom: 0.7rem; }
+/* Poste / Lieu / Période sur une ligne, en petites étiquettes */
+#Expériences ul.features li.xp .xp-body p:not(:first-of-type) {
+  display: inline-block;
+  margin: 0.25rem 0.35rem 0 0;
+  padding: 0.18rem 0.75rem;
+  font-size: 0.78rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--beige-sombre);
+}
 
 /* ══════════════════════════════════════
    FOOTER — grand titre CONTACT
@@ -981,43 +1048,81 @@
   color: var(--rose-poudre);
 }
 
-/* Outils : catégories en nuages de bulles, sans cadre */
-#outils .comp-section-inner { max-width: 1150px; }
-#outils .watch-grid { gap: 1rem 3rem; align-items: flex-start; }
+/* Outils : une rangée par catégorie, icônes façon applis */
+#outils .comp-section-inner { max-width: 1100px; }
+#outils .watch-grid {
+  display: block;
+  counter-reset: outil;
+  border-top: 1px dashed var(--rose-poudre);
+}
 #outils .watch-cluster {
-  position: relative;
-  flex: 0 1 300px;
-  padding: 1.5rem 0.5rem 2rem;
-  gap: 1.1rem;
+  counter-increment: outil;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.8rem 0.5rem;
+  border-bottom: 1px dashed var(--rose-poudre);
 }
-#outils .watch-cluster:nth-child(even) { margin-top: 3rem; }
-#outils .watch-cluster::before {
-  content: '';
-  position: absolute;
-  top: 58%; left: 50%;
-  width: 250px; height: 210px;
-  transform: translate(-50%, -50%);
-  border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
-  background: linear-gradient(150deg, rgba(212,165,165,0.45), rgba(232,207,192,0.45));
-  z-index: 0;
-}
-#outils .watch-cluster:nth-child(even)::before { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; }
-#outils .watch-cluster > * { position: relative; z-index: 1; }
 #outils .watch-cluster-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
   font-family: var(--font-titre);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: none;
   color: var(--brun-fonce);
   background: none;
   border: none;
-  padding: 0 0 0.4rem;
-  border-bottom: 2px solid var(--rose-poudre);
-  border-radius: 0;
+  padding: 0;
 }
-#outils .watch-bubble-group { max-width: 290px; }
-#outils .watch-bubble img[alt="MailerLite"] { width: 82%; height: 40%; }
+#outils .watch-cluster-label::before {
+  content: '0' counter(outil);
+  font-size: 2rem;
+  color: var(--rose-poudre);
+}
+#outils .watch-bubble-group {
+  max-width: none;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.2rem 1.3rem;
+}
+#outils .watch-bubble,
+#outils .watch-bubble.size-lg,
+#outils .watch-bubble.size-md,
+#outils .watch-bubble.size-sm {
+  width: 78px;
+  height: auto;
+  margin: 0 !important;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+  gap: 0.45rem;
+}
+#outils .watch-bubble img,
+#outils .watch-bubble img[alt="Canva"],
+#outils .watch-bubble img[alt="MailerLite"] {
+  width: 64px;
+  height: 64px;
+  padding: 13px;
+  border-radius: 18px;
+  background: var(--blanc);
+  box-shadow: 0 6px 16px var(--ombre-forte);
+  transition: transform var(--transition);
+}
+#outils .watch-bubble img[alt="Canva"] { padding: 6px; }
+#outils .watch-bubble img[alt="MailerLite"] { padding: 8px; object-fit: contain; }
+#outils .watch-bubble:hover { transform: none; box-shadow: none; }
+#outils .watch-bubble:hover img { transform: translateY(-4px) rotate(-4deg); }
+#outils .watch-bubble span,
+#outils .watch-bubble.size-lg span,
+#outils .watch-bubble.size-md span,
+#outils .watch-bubble.size-sm span { font-size: 0.7rem; font-weight: 600; }
 
 /* Niveaux : cartes foncées numérotées */
 #competences .skills-container { counter-reset: niveau; gap: 2rem; }
@@ -1064,6 +1169,9 @@
   .spread__gallery .card1 { flex: 0 0 210px; }
   .spread__gallery .card1 img { height: 250px; }
   .comp-intro p { padding: 2.4rem 1.5rem 2rem; font-size: 1.02rem; }
+  #outils .watch-cluster { grid-template-columns: 1fr; gap: 1rem; }
+  #outils .watch-bubble, #outils .watch-bubble.size-lg, #outils .watch-bubble.size-md, #outils .watch-bubble.size-sm { width: 66px; }
+  #outils .watch-bubble img, #outils .watch-bubble img[alt="Canva"], #outils .watch-bubble img[alt="MailerLite"] { width: 56px; height: 56px; border-radius: 15px; }
   #competences .skills-category:nth-child(2) { transform: none; }
 }
 
@@ -1111,18 +1219,9 @@
 
 @media (max-width: 768px) {
   .logo-band .photo-band__strip img { width: 190px; padding: 55px 32px; }
-  #Expériences ul.features::before { left: 36px; }
-  #Expériences ul.features li.xp,
-  #Expériences ul.features li.xp:nth-child(even) {
-    grid-template-columns: 72px 1fr;
-    grid-template-areas: "logo date" "logo body";
-    gap: 0.5rem 1rem;
-    align-items: start;
-  }
-  #Expériences .feature-logo { width: 72px; height: 72px; padding: 16px; }
-  .xp-date,
-  #Expériences ul.features li.xp:nth-child(even) .xp-date { text-align: left; font-size: 1.05rem; padding-top: 0.4rem; }
-  #Expériences ul.features li.xp:nth-child(even) .xp-body { border-right: none; border-left: 3px solid var(--rose-poudre); }
+  #Expériences ul.features { grid-template-columns: 1fr; }
+  #Expériences ul.features li.xp { grid-template-columns: 68px 1fr; gap: 0.15rem 1rem; }
+  #Expériences .feature-logo { width: 68px; height: 68px; padding: 15px; }
   .photo-band { margin: 0 -1.5rem; height: 220px; }
   .photo-band__strip img { width: 190px; }
   .band-title { margin: -145px auto 7.5rem; }
@@ -1133,13 +1232,6 @@
 @media (max-width: 600px) {
 
   .camera-scene.intro-collage__visual { height: 290px; }
-  .camera__body { grid-template-columns: 1fr 50px; gap: 10px; padding: 12px; border-radius: 16px; }
-  .camera__dpad { width: 42px; height: 42px; }
-  .camera__dpad span { width: 16px; height: 16px; }
-  .camera__btn { width: 16px; height: 16px; }
-  .camera__btn--wide { width: 32px; height: 10px; }
-  .camera__dial { width: 50px; left: 22px; }
-  .camera__shutter { width: 40px; right: 30px; }
   .camera-scene .intro-blob { width: 260px; height: 260px; }
   .intro-scatter-badge { width: 42px; height: 42px; }
   .intro-scatter-badge--badminton { top: 0; }
@@ -1147,7 +1239,7 @@
   .intro-scatter-badge--mark1 { top: 40px; }
   .intro-scatter-badge--nailart { bottom: 4px; }
   .intro-scatter-badge--mark2 { bottom: -4px; }
-  .intro-paper .intro-photo-cutout { width: 120px; margin: -70px -18px 0.3rem 0.6rem; }
+  .intro-paper .intro-photo-cutout { width: 150px; margin: -95px -30px 0.2rem 0.5rem; }
   .phone { width: 250px; }
 }
 
