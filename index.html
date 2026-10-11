@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="mise-en-page.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
   </head>
@@ -13,9 +14,10 @@
 
       <!-- ══ HEADER HÉRO ══ -->
       <header id="header" class="hero-header1" style="background-image: url('images/monfond.jpg');">
-        <div class="hero-content1">
-          <div class="hero-layout">
-            <div class="hero-layout__intro">
+        <div class="hero-content1 cover">
+          <div class="cover__grid">
+            <!-- Collage photos -->
+            <div class="cover__collage">
               <div class="hero-avatar-wrap">
                 <div class="hero-avatar1">
                   <img src="images/ppalissia1.png" alt="Photo de profil" />
@@ -24,6 +26,15 @@
                 <span class="sticky-note sticky-note--2">Créative</span>
                 <span class="sticky-note sticky-note--3">Organisée</span>
               </div>
+              <figure class="cover__polaroid">
+                <img src="images/bandeau/vignette.jpg" alt="Bonjour, je m'appelle Alissia" />
+              </figure>
+            </div>
+
+            <!-- Titre façon couverture -->
+            <div class="hero-layout__intro cover__text">
+              <span class="cover__word" aria-hidden="true">Portfolio</span>
+              <span class="cover__sub" aria-hidden="true">Marketing · Communication</span>
 
               <h1 class="hero-name-block">
                 <span class="hero-name-line hero-name-line--dark">Alissia</span>
@@ -46,50 +57,51 @@
                 </a>
               </div>
             </div>
+          </div>
 
-            <div class="hero-layout__search">
-              <div class="hero-recherche">
-                <div class="hero-recherche__top">
-                  <span class="hero-recherche__label">Actuellement à la recherche d'une</span>
-                  <span class="hero-recherche__poste">Alternance — Septembre 2027</span>
+          <!-- Recherche d'alternance -->
+          <div class="hero-layout__search">
+            <div class="hero-recherche">
+              <div class="hero-recherche__top">
+                <span class="hero-recherche__label">Actuellement à la recherche d'une</span>
+                <span class="hero-recherche__poste">Alternance — Septembre 2027</span>
+              </div>
+
+              <div class="hero-recherche__domaines">
+                <span><i class="fa-solid fa-bullhorn"></i> Marketing digital</span>
+                <span><i class="fa-solid fa-comment-dots"></i> Communication</span>
+                <span><i class="fa-brands fa-instagram"></i> Entrepreneuriat</span>
+              </div>
+
+              <div class="hero-recherche__divider"></div>
+
+              <div class="hero-recherche__grid">
+                <div class="hero-recherche__item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <span class="hero-recherche__item-label">Zone</span>
+                    <span class="hero-recherche__item-value">Montpellier & alentours</span>
+                  </div>
                 </div>
-
-                <div class="hero-recherche__domaines">
-                  <span><i class="fa-solid fa-bullhorn"></i> Marketing digital</span>
-                  <span><i class="fa-solid fa-comment-dots"></i> Communication</span>
-                  <span><i class="fa-brands fa-instagram"></i> Entrepreneuriat</span>
+                <div class="hero-recherche__item">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <span class="hero-recherche__item-label">Formation</span>
+                    <span class="hero-recherche__item-value">Master marketing digital</span>
+                  </div>
                 </div>
-
-                <div class="hero-recherche__divider"></div>
-
-                <div class="hero-recherche__grid">
-                  <div class="hero-recherche__item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                      <span class="hero-recherche__item-label">Zone</span>
-                      <span class="hero-recherche__item-value">Montpellier & alentours</span>
-                    </div>
+                <div class="hero-recherche__item">
+                  <i class="fa-solid fa-clock"></i>
+                  <div>
+                    <span class="hero-recherche__item-label">Durée</span>
+                    <span class="hero-recherche__item-value">2 ans</span>
                   </div>
-                  <div class="hero-recherche__item">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <div>
-                      <span class="hero-recherche__item-label">Formation</span>
-                      <span class="hero-recherche__item-value">Master marketing digital</span>
-                    </div>
-                  </div>
-                  <div class="hero-recherche__item">
-                    <i class="fa-solid fa-clock"></i>
-                    <div>
-                      <span class="hero-recherche__item-label">Durée</span>
-                      <span class="hero-recherche__item-value">2 ans</span>
-                    </div>
-                  </div>
-                  <div class="hero-recherche__item">
-                    <i class="fa-solid fa-rotate"></i>
-                    <div>
-                      <span class="hero-recherche__item-label">Rythme</span>
-                      <span class="hero-recherche__item-value">Selon le Master visé</span>
-                    </div>
+                </div>
+                <div class="hero-recherche__item">
+                  <i class="fa-solid fa-rotate"></i>
+                  <div>
+                    <span class="hero-recherche__item-label">Rythme</span>
+                    <span class="hero-recherche__item-value">Selon le Master visé</span>
                   </div>
                 </div>
               </div>
@@ -154,7 +166,9 @@
               <header class="major">
                 <h2>Je me présente…</h2>
               </header>
+              <div class="intro-paper">
               <p>Je m'appelle Alissia, j'ai 20 ans et je suis actuellement étudiante en troisième année de BUT Techniques de Commercialisation à l'IUT de Montpellier. Je suis en alternance au CFA EnSup-LR, où j'interviens en marketing digital et communication : création de supports, gestion des réseaux sociaux et participation à des événements. Je m'intéresse particulièrement au marketing digital, un domaine en constante évolution qui allie créativité et stratégie. À terme, j'aimerais évoluer dans le marketing numérique, notamment dans la communication en ligne, l'entrepreneuriat ou la stratégie de marque. Dans cette perspective, je suis actuellement en attente de réponses pour mon Master et je recherche une alternance pour septembre 2027, afin de continuer à développer mes compétences et de les mettre en pratique en entreprise.</p>
+              </div>
 
               <ul class="actions">
                 <li><a href="page1.html" class="button">À savoir sur moi</a></li>
@@ -218,9 +232,15 @@
 
         <!-- ══ COMPÉTENCES ══ -->
         <section id="Compétences" class="main special">
+          <div class="skills-split">
+          <div class="skills-split__head">
           <header class="major">
             <h2>Mes Compétences</h2>
           </header>
+            <ul class="actions">
+              <li><a href="page2.html" class="button">En savoir plus</a></li>
+            </ul>
+          </div>
           <ul class="features">
             <li>
               <img class="feature-img" src="images/marketing.png" alt="Marketing" />
@@ -238,16 +258,15 @@
               <p>Je crée des sites internet en HTML/CSS et sur des plateformes comme WordPress ou Wix. J'ai le sens du design visuel et de l'expérience utilisateur, ce qui me permet d'allier créativité et efficacité.</p>
             </li>
           </ul>
-          <footer class="major">
-            <ul class="actions special">
-              <li><a href="page2.html" class="button">En savoir plus</a></li>
-            </ul>
-          </footer>
+          </div>
         </section>
 
         <!-- ══ PORTFOLIO ══ -->
         <section id="PortFolio" class="main special">
-          <header class="major">
+          <div class="photo-band" aria-hidden="true">
+            <div class="photo-band__strip"><img src="images/bandeau/mission12.sae.marketing.jpg" alt=""><img src="images/bandeau/sae.transverse.jpg" alt=""><img src="images/bandeau/comcoms4.jpg" alt=""><img src="images/bandeau/creativiteetinnovation.jpg" alt=""><img src="images/bandeau/sae.creationentreprise.jpg" alt=""><img src="images/bandeau/photos.jpg" alt=""><img src="images/bandeau/siterecette.jpg" alt=""><img src="images/bandeau/sae.analyseactivitedigitale.jpg" alt=""><img src="images/bandeau/mission12.sae.marketing.jpg" alt=""><img src="images/bandeau/sae.transverse.jpg" alt=""><img src="images/bandeau/comcoms4.jpg" alt=""><img src="images/bandeau/creativiteetinnovation.jpg" alt=""><img src="images/bandeau/sae.creationentreprise.jpg" alt=""><img src="images/bandeau/photos.jpg" alt=""><img src="images/bandeau/siterecette.jpg" alt=""><img src="images/bandeau/sae.analyseactivitedigitale.jpg" alt=""></div>
+          </div>
+          <header class="major band-title">
             <h2>Mon Portfolio</h2>
           </header>
 
@@ -382,7 +401,10 @@
 
         <!-- ══ EXPÉRIENCES ══ -->
         <section id="Expériences" class="main special">
-          <header class="major">
+          <div class="photo-band photo-band--reverse" aria-hidden="true">
+            <div class="photo-band__strip"><img src="images/bandeau/gims.jpg" alt=""><img src="images/bandeau/bad.jpg" alt=""><img src="images/bandeau/marjulia.jpg" alt=""><img src="images/bandeau/kayak.jpg" alt=""><img src="images/bandeau/ongle1.jpg" alt=""><img src="images/bandeau/jordi.jpg" alt=""><img src="images/bandeau/ppalissia3.jpg" alt=""><img src="images/bandeau/vignette.jpg" alt=""><img src="images/bandeau/gims.jpg" alt=""><img src="images/bandeau/bad.jpg" alt=""><img src="images/bandeau/marjulia.jpg" alt=""><img src="images/bandeau/kayak.jpg" alt=""><img src="images/bandeau/ongle1.jpg" alt=""><img src="images/bandeau/jordi.jpg" alt=""><img src="images/bandeau/ppalissia3.jpg" alt=""><img src="images/bandeau/vignette.jpg" alt=""></div>
+          </div>
+          <header class="major band-title">
             <h2>Mes Expériences Professionnelles</h2>
           </header>
           <ul class="features">
@@ -449,9 +471,10 @@
 
       <!-- ══ FOOTER ══ -->
       <footer id="footer">
+        <p class="footer-big-title" aria-hidden="true">Contact <span class="footer-script">à bientôt</span></p>
         <section>
           <div class="footer-intro">
-            <img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" />
+            <div class="footer-polaroid"><img src="images/ppalissia3.png" alt="Alissia Solbez" class="footer-photo" width="130" /></div>
             <div class="footer-intro__text">
               <h2>À propos du site</h2>
               <p>Ce site a été entièrement conçu par moi en HTML et CSS, à partir d'un template, en mettant en pratique les compétences acquises lors de ma formation en Techniques de Commercialisation.</p>
