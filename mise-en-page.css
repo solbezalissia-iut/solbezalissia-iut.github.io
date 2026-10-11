@@ -113,61 +113,67 @@
 .cover .hero-recherche__item-value { font-size: 0.95rem; }
 
 /* ══════════════════════════════════════
-   JE ME PRÉSENTE — appareil photo + journal
+   JE ME PRÉSENTE — appareil photo + feuille
 ══════════════════════════════════════ */
-#Accueil .intro-collage { gap: 4rem; align-items: center; max-width: 1200px; }
+#Accueil .intro-collage {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+}
 
 .camera-scene.intro-collage__visual {
-  flex: 0 0 540px;
-  height: 540px;
+  flex: none;
+  width: 100%;
+  height: 470px;
 }
 .camera-scene::after { display: none; }
-.camera-scene .intro-blob { width: 400px; height: 400px; top: 52%; left: 48%; opacity: .55; }
+.camera-scene .intro-blob { width: 420px; height: 420px; top: 50%; left: 50%; opacity: .5; }
 
 /* L'appareil */
 .camera {
   position: absolute;
-  top: 70px;
-  left: 0;
-  width: 430px;
-  transform: rotate(-6deg);
+  top: 50%;
+  left: 50%;
+  width: min(580px, 100%);
+  transform: translate(-50%, -50%) rotate(-4deg);
   z-index: 2;
   filter: drop-shadow(0 26px 30px rgba(61, 37, 37, 0.35));
   transition: transform var(--transition);
 }
-.camera:hover { transform: rotate(-3deg) translateY(-4px); }
+.camera:hover { transform: translate(-50%, -52%) rotate(-2deg); }
 
-.camera__top {
-  position: relative;
-  height: 22px;
-}
+.camera__top { position: relative; height: 24px; }
 .camera__dial {
   position: absolute;
-  left: 34px; bottom: -4px;
-  width: 70px; height: 22px;
+  left: 40px; bottom: -4px;
+  width: 84px; height: 24px;
   border-radius: 8px 8px 0 0;
   background: repeating-linear-gradient(90deg, #6f4b4b 0 3px, #4a2f2f 3px 6px);
 }
 .camera__shutter {
   position: absolute;
-  right: 50px; bottom: -2px;
-  width: 54px; height: 14px;
+  right: 60px; bottom: -2px;
+  width: 64px; height: 16px;
   border-radius: 8px 8px 0 0;
   background: linear-gradient(180deg, var(--rose-poudre), var(--rose-sombre));
 }
 
 .camera__body {
   display: grid;
-  grid-template-columns: 1fr 74px;
-  gap: 16px;
-  padding: 18px 16px 18px 18px;
-  border-radius: 22px;
+  grid-template-columns: 1fr 78px;
+  gap: 18px;
+  align-items: center;
+  padding: 20px 18px 20px 20px;
+  border-radius: 24px;
   background:
     radial-gradient(circle at 20% 0%, rgba(255,255,255,0.14), transparent 45%),
     linear-gradient(145deg, #5c3d3d, #3d2525 70%);
   border: 2px solid #2e1b1b;
 }
 
+/* Écran au format 16:9, comme la vidéo : elle s'affiche en entier */
 .camera__screen.intro-video-frame {
   position: relative;
   width: auto;
@@ -177,16 +183,16 @@
   border-radius: 10px;
   background: #120b0b;
   border: 4px solid #1d1111;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
 }
 .camera__screen.intro-video-frame:hover { transform: none; box-shadow: none; }
 .camera__screen .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0;
+  background: #000;
 }
 .camera__rec {
   position: absolute;
@@ -203,8 +209,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 6px 0;
+  gap: 14px;
 }
 .camera__btn {
   width: 22px; height: 22px;
@@ -227,18 +232,7 @@
   box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
 }
 
-/* Photo détourée devant l'appareil */
-.camera-scene .intro-photo-cutout {
-  position: absolute;
-  right: -20px;
-  bottom: 0;
-  width: 270px;
-  z-index: 3;
-  transform: rotate(3deg);
-}
-.camera-scene .intro-photo-cutout:hover { transform: rotate(3deg) translateY(-6px); }
-
-/* Petits logos éparpillés */
+/* Petits logos éparpillés autour de l'appareil */
 .intro-scatter-badge {
   position: absolute;
   z-index: 4;
@@ -251,42 +245,39 @@
 }
 .intro-scatter-badge:hover { transform: scale(1.12) rotate(0deg) !important; }
 .intro-scatter-badge img { width: 60% !important; height: 60% !important; object-fit: contain; }
-.intro-scatter-badge--badminton { top: 10px;   left: 30px;  transform: rotate(-12deg); }
-.intro-scatter-badge--canon     { top: 0;      left: 330px; transform: rotate(10deg); }
-.intro-scatter-badge--nailart   { bottom: 70px; left: 10px; transform: rotate(-8deg); }
-.intro-scatter-badge--mark1     { top: 60px;   right: 0;    transform: rotate(12deg); }
-.intro-scatter-badge--mark2     { bottom: 10px; left: 150px; transform: rotate(6deg); }
+.intro-scatter-badge--badminton { top: 30px;    left: 4%;   transform: rotate(-12deg); }
+.intro-scatter-badge--canon     { top: 10px;    right: 22%; transform: rotate(10deg); }
+.intro-scatter-badge--nailart   { bottom: 40px; left: 0;    transform: rotate(-8deg); }
+.intro-scatter-badge--mark1     { top: 90px;    right: 0;   transform: rotate(12deg); }
+.intro-scatter-badge--mark2     { bottom: 20px; right: 12%; transform: rotate(6deg); }
 
-/* Texte façon page de journal */
+/* Texte sur une feuille, avec ma photo qui dépasse en haut à droite */
 #Accueil .intro-collage__text header.major h2 {
   font-size: clamp(2.4rem, 5vw, 3.8rem);
 }
 .intro-paper {
   position: relative;
   background: #fffaf6;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 2.4rem 2.4rem 2.2rem;
   margin-top: 1.6rem;
   box-shadow: 0 14px 36px var(--ombre-forte);
-  transform: rotate(1deg);
+  transform: rotate(0.8deg);
   border-top: 5px double var(--brun-fonce);
 }
-.intro-paper::before {
-  content: '';
-  position: absolute;
-  top: -14px; right: 40px;
-  width: 90px; height: 26px;
+.intro-paper::after { content: ''; display: block; clear: both; }
+.intro-paper .intro-photo-cutout {
+  float: right;
+  width: 190px;
+  margin: -90px -46px 0.4rem 1rem;
   transform: rotate(4deg);
-  background: rgba(212, 165, 165, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.5);
 }
+.intro-paper .intro-photo-cutout:hover { transform: rotate(4deg) translateY(-6px); }
 .intro-paper p {
   margin: 0;
   text-align: left;
-  column-count: 2;
-  column-gap: 2rem;
-  column-rule: 1px solid var(--beige-sombre);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+  line-height: 1.85;
 }
 .intro-paper p::first-letter {
   float: left;
@@ -361,33 +352,34 @@
 #Diplomes .timeline-item:nth-child(3) .timeline-dot { margin-top: 36px; }
 #Diplomes .timeline-item:nth-child(4) .timeline-dot { margin-top: 68px; }
 
-/* Photo en carte (au lieu du petit médaillon) */
+/* Photo en médaillon rond, posé à cheval sur la carte */
 #Diplomes .timeline-img {
   position: relative;
   left: auto;
-  transform: rotate(-2deg);
-  width: 100%;
-  height: 170px;
-  border-radius: var(--radius-lg);
+  transform: none;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
   border: 6px solid var(--blanc);
-  outline: none;
+  outline: 2px solid var(--rose-poudre);
+  outline-offset: 0;
   background: var(--blanc);
   box-shadow: 0 12px 28px var(--ombre-forte);
+  margin-bottom: -65px;
   z-index: 2;
 }
-#Diplomes .timeline-item:nth-child(3) .timeline-img { transform: rotate(2deg); }
-#Diplomes .timeline-item:hover .timeline-img { transform: rotate(0deg) translateY(-4px); }
-#Diplomes .timeline-img img { border-radius: calc(var(--radius-lg) - 6px); }
-#Diplomes .timeline-img img[alt="BUT TC"],
-#Diplomes .timeline-img img[alt="Master"] { object-fit: contain; background: var(--blanc); }
+#Diplomes .timeline-item:hover .timeline-img { transform: translateY(-4px) scale(1.04); }
+#Diplomes .timeline-img img { border-radius: 50%; }
+#Diplomes .timeline-img img[alt="BUT TC"] { object-fit: contain; padding: 8px; background: var(--blanc); }
+#Diplomes .timeline-img img[alt="Master"] { object-fit: cover; object-position: 60% center; }
 
 #Diplomes .timeline-card {
   max-width: none;
-  width: 92%;
-  margin-top: -26px;
+  width: 100%;
+  margin-top: 0;
   background: var(--brun-fonce);
   border: none;
-  padding: 2.6rem 1.5rem 1.6rem;
+  padding: 5rem 1.5rem 1.7rem;
   text-align: center;
   box-shadow: 0 14px 30px rgba(92, 61, 61, 0.28);
 }
@@ -469,21 +461,21 @@
 .skills-split ul.features li h3 { margin: 0.2rem 0 0.35rem; font-size: 1.35rem; }
 .skills-split ul.features li p { text-align: left; }
 
-/* Le téléphone */
+/* Le téléphone — façon iPhone */
 .skills-phone {
   grid-area: phone;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
   padding-top: 1rem;
 }
 .skills-phone::before {
   content: '';
   position: absolute;
-  top: 40px; left: 50%;
-  width: 360px; height: 360px;
+  top: 60px; left: 50%;
+  width: 380px; height: 380px;
   transform: translateX(-50%);
   border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
   background: linear-gradient(150deg, var(--rose-poudre), var(--beige-sombre));
@@ -494,45 +486,96 @@
   position: relative;
   z-index: 1;
   width: 290px;
-  border-radius: 44px;
-  border: 11px solid #3d2525;
-  background: var(--blanc);
-  padding: 34px 12px 18px;
-  box-shadow: 0 30px 50px rgba(61, 37, 37, 0.35);
+  aspect-ratio: 9 / 19.5;
+  padding: 11px;
+  border-radius: 54px;
+  background: linear-gradient(145deg, #e9d9d2, #b9a29a 45%, #d8c6bf);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.5),
+    0 30px 50px rgba(61, 37, 37, 0.35);
   transform: rotate(4deg);
   transition: transform var(--transition);
 }
 .phone:hover { transform: rotate(1deg) translateY(-6px); }
-.phone__notch {
+
+/* Boutons sur les côtés */
+.phone__btn {
   position: absolute;
-  top: 8px; left: 50%;
-  width: 90px; height: 18px;
-  transform: translateX(-50%);
-  border-radius: 12px;
-  background: #3d2525;
+  width: 4px;
+  border-radius: 2px;
+  background: #b9a29a;
 }
+.phone__btn--action { left: -3px; top: 110px; height: 26px; }
+.phone__btn--vol1   { left: -3px; top: 156px; height: 46px; }
+.phone__btn--vol2   { left: -3px; top: 212px; height: 46px; }
+.phone__btn--power  { right: -3px; top: 170px; height: 72px; }
+
+.phone__screen {
+  position: relative;
+  height: 100%;
+  border-radius: 44px;
+  background: var(--blanc);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #111;
+}
+.phone__island {
+  position: absolute;
+  top: 10px; left: 50%;
+  width: 92px; height: 27px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  background: #111;
+  z-index: 2;
+}
+.phone__status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px 0 26px;
+  height: 46px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #111;
+}
+.phone__status-icons { display: flex; gap: 5px; font-size: 0.62rem; }
 .phone__head {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0 4px 12px;
+  padding: 6px 12px 10px;
 }
 .phone__head img {
-  width: 50px; height: 50px;
+  width: 48px; height: 48px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--rose-poudre);
 }
-.phone__head b { display: block; font-family: var(--font-titre); font-size: 0.95rem; color: var(--brun-fonce); }
-.phone__head span { display: block; font-size: 0.62rem; color: var(--brun); letter-spacing: 0.04em; }
+.phone__head b { display: block; font-family: var(--font-titre); font-size: 0.92rem; color: var(--brun-fonce); }
+.phone__head span { display: block; font-size: 0.6rem; color: var(--brun); letter-spacing: 0.04em; }
 .phone__grid {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  border-radius: 10px;
-  overflow: hidden;
+  align-content: start;
+  gap: 2px;
 }
 .phone__grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.phone__tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 8px 6px;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #222;
+}
+.phone__home {
+  width: 96px; height: 4px;
+  margin: 4px auto 8px;
+  border-radius: 3px;
+  background: #111;
+}
 .skills-phone .actions { position: relative; z-index: 1; margin: 0; }
 
 /* ══════════════════════════════════════
@@ -585,47 +628,76 @@
 }
 .band-title h2::after { display: none; }
 
-/* Bandeau des expériences : logos des entreprises */
-.logo-band { background: var(--rose-pale); }
-.logo-band::after { background: linear-gradient(90deg, rgba(212,165,165,0.35), rgba(255,240,243,0), rgba(212,165,165,0.35)); }
-.logo-band .photo-band__strip { align-items: center; gap: 22px; padding: 0 11px; animation-duration: 45s; animation-direction: reverse; }
-.logo-tile {
-  flex: none;
-  width: 170px;
-  height: 120px;
-  display: grid;
-  place-items: center;
-  background: var(--blanc);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 8px 22px var(--ombre);
+/* Bandeau des expériences : uniquement les logos qui défilent */
+.logo-band { background: transparent; height: 300px; }
+.logo-band::after { display: none; }
+.logo-band .photo-band__strip { align-items: center; animation-duration: 50s; animation-direction: reverse; }
+.logo-band .photo-band__strip img {
+  width: auto;
+  height: 64px;
+  max-width: 170px;
+  object-fit: contain;
+  margin: 0 46px;
+  mix-blend-mode: multiply;
 }
-.logo-tile:nth-child(odd)  { transform: rotate(-3deg) translateY(-30px); }
-.logo-tile:nth-child(even) { transform: rotate(3deg) translateY(30px); }
-.logo-tile img { width: 72%; height: 72%; object-fit: contain; display: block; }
-#Expériences .band-title h2 { background: rgba(92, 61, 61, 0.85); max-width: 11.5em; border-radius: 48px; padding: 0.35em 1em; }
+.logo-band .photo-band__strip img:nth-child(odd)  { transform: translateY(-82px); }
+.logo-band .photo-band__strip img:nth-child(even) { transform: translateY(82px); }
+#Expériences .band-title { margin-top: -192px; margin-bottom: 8rem; }
+#Expériences .band-title h2 { background: var(--brun-fonce); border-color: var(--rose-poudre); }
 
 /* Le bandeau photo remplace la vague de séparation */
 .section-divider { display: none; }
 
-/* Expériences : 4 cartes par ligne, marges latérales réduites */
+/* Expériences : 4 par ligne, en colonnes ouvertes reliées par un trait */
 #Expériences.main { padding-left: 1.5rem; padding-right: 1.5rem; }
 #Expériences .photo-band { margin: 0 -1.5rem; }
 #Expériences ul.features {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.6rem;
+  gap: 3.5rem 0;
   max-width: 1400px;
 }
 #Expériences ul.features li {
-  flex: 0 1 calc((100% - 4.8rem) / 4);
+  flex: 0 1 25%;
   min-width: 0;
-  padding: 2rem 1.5rem;
+  padding: 0 1.4rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  transform: none;
+  text-align: center;
 }
-#Expériences .feature-logo { width: 110px; height: 110px; }
-#Expériences ul.features li:nth-child(odd)  { transform: rotate(-0.6deg); }
-#Expériences ul.features li:nth-child(even) { transform: rotate(0.6deg); }
-#Expériences ul.features li:hover { transform: rotate(0) translateY(-6px); }
+#Expériences ul.features li:hover { transform: none; box-shadow: none; }
+#Expériences ul.features li::before {
+  top: 60px;
+  left: 0; right: 0;
+  height: 0;
+  background: none;
+  border-top: 2px dashed var(--rose-poudre);
+  z-index: 0;
+}
+#Expériences .feature-logo {
+  position: relative;
+  z-index: 1;
+  width: 132px;
+  height: 132px;
+  padding: 30px;
+  margin: 0 auto 1.3rem;
+  border-radius: 0;
+  /* cercle blanc + anneau rose dessinés en fond (le logo n'est jamais rogné) */
+  background: radial-gradient(circle closest-side,
+    #fff calc(100% - 8px), transparent calc(100% - 7px),
+    transparent calc(100% - 3px), var(--rose-poudre) calc(100% - 2px), var(--rose-poudre) 100%, transparent calc(100% + 1px));
+  filter: drop-shadow(0 10px 14px rgba(180, 110, 110, 0.25));
+  box-shadow: none;
+}
+#Expériences ul.features li:hover .feature-logo { transform: translateY(-5px) scale(1.04); }
+#Expériences ul.features li h3 { text-align: center; font-size: 1.12rem; margin-bottom: 0.7rem; }
+#Expériences ul.features li p { text-align: center; font-size: 0.88rem; }
+#Expériences ul.features li p:first-of-type { margin-bottom: 0.9rem; }
 
 /* ══════════════════════════════════════
    FOOTER — grand titre CONTACT
@@ -873,29 +945,28 @@
   color: var(--rose-poudre);
 }
 
-/* Outils : chaque catégorie sur une fiche épinglée */
+/* Outils : catégories en nuages de bulles, sans cadre */
 #outils .comp-section-inner { max-width: 1150px; }
-#outils .watch-grid { gap: 2.6rem 2rem; }
+#outils .watch-grid { gap: 1rem 3rem; align-items: flex-start; }
 #outils .watch-cluster {
   position: relative;
-  flex: 0 1 340px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: var(--radius-lg);
-  padding: 2.4rem 1.4rem 1.8rem;
-  box-shadow: 0 12px 30px var(--ombre-forte);
-  gap: 1.2rem;
+  flex: 0 1 300px;
+  padding: 1.5rem 0.5rem 2rem;
+  gap: 1.1rem;
 }
-#outils .watch-cluster:nth-child(odd)  { transform: rotate(-1deg); }
-#outils .watch-cluster:nth-child(even) { transform: rotate(1deg); }
+#outils .watch-cluster:nth-child(even) { margin-top: 3rem; }
 #outils .watch-cluster::before {
   content: '';
   position: absolute;
-  top: -12px; left: 50%;
-  width: 84px; height: 24px;
-  transform: translateX(-50%) rotate(-3deg);
-  background: rgba(212, 165, 165, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  top: 58%; left: 50%;
+  width: 250px; height: 210px;
+  transform: translate(-50%, -50%);
+  border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
+  background: linear-gradient(150deg, rgba(212,165,165,0.45), rgba(232,207,192,0.45));
+  z-index: 0;
 }
+#outils .watch-cluster:nth-child(even)::before { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; }
+#outils .watch-cluster > * { position: relative; z-index: 1; }
 #outils .watch-cluster-label {
   font-family: var(--font-titre);
   font-size: 1.25rem;
@@ -905,9 +976,11 @@
   color: var(--brun-fonce);
   background: none;
   border: none;
-  padding: 0;
+  padding: 0 0 0.4rem;
+  border-bottom: 2px solid var(--rose-poudre);
+  border-radius: 0;
 }
-#outils .watch-bubble-group { max-width: 300px; }
+#outils .watch-bubble-group { max-width: 290px; }
 
 /* Niveaux : cartes foncées numérotées */
 #competences .skills-container { counter-reset: niveau; gap: 2rem; }
@@ -961,11 +1034,9 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1100px) {
-  #Expériences ul.features li { flex-basis: calc((100% - 1.6rem) / 2); }
-  .camera-scene.intro-collage__visual { flex: 0 0 460px; height: 480px; }
-  .camera { width: 370px; }
-  .camera-scene .intro-photo-cutout { width: 230px; }
-  .intro-paper p { column-count: 1; }
+  #Expériences ul.features li { flex-basis: 50%; }
+  #Accueil .intro-collage { gap: 2.5rem; }
+  .camera-scene.intro-collage__visual { height: 400px; }
 }
 
 @media (max-width: 900px) {
@@ -984,7 +1055,9 @@
   }
   .cover .hero-recherche__grid { border-left: 0; padding-left: 0; border-top: 1px solid rgba(139,106,106,0.25); padding-top: 1.1rem; }
 
-  #Accueil .intro-collage { flex-direction: column; gap: 2.5rem; }
+  #Accueil .intro-collage { grid-template-columns: 1fr; gap: 1.5rem; }
+  .camera-scene.intro-collage__visual { max-width: 600px; margin: 0 auto; }
+  #Accueil .intro-collage__text { margin-top: 2rem; }
   .intro-paper { padding: 1.8rem 1.4rem; transform: none; }
 
   #Diplomes .timeline { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; gap: 3rem; }
@@ -1003,7 +1076,11 @@
 @media (max-width: 768px) {
   .photo-band { margin: 0 -1.5rem; height: 220px; }
   .photo-band__strip img { width: 190px; }
-  .logo-tile { width: 150px; height: 120px; }
+  .logo-band { height: 240px; }
+  .logo-band .photo-band__strip img { height: 46px; margin: 0 28px; }
+  .logo-band .photo-band__strip img:nth-child(odd)  { transform: translateY(-70px); }
+  .logo-band .photo-band__strip img:nth-child(even) { transform: translateY(70px); }
+  #Expériences .band-title { margin-top: -160px; margin-bottom: 6rem; }
   .band-title { margin: -145px auto 7.5rem; }
   #Expériences.main { padding-left: 1rem; padding-right: 1rem; }
   #Expériences .photo-band { margin: 0 -1rem; }
@@ -1012,8 +1089,7 @@
 @media (max-width: 600px) {
   #Expériences ul.features li { flex-basis: 100%; }
 
-  .camera-scene.intro-collage__visual { flex: none; width: 100%; max-width: 360px; height: 380px; }
-  .camera { width: 280px; top: 50px; }
+  .camera-scene.intro-collage__visual { height: 290px; }
   .camera__body { grid-template-columns: 1fr 50px; gap: 10px; padding: 12px; border-radius: 16px; }
   .camera__dpad { width: 42px; height: 42px; }
   .camera__dpad span { width: 16px; height: 16px; }
@@ -1021,11 +1097,15 @@
   .camera__btn--wide { width: 32px; height: 10px; }
   .camera__dial { width: 50px; left: 22px; }
   .camera__shutter { width: 40px; right: 30px; }
-  .camera-scene .intro-photo-cutout { width: 170px; right: -6px; }
-  .camera-scene .intro-blob { width: 280px; height: 280px; }
-  .intro-scatter-badge { width: 44px; height: 44px; }
-  .intro-scatter-badge--canon { left: 220px; }
-  .intro-scatter-badge--mark2 { left: 100px; }
+  .camera-scene .intro-blob { width: 260px; height: 260px; }
+  .intro-scatter-badge { width: 42px; height: 42px; }
+  .intro-scatter-badge--badminton { top: 0; }
+  .intro-scatter-badge--canon { top: -6px; }
+  .intro-scatter-badge--mark1 { top: 40px; }
+  .intro-scatter-badge--nailart { bottom: 4px; }
+  .intro-scatter-badge--mark2 { bottom: -4px; }
+  .intro-paper .intro-photo-cutout { width: 120px; margin: -70px -18px 0.3rem 0.6rem; }
+  .phone { width: 250px; }
 }
 
 @media (max-width: 560px) {
