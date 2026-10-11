@@ -726,7 +726,12 @@
   background: var(--blanc);
   border-right: 1px solid var(--beige-sombre);
 }
-.logo-band .photo-band__strip img:nth-child(even) { background: var(--rose-pale); }
+.logo-band .photo-band__strip img:nth-child(even) { background: var(--beige-clair); }
+
+/* fond de la section Expériences : beige chaud au lieu du rose-violet */
+#Expériences,
+#PortFolio + #Expériences { background: var(--beige) !important; }
+#Expériences ul.features li.xp .xp-body p:not(:first-of-type) { background: rgba(255, 255, 255, 0.85); }
 
 /* Le bandeau photo remplace la vague de séparation */
 .section-divider { display: none; }
